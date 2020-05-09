@@ -1,72 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fac5e91e-b5f9-4f4c-b699-f18ea5c7579c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/default/_template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/danmu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/exchange.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/followbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/gotop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/index_simple.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/layer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/seckill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/startadv.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_audio.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_banner.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_bindmobile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_blank.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_blockgroup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_board_ltem.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_commission_block.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_commission_sharecode.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_coupon.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_buyshow.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_info.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_sale.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_seckill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_shop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_spec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_store.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_detail_swipe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_exchange_banner.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_exchange_input.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_exchange_rule.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_fixedsearch.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_goods.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_groupsgoods.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_icongroup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_line.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_listmenu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_logout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_member.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_memberc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_menu2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_merchgroup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_notice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_picture.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_pictures.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_picturew.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_richtext.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_seckill_advs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_seckill_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_seckill_rooms.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_seckill_times.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_seckillgroup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_tabbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_tabbar_data.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_title.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_topmenu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_topmenu_data.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_verify.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_video.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default/template/tpl_wxcard.html" beforeDir="false" />
-    </list>
+    <list default="true" id="fac5e91e-b5f9-4f4c-b699-f18ea5c7579c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +9,95 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_menu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#a#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_pictures.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_goods.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="126" column="32" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="true">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+              <folding>
+                <element signature="e#2963#2987#0" expanded="true" />
+                <element signature="e#3520#3542#0" expanded="true" />
+                <element signature="e#3626#3812#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_richtext.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_picture.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="1" column="254" selection-start-line="1" selection-start-column="254" selection-end-line="1" selection-end-column="254" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_title.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_board_ltem.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -88,6 +111,19 @@
       <find>fui-content</find>
       <find>.iphonex.fui-footer</find>
       <find>footerMenus</find>
+      <find>store</find>
+      <find>fui-icon-group noborder col-4</find>
+      <find>.fui-card .fui-card-content</find>
+      <find>.fui-card.fui-card-list</find>
+      <find>inner image top</find>
+      <find>php</find>
+      <find>class=&quot;image</find>
+      <find>class=&quot;fui-icon-group noborder</find>
+      <find>minprice</find>
+      <find>.fui-goods-group.block .fui-goods-item .detail .productprice</find>
+      <find>.fui-card .fui-card-info .image</find>
+      <find>default-items</find>
+      <find>if</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,12 +132,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_board_ltem.html" />
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/index.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/_menu.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/template/mobile/default/static/css/style.css" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/data/tpl/app/ewei_shopv2/plugin/sns/default/mobile/sns/board/lists.tpl.php" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/board/lists.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/user/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/board/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/_template.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_icongroup.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_menu.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/menu.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/app/template/web_v3/page/tpl/_template.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/bargain/template/mobile/default/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/commission/template/mobile/default/myshop/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_goods.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_title.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_board_ltem.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_richtext.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_picture.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/index.html" />
       </list>
     </option>
   </component>
@@ -117,9 +167,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-245" />
-    <option name="y" value="666" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="204" />
+    <option name="y" value="46" />
     <option name="width" value="1400" />
     <option name="height" value="1003" />
   </component>
@@ -143,6 +193,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -176,16 +227,17 @@
       <updated>1588923376559</updated>
       <workItem from="1588923381619" duration="17569000" />
       <workItem from="1588942243225" duration="57000" />
+      <workItem from="1588987186510" duration="20525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17626000" />
+    <option name="totallyTimeSpent" value="38151000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-245" y="666" width="1400" height="1003" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13602391" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098719314" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -203,11 +255,22 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Remote Host" order="3" visible="true" weight="0.28550074" />
+      <window_info active="true" anchor="right" id="Remote Host" order="3" visible="true" weight="0.20330843" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/index.html</url>
+          <line>69</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
