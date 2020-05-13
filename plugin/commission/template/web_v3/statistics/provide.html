@@ -1,0 +1,84 @@
+{template '_header'}
+<style type='text/css'>
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+        padding: 10px 20px;
+    }
+    .table > tbody>.trbody > td{
+        border-top:none !important;
+    }
+    .trhead td {  background:#efefef;text-align: center}
+    .trbody td {  text-align: center; vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden; font-size:12px;}
+    .trorder { background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+    .ops { border-right:1px solid #f2f2f2; text-align: center;}
+    .paytype span{
+        vertical-align: middle;
+    }
+</style>
+
+<div class="page-header">
+    当前位置：<span class="text-primary">分红列表</span>
+</span>
+</div>
+
+<div class="page-content">
+    <form action="./index.php" method="get" class="form-horizontal table-search" role="form">
+
+        <div class="page-toolbar m-b-sm m-t-sm">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    {php echo tpl_form_field_eweishop_daterange('time', array('starttime'=>date('Y-m-d H:i', $starttime),'endtime'=>date('Y-m-d H:i', $endtime)),true);}
+                </div>
+                <div class="input-group-select">
+                    <select name="paytype" class="form-control" style="">
+
+                    </select>
+                </div>
+                <div class="input-group-select">
+                    <select name='searchtime'  class='form-control'   style=""  >
+                        <option value=''>不按时间</option>
+
+                    </select>
+                </div>
+                <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"> 搜索</button>
+                        <button type="submit" name="export" value="1" class="btn btn-success">导出</button>
+                    </span>
+            </div>
+        </div>
+
+    </form>
+
+    {if count($list)>0}
+    <table class='table table-responsive' style='table-layout: fixed;'>
+        <tr style='background:#f8f8f8'>
+            <th>ID</th>
+            <th>受益人昵称</th>
+            <th>提供人昵称</th>
+            <th>提供金额</th>
+            <th>提供时间</th>
+            <th>备注</th>
+        </tr>
+        {loop $list $item}
+        <tr>
+            <td>{$item['id']}</td>
+            <td>{$item['member_name']}</td>
+            <td>{$item['provide_name']}</td>
+            <td>{$item['provide_price']}</td>
+            <td><?php echo date("Y-m-d H:i:s", $item['provide_time']); ?></td>
+            <td>{$item['remake']}</td>
+        </tr>
+        {/loop}
+    </table>
+    <div style="text-align:right;width:100%;">
+        {$pager}
+    </div>
+    {else}
+
+    <div class='panel panel-default'>
+        <div class='panel-body' style='text-align: center;padding:30px;'>
+            暂时没有任何订单!
+        </div>
+    </div>
+    {/if}
+</div>
+{template '_footer'}
