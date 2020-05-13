@@ -13,7 +13,9 @@
     {/if}
 
     <div class="fui-content navbar">
-             <div class="user-bg">
+<!--        {php $this->footerMenus()-->
+
+        <div class="user-bg">
                  <img data-lazy="../addons/ewei_shopv2/plugin/sns/template/mobile/default/images/userbg.png" class="bg" style="display: block"/>
                  <img data-lazy="{$member['avatar']}" class="head" />
                  {if !is_h5app()}
@@ -150,6 +152,11 @@
     </div>
 
 </div>
+<style>
+    .fui-content {
+        position: relative;
+    }
+</style>
+{php $this->footerMenus(3, 0)}
 
-{php $this->footerMenus()}
 {template '_footer'}

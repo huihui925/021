@@ -1,0 +1,373 @@
+{template '_header'}
+<style>
+    .shop-index-page .menu {height: auto; background: #fff;}
+    .shop-index-page .menu .item {height: auto; width: 1%; padding: 0.5rem 0; margin: 0; font-size: 0.65rem; color: #636363; text-align: center; display: table-cell;position: relative;}
+    .shop-index-page .menu .item:after  {font-size: 0.65rem;position: absolute;content: '';left:0;top:0.5rem;bottom:0.5rem;border-left:1px solid #d9d9d9;}
+    .content-empty{padding:1rem 0;margin:0;}
+</style>
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/plugin/live/static/css/common.css?v={php echo time()}">
+
+
+
+<div class="fui-page shop-index-page">
+<!--    <div class="fui-content navbar" style="padding-bottom:0;">-->
+<!--        {if !empty($advs)}-->
+<!--            <div class='fui-swipe' >-->
+<!--                <div class='fui-swipe-wrapper'>-->
+<!--                    {loop $advs $item}-->
+<!--                    <div class='fui-swipe-item' {if !empty($item['link'])}onclick="location.href='{$item['link']}'"{/if}><img src="{php echo tomedia($item['thumb'])}" /></div>-->
+<!--                {/loop}-->
+<!--            </div>-->
+<!--            <div class='fui-swipe-page'></div>-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--        <div class="menu">-->
+<!--            <a class="item external" href="{php echo mobileUrl('live/follow')}">-->
+<!--                <span class="text">我的订阅</span>-->
+<!--            </a>-->
+<!--            <a class="item external" href="{php echo mobileUrl('live/view')}">-->
+<!--                <span class="text">观看记录</span>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-cell-group fui-comment-group">-->
+<!--            <div class="fui-cell fui-cell-click">-->
+<!--                <div class="fui-cell-text desc">热门分类</div>-->
+<!--                <div class="fui-cell-text desc label" onclick="javascript:window.location.href='{php echo mobileUrl('live/category')}'" style="text-align: right;">-->
+<!--                    全部-->
+<!--                </div>-->
+<!--                <div class="fui-cell-remark"></div>-->
+<!--            </div>-->
+<!--            <div class="fui-list live-category-list">-->
+<!--                <div class="fui-list-inner">-->
+<!--                    <div class="live-category-list-inner">-->
+<!--                        {loop $categorys $row}-->
+<!--                        <a href="{php echo mobileUrl('live/list',array('cate'=>$row['id']))}" class="external">-->
+<!--                            <p style="width:4.5rem;"><img src="{php echo tomedia($row['thumb'])}" alt="{$row['name']}"></p>-->
+<!--                            <span>{$row['name']}</span>-->
+<!--                        </a>-->
+<!--                        {/loop}-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="live-list">-->
+<!--            {loop $recommend $row}-->
+<!--            <div class="fui-list">-->
+<!--                <div class="fui-list-media">-->
+<!--                    <a href="{php echo mobileUrl('live/room',array('id'=>$row['id']))}" data-nocache="true" class="external">-->
+<!--                        {if $row['living']==1}-->
+<!--                            <span class="live-living">-->
+<!--                                <i></i>直播中-->
+<!--                            </span>-->
+<!--                        {/if}-->
+<!--                        <img src="{php echo tomedia($row['thumb'])}" alt="{$row['title']}">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="fui-list-inner">-->
+<!--                    <a href="{php echo mobileUrl('live/room',array('id'=>$row['id']))}" data-nocache="true" class="external">-->
+<!--                        <h3>{$row['title']}</h3>-->
+<!--                    </a>-->
+<!--                    <p>{php echo date('Y-m-d H:i:s', $row['livetime'])} 开播</p>-->
+<!--                    <div class="live-list-subscribe">-->
+<!--                        <span>订阅人数 {$row['subscribe']}</span>-->
+<!--                        <span>-->
+<!--                            {if $row['is_subscribe']>0}-->
+<!--                                <a href="javascript:void(0);" class="live-subscribe-a live-subscribe-default-a disabled" data-id="{$row['id']}"  data-subscribe="{$row['is_subscribe']}">取消订阅</a>-->
+<!--                            {else}-->
+<!--                                <a href="javascript:void(0);" class="live-subscribe-a live-subscribe-default-a" data-id="{$row['id']}" data-subscribe="{$row['is_subscribe']}">点击订阅</a>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        <div class='content-loading' style="display: none;">-->
+<!--            <span class='fui-preloader'></span>-->
+<!--            <span class='text'>正在加载...</span>-->
+<!--        </div>-->
+<!--        <div class='content-empty'>-->
+<!--            已经没有更多了-->
+<!--        </div>-->
+<!--        <div class="live-hot-list">-->
+<!--            <div id="container">-->
+
+<!--            </div>-->
+<!--            <div style="clear:both;"></div>-->
+<!--        </div>-->
+<!--    <script id='tpl_live_list' type='text/html'>-->
+<!--        <%each list as row%>-->
+<!--        <div class="live-hot-list-room">-->
+<!--            <div class="live-hot-list-inner">-->
+<!--                <a href="{php echo mobileUrl('live/room');}&id=<%row.id%>" data-nocache="true" class="live-hot-list-img external">-->
+<!--                    <%if row.living==1%>-->
+<!--                    <span class="live-living">-->
+<!--                        <i></i>直播中-->
+<!--                    </span>-->
+<!--                    <%/if%>-->
+<!--                    <img src="<%row.thumb%>" alt="<%row.title%>">-->
+<!--                </a>-->
+<!--                <a href="{php echo mobileUrl('live/room');}&id=<%row.id%>" class="external" data-nocache="true"><h3><%row.title%></h3></a>-->
+<!--                <p><%row.livetime%> 开播</p>-->
+<!--                <div class="live-list-subscribe" style="padding:0 0.3rem;">-->
+<!--                    <span>订阅人数 <%row.subscribe%></span>-->
+<!--                    <span>-->
+
+<!--                        <%if row.is_subscribe > 0%>-->
+<!--                            <a href="javascript:void(0);" class="live-subscribe-a live-subscribe-default-a disabled" data-id="<%row.id%>"  data-subscribe="<%row.is_subscribe%>">取消订阅</a>-->
+<!--                        <%else%>-->
+<!--                            <a href="javascript:void(0);" class="live-subscribe-a live-subscribe-default-a" data-id="<%row.id%>" data-subscribe="<%row.is_subscribe%>">点击订阅</a>-->
+<!--                        <%/if%>-->
+
+<!--                    </span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <%/each%>-->
+<!--    </script>-->
+
+<!--    </div>-->
+<div class="fui-content navbar" style="padding-bottom:2.5rem;">
+    <div class="topBar">
+        <div><a href="">关注</a></div>
+        <div class="active"><a href="">推荐</a></div>
+        <div><a href="">最新</a></div>
+        <div ><a href="">颜值</a></div>
+        <div><a href="">玩具</a></div>
+    </div>
+    <div class="fui-header">
+        <div class="title">
+            <form action="{php echo mobileUrl('live/list')}" method="post">
+                <div class="fui-searchbar bar">
+                    <div class="searchbar center">
+                        <input type="submit" class="searchbar-cancel searchbtn" value="搜索" />
+                        <div class="search-input">
+                            <i class="icon icon-search"></i>
+                            <input type="search" placeholder="搜索您感兴趣的内容..." class="search" name="keywords">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="img_container">
+    </div>
+</div>
+
+</div>
+<script language='javascript'>
+    require(['../addons/ewei_shopv2/plugin/live/static/js/index.js'], function (modal) {
+        modal.init({page:1});
+    });
+    //第一次发请求获取数据
+    let page = 1;
+    let nodes = ''
+    const getData = () => {
+        //此处写发请求的逻辑 拿到res
+        // $.ajax({
+        //     type : "POST",
+        //     url : 'http://app.qjbb5188.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=store.index.user_agreement',
+        //     data : {id:1},
+        //     success : function(data){
+        //         console.log(data);
+        //     }
+        // });
+        let res = [
+            {
+                url:'https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg',
+                person_number:'2028',
+                title:'陪哥哥赢钱1',
+                describe:'中泰混血小萝莉'
+            },
+            {
+                url:'https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg',
+                person_number:'2028',
+                title:'陪哥哥赢钱1',
+                describe:'中泰混血小萝莉'
+            },
+            {
+                url:'https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg',
+                person_number:'2028',
+                title:'陪哥哥赢钱1',
+                describe:'中泰混血小萝莉'
+            },
+            {
+                url:'https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg',
+                person_number:'2028',
+                title:'陪哥哥赢钱1',
+                describe:'中泰混血小萝莉'
+            },
+            {
+                url:'https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg',
+                person_number:'2028',
+                title:'陪哥哥赢钱1',
+                describe:'中泰混血小萝莉'
+            },
+        ]
+        res.forEach(val=>{
+            nodes += `<a class="img_item">
+            <div class="img_warp">
+                <img src="https://ae01.alicdn.com/kf/Hf778237021cc472fa54f8c316239fe0et.jpg"/>
+                <div class="person_number">1070</div>
+            </div>
+            <div class="title">
+                陪哥哥赢钱
+            </div>
+            <div class="describe">中泰混血小萝莉</div>
+        </a>`
+        })
+        let a = document.querySelector(".img_container")
+        $(".img_container").append(nodes);
+        nodes=''
+    }
+    getData()
+    //顶部导航条 选中高亮
+    var buttons=document.querySelectorAll(".topBar>div");
+    function active(buttons) {
+        var l=buttons.length;
+        for(var i=0;i<l;i++){
+            buttons[i].onclick=function(){
+                for(var j=0;j<l;j++){
+                    if(this==buttons[j]){
+                        this.className="active";
+                    }else{
+                        buttons[j].className="";
+                    }
+
+                }
+            }
+        }
+    }
+    active(buttons)
+    //顶部导航条 选中高亮 结束
+    /**
+     * 这是滚动触底事件，传参函数触底执行函数
+     * @param {Function} paramFn 触底执行此函数
+     */
+    function scrollBottom(paramFn) {
+        // 滚动触底事件 加载更多数据
+        window.addEventListener('scroll', () => {
+            //变量scrollTop是滚动条滚动时，距离顶部的距离
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //变量windowHeight是可视区的高度
+            var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            //变量scrollHeight是滚动条的总高度
+            var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            //滚动条到底部触发
+            if (Math.ceil(scrollTop + windowHeight) == scrollHeight) {
+                // console.log("距顶部"+scrollTop+"可视区高度"+windowHeight+"滚动条总高度"+scrollHeight);
+                paramFn()
+            }
+        })
+    }
+    scrollBottom(()=>{
+        console.log('触底了')
+        getData()
+
+    })
+</script>
+<style>
+    body,
+    .fui-page,.fui-page-group,
+    .fui-content{
+        position: relative;
+    }
+    .fui-page.fui-page-current, .fui-page-group.fui-page-current,body
+    ,.fui-content{
+        overflow-y: scroll;
+    }
+    .topBar>div a{
+        color: black;
+    }
+    .fui-page.fui-page-current, .fui-page-group.fui-page-current{
+        height: auto !important;
+
+    }
+    .fui-header{
+        position: relative;
+    }
+    .fui-header {
+         top: 0;
+    }
+    .fui-content{
+        padding-top: 2.2rem;
+    }
+    .fui-content .topBar{
+        height: 2.2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 33;
+        background: #f3f3f3;
+    }
+    .topBar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+    }
+    .topBar>div{
+        border-bottom: 3px solid transparent;
+        font-size: 4.5vw;
+    }
+    .topBar>div.active{
+        border-bottom: 3px solid #fe7d01;
+    }
+    .topBar>div.active a{
+        color:#fe7d01;
+
+    }
+    .fui-header,.fui-searchbar{
+        background:#f3f3f3;
+    }
+    .fui-header{
+        border-top:1px solid #eaeaea;
+
+    }
+    .fui-header:after{
+        border-color:#eaeaea;
+    }
+/*-----------图片样式 开始--------------*/
+    .img_container{
+        display: flex;
+        padding: 0 0.6rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .img_container .img_item{
+        width: 45vw;
+        margin-bottom: 2vw;
+    }
+    .img_container .img_item .img_warp{
+        width: 100%;
+        position: relative;
+        height: 45vw;
+    }
+    .img_container .img_item .img_warp>img{
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+    .img_container .img_item .img_warp .person_number{
+        color: #fff;
+        position: absolute;
+        right: 2vw;
+        bottom: 1vw;
+    }
+    .title{
+        color: black;
+        font-size: 4.1vw;
+        padding-top: 1vw;
+    }
+    .describe {
+        color: #666;
+        font-size: 2vw;
+    }
+/*-----------图片样式 结束--------------*
+</style>
+{php $this->footerMenus(3, 0)}
+{template '_footer'}

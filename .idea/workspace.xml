@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fac5e91e-b5f9-4f4c-b699-f18ea5c7579c" name="Default Changelist" comment="" />
+    <list default="true" id="fac5e91e-b5f9-4f4c-b699-f18ea5c7579c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,90 +11,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#a#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_pictures.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_goods.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="126" column="32" selection-start-line="126" selection-start-column="30" selection-end-line="126" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="true" current-in-tab="true">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/index.html">
+        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/post/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="292">
+              <caret line="357" column="93" selection-start-line="357" selection-start-column="93" selection-end-line="357" selection-end-column="93" />
               <folding>
-                <element signature="e#2963#2987#0" expanded="true" />
-                <element signature="e#3520#3542#0" expanded="true" />
-                <element signature="e#3626#3812#0" expanded="true" />
+                <element signature="e#522#528#1" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#a#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#3143#3149#0" expanded="true" />
+                <element signature="e#3386#3392#1" expanded="true" />
+                <element signature="e#3594#3600#1" expanded="true" />
+                <element signature="e#4097#4103#1" expanded="true" />
+                <element signature="e#4302#4308#1" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#p#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_richtext.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_picture.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1" column="254" selection-start-line="1" selection-start-column="254" selection-end-line="1" selection-end-column="254" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_title.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_board_ltem.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="81" column="18" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -101,15 +40,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>png</find>
-      <find>num</find>
-      <find>jpg</find>
-      <find>diymenu</find>
-      <find>menu</find>
-      <find>menu.</find>
-      <find>fui-page-group statusbar</find>
-      <find>fui-content</find>
-      <find>.iphonex.fui-footer</find>
       <find>footerMenus</find>
       <find>store</find>
       <find>fui-icon-group noborder col-4</find>
@@ -124,6 +54,22 @@
       <find>.fui-card .fui-card-info .image</find>
       <find>default-items</find>
       <find>if</find>
+      <find>padding-top: .5rem;</find>
+      <find>style</find>
+      <find>.fui-icon-group .fui-icon-col .icon img</find>
+      <find>.fui-goods-group.block .fui-goods-item .image.auto</find>
+      <find>.title</find>
+      <find>.fui-header</find>
+      <find>fui-content navbar</find>
+      <find>a</find>
+      <find>$linkurl_r</find>
+      <find>$linkurl_r = convertUrlArray($_SERVER[&quot;QUERY_STRING&quot;])['r'];</find>
+      <find>href</find>
+      <find>PhotoSwipe</find>
+      <find>new PhotoSwipe</find>
+      <find>sns-board-post-page</find>
+      <find>content</find>
+      <find>content-i</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,17 +78,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/_menu.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/template/mobile/default/static/css/style.css" />
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/index.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/data/tpl/app/ewei_shopv2/plugin/sns/default/mobile/sns/board/lists.tpl.php" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/board/lists.html" />
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/user/index.html" />
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/board/index.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/_template.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_icongroup.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_menu.html" />
-        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/menu.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/app/template/web_v3/page/tpl/_template.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/bargain/template/mobile/default/index.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/commission/template/mobile/default/myshop/index.html" />
@@ -151,7 +92,19 @@
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_board_ltem.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_richtext.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/template/tpl_picture.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/new_menu.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/_menu.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/user/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/board/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/live/template/mobile/default/_menu.html" />
         <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/diypage/template/mobile/default/menu.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/live/template/mobile/default/list.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/live/template/mobile/default/index.html" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/static/photoswipe/photoswipe.min.js" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/static/photoswipe/photoswipe-ui-default.min.js" />
+        <option value="&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/post/index.html" />
       </list>
     </option>
   </component>
@@ -167,11 +120,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="204" />
-    <option name="y" value="46" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1400" />
-    <option name="height" value="1003" />
+    <option name="height" value="1004" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -179,17 +132,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="021" type="b2602c69:ProjectViewProjectNode" />
-              <item name="021" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -228,16 +171,20 @@
       <workItem from="1588923381619" duration="17569000" />
       <workItem from="1588942243225" duration="57000" />
       <workItem from="1588987186510" duration="20525000" />
+      <workItem from="1589181161142" duration="9942000" />
+      <workItem from="1589245516222" duration="11959000" />
+      <workItem from="1589261864083" duration="15890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38151000" />
+    <option name="totallyTimeSpent" value="75942000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098719314" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10192102" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -252,6 +199,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="File Transfer" order="12" visible="true" weight="0.08496732" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -261,16 +209,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>remoteDeploymentFS://&lt;ba876910-25eb-4b11-ae81-77cc02961f03&gt;/addons/ewei_shopv2/plugin/sns/template/mobile/default/index.html</url>
-          <line>69</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

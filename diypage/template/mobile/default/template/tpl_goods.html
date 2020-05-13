@@ -87,7 +87,7 @@
 
                                     <span class="text" style="color: {$diyitem['style']['pricecolor']};">
                                         {if empty($diyitem['params']['goodstype'])}
-                                            <p class="minprice">&yen;{php echo round($goodsitem['price'],2)}</p>
+                                            <p class="minprice">&yen;{php echo round($goodsitem['price'],2)}元</p>
                                         {else}
                                             <p style="text-overflow:ellipsis;display: -webkit-box;overflow:hidden;-webkit-line-clamp: 1;-webkit-box-orient: vertical;word-break: break-all">
                                                 {if $goodsitem['price']==0&&$goodsitem['credit']==0}免费
@@ -274,3 +274,16 @@
         </div>
     {/if}
 {/if}
+<style>
+    .fui-icon-group .fui-icon-col .icon {
+        height: 2.8rem;
+        margin: auto;
+        text-align: center;
+        line-height: 2.2rem;
+    }
+    .fui-icon-group .fui-icon-col .icon img {
+        height: 2.8rem;
+        width: 2.8rem;
+    }
+
+</style>

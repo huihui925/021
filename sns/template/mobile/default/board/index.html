@@ -21,6 +21,7 @@
 
     <div class="fui-content navbar">
         <div class="fui-shopsign">
+<!--            {php $this->footerMenus()-->
             <div class="store">
                 <img class="storeimg"
                      data-lazy="{php echo empty($board['banner'])?(empty($this->set['banner'])?'../addons/ewei_shopv2/plugin/sns/static/images/banner.png':tomedia($this->set['banner'])):tomedia($board['banner'])}"/>
@@ -231,5 +232,5 @@
     });
     });
 </script>
-{php $this->footerMenus()}
+{php $this->footerMenus(3, 0)}
 {template '_footer'}
