@@ -48,7 +48,7 @@ class Level_EweiShopV2Page extends PluginWebPage
 		}
 
 		if ($id == 'default') {
-			$level = array('id' => 'default', 'levelname' => empty($set['levelname']) ? '默认等级' : $set['levelname'], 'commission1' => $set['commission1'], 'commission2' => $set['commission2'], 'commission3' => $set['commission3']);
+			$level = array('id' => 'default', 'levelname' => empty($set['levelname']) ? '默认等级' : $set['levelname'], 'commission1' => $set['commission1'], 'commission2' => $set['commission2'], 'commission3' => $set['commission3'], 'commission_retail'=>$set['commission_retail']);
 		}
 		else {
 			$level = pdo_fetch('SELECT * FROM ' . tablename('ewei_shop_commission_level') . ' WHERE id=:id and uniacid=:uniacid limit 1', array(':id' => intval($id), ':uniacid' => $_W['uniacid']));
@@ -64,11 +64,12 @@ class Level_EweiShopV2Page extends PluginWebPage
 
 		if ($_W['ispost']) {
 			$data = array('uniacid' => $_W['uniacid'], 'levelname' => trim($_GPC['levelname']), 'commission1' => trim(trim($_GPC['commission1']), '%'), 'commission2' => trim(trim($_GPC['commission2']), '%'), 'commission3' => trim(trim($_GPC['commission3']), '%'), 'commissionmoney' => trim($_GPC['commissionmoney'], '%'), 'ordermoney' => $_GPC['ordermoney'], 'ordercount' => intval($_GPC['ordercount']), 'downcount' => intval($_GPC['downcount']), 'goodsids' => $_GPC['goodsids'], 'level' => $_GPC['level'], 'goodsids_text' => $_GPC['goodsids_text']);
+			$data['commission_retail'] = trim(trim($_GPC['commission_retail']), '%');
 
 			if (!empty($data['goodsids'])) {
 				$cont = count($data['goodsids']);
 
-				if (5 < $cont) {
+				if (50 < $cont) {
 					show_json(0, '商品最多添加五个');
 				}
 
@@ -82,6 +83,7 @@ class Level_EweiShopV2Page extends PluginWebPage
 					$set['commission1'] = $data['commission1'];
 					$set['commission2'] = $data['commission2'];
 					$set['commission3'] = $data['commission3'];
+					$set['commission_retail'] = $data['commission_retail'];
 					$this->updateSet($set);
 					plog('commission.level.edit', '修改分销商默认等级' . $updatecontent);
 				}

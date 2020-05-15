@@ -66,6 +66,14 @@
         </div>
 
         <div class="form-group">
+            <label class="col-sm-2 control-label">商品购买类型</label>
+            <div class="col-sm-9 col-xs-12">
+                <label class="radio-inline"><input type="radio" name="sale_type" value="1"   {if empty($item['sale_type']) || $item['sale_type'] == 1}checked="true"{/if}  /> 零售</label>
+                <label class="radio-inline"><input type="radio" name="sale_type" value="2"   {if $item['sale_type'] == 2}checked="true"{/if}  /> 优选</label>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="col-sm-2 control-label">商品类型</label>
             <div class="col-sm-9 col-xs-12">
                 <input type="hidden" name="goodstype" value="{$item['type']}">

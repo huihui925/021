@@ -1,91 +1,298 @@
 {template '_header'}
-<script>document.title = "参与记录"</script>
+<script>document.title = "我的积分"</script>
 <style type="text/css">
 	.fui-navbar ~ .fui-content, .fui-content.navbar{padding:0;}
 	.fui-cell-group{margin-top:0;}
 </style>
 <link rel="stylesheet" href="../addons/ewei_shopv2/plugin/creditshop/template/mobile/default/images/common.css" />
-<div class='fui-page fui-page-current creditshop-creditlog-page'>
-<!--		<div class="fui-header">-->
-<!--				<div class="fui-header-left">-->
-<!--						<a class="back"></a>-->
+<!--<div class='fui-page fui-page-current creditshop-creditlog-page'>-->
+<!--&lt;!&ndash;		<div class="fui-header">&ndash;&gt;-->
+<!--&lt;!&ndash;				<div class="fui-header-left">&ndash;&gt;-->
+<!--&lt;!&ndash;						<a class="back"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;				</div>&ndash;&gt;-->
+<!--&lt;!&ndash;				<div class="title">参与记录</div>&ndash;&gt;-->
+<!--&lt;!&ndash;				<div class="fui-header-right"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;		</div>&ndash;&gt;-->
+
+<!--		<div class='fui-content navbar' style="height: 100%;">-->
+<!--			<div class="fui-cell-group">-->
+<!--				<div class="fui-cell">-->
+<!--					<div class="fui-cell-icon"><i class="icon icon-jifen"></i></div>-->
+<!--					<div class="fui-cell-text"><p>我的{$_W['shopset']['trade']['credittext']}: {$credit}</p></div>-->
+<!--					 {if !empty($this->set['crediturl'])}-->
+<!--					 	<a href="{php echo $this->set['crediturl']}" class="external">-->
+<!--					 		<div class="fui-cell-remark">{$_W['shopset']['trade']['credittext']}说明</div>-->
+<!--					 	</a>-->
+<!--					{/if}-->
+<!--		 	 	</div>-->
+<!--			 </div>-->
+
+<!--		 	<div class="fui-message fui-message-popup in content-empty" style="display: none; margin: 0; padding: 0; position: relative;">-->
+<!--				<div class="icon ">-->
+<!--					<i class="icon icon-information"></i>-->
 <!--				</div>-->
-<!--				<div class="title">参与记录</div>-->
-<!--				<div class="fui-header-right"></div>-->
+<!--				<div class="content">未找到参与记录~</div>-->
+<!--			</div>-->
+
+<!--			<div class="fui-list-group noborder nomargin container"></div>-->
+<!--	    	<div class='infinite-loading' style="text-align: center; color: #666;">-->
+<!--	    		<span class='fui-preloader'></span>-->
+<!--	    		<span class='text'> 正在加载...</span>-->
+<!--	    	</div>-->
 <!--		</div>-->
-		
-		<div class='fui-content navbar' style="height: 100%;">
-			<div class="fui-cell-group">
-				<div class="fui-cell">
-					<div class="fui-cell-icon"><i class="icon icon-jifen"></i></div>
-					<div class="fui-cell-text"><p>我的{$_W['shopset']['trade']['credittext']}: {$credit}</p></div>
-					 {if !empty($this->set['crediturl'])}
-					 	<a href="{php echo $this->set['crediturl']}" class="external">
-					 		<div class="fui-cell-remark">{$_W['shopset']['trade']['credittext']}说明</div>
-					 	</a>
-					{/if}
-		 	 	</div>
-			 </div>
-		 
-		 	<div class="fui-message fui-message-popup in content-empty" style="display: none; margin: 0; padding: 0; position: relative;">
-				<div class="icon ">
-					<i class="icon icon-information"></i>
-				</div>
-				<div class="content">未找到参与记录~</div>
-			</div>
-		
-			<div class="fui-list-group noborder nomargin container"></div>
-	    	<div class='infinite-loading' style="text-align: center; color: #666;">
-	    		<span class='fui-preloader'></span>
-	    		<span class='text'> 正在加载...</span>
-	    	</div>			
-		</div>
-		<script id='tpl_creditshop_creditlog_list' type='text/html'>
-				<%each list as item%>
-					<%if item.type==0%>
-						<a class="fui-list" href="{php echo mobileUrl('creditshop/log')}">
-							<div class="fui-list-media">
-								<img src="<%item.thumb%>">
-								<div class="title warning">兑 换</div>
-							</div>
-							<div class="fui-list-inner">
-								<div class="title"><%item.title%></div>
-								<div class="text"><%item.createtime%></div>
-							</div>
-							<div class="fui-list-media" style="display:block;display:block;display:block;font-size:0.7rem;text-align: right;">
-								<p class="text-danger2">-<%item.credit%>{$_W['shopset']['trade']['credittext']}</p>
-								<p>已兑换</p>
-							</div>
-						</a>
-					<%else%>
-						<a class="fui-list" href="<%if item.status>1%>{php echo mobileUrl('creditshop/log')}<%else%>javascript:;<%/if%>">
-							<div class="fui-list-media">
-								<img src="<%item.thumb%>">
-								<div class="title danger">抽 奖</div>
-							</div>
-							<div class="fui-list-inner">
-								<div class="title"><%item.title%></div>
-								<div class="text"><%item.createtime%></div>
-							</div>
-							<div class="fui-list-media" style="display:block;display:block;display:block;font-size:0.7rem;text-align: right;">
-								<p class="text-danger2" style="background: none;">-<%item.credit%>{$_W['shopset']['trade']['credittext']}</p>
-								<%if item.status==1%>
-									<p style="color: #666;">未中奖</p>
-								<%/if%>
-								<%if item.status>1%>
-									<p class="text-danger2">已中奖</p>
-								<%/if%>
-							</div>
-						</a>
-					<%/if%>
-				<%/each%>
-		</script>
+<!--		<script id='tpl_creditshop_creditlog_list' type='text/html'>-->
+<!--				<%each list as item%>-->
+<!--					<%if item.type==0%>-->
+<!--						<a class="fui-list" href="{php echo mobileUrl('creditshop/log')}">-->
+<!--							<div class="fui-list-media">-->
+<!--								<img src="<%item.thumb%>">-->
+<!--								<div class="title warning">兑 换</div>-->
+<!--							</div>-->
+<!--							<div class="fui-list-inner">-->
+<!--								<div class="title"><%item.title%></div>-->
+<!--								<div class="text"><%item.createtime%></div>-->
+<!--							</div>-->
+<!--							<div class="fui-list-media" style="display:block;display:block;display:block;font-size:0.7rem;text-align: right;">-->
+<!--								<p class="text-danger2">-<%item.credit%>{$_W['shopset']['trade']['credittext']}</p>-->
+<!--								<p>已兑换</p>-->
+<!--							</div>-->
+<!--						</a>-->
+<!--					<%else%>-->
+<!--						<a class="fui-list" href="<%if item.status>1%>{php echo mobileUrl('creditshop/log')}<%else%>javascript:;<%/if%>">-->
+<!--							<div class="fui-list-media">-->
+<!--								<img src="<%item.thumb%>">-->
+<!--								<div class="title danger">抽 奖</div>-->
+<!--							</div>-->
+<!--							<div class="fui-list-inner">-->
+<!--								<div class="title"><%item.title%></div>-->
+<!--								<div class="text"><%item.createtime%></div>-->
+<!--							</div>-->
+<!--							<div class="fui-list-media" style="display:block;display:block;display:block;font-size:0.7rem;text-align: right;">-->
+<!--								<p class="text-danger2" style="background: none;">-<%item.credit%>{$_W['shopset']['trade']['credittext']}</p>-->
+<!--								<%if item.status==1%>-->
+<!--									<p style="color: #666;">未中奖</p>-->
+<!--								<%/if%>-->
+<!--								<%if item.status>1%>-->
+<!--									<p class="text-danger2">已中奖</p>-->
+<!--								<%/if%>-->
+<!--							</div>-->
+<!--						</a>-->
+<!--					<%/if%>-->
+<!--				<%/each%>-->
+<!--		</script>-->
 		<script language="javascript">
 		require(['../addons/ewei_shopv2/plugin/creditshop/static/js/creditlog.js'],function(modal){
 			modal.init();
 		});
 	</script>
-</div>
+<!--</div>-->
 <!--{php $this->footerMenus()-->
+<!----------------------------自己写的页面 开始----------------------------------->
+<div class="fui-page fui-page-current page-commission-down fans_warp">
+	<div class="top_bar">
+		<a href="./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=creditshop" class="referrer">兑换紫钻 ></a>
+		<div class="fans_banner">
+			<div class="name">
+				我的积分
+			</div>
+			<div class="top">
+				<div class="title">总积分</div>
+				<div class="title">今日积分</div>
+			</div>
+			<div class="center">
+				<div class="center_l">{$credit}</div>
+				<div class="center_2">110</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="fans_main">
+		<!--tab切换栏-->
+		<div class="topBar">
+			<div class="active"><a href="">任务积分</a></div>
+			<div><a href="">购物积分</a></div>
+			<div><a href="">积分交易</a></div>
+			<div ><a href="">积分消费</a></div>
+		</div>
+		<!--		tab栏下面显示的内容-->
+		<div class="fans_content">
+			<!--			每一项-->
+			<a class="content_item" myid="1哈哈">
+				<div class="left">
+					<div class="photo_warp">
+						邀请 二哈**
+					</div>
+					<span>2020-04-17 10:32</span>
+				</div>
+				<div class="right">
+					+5
+				</div>
+			</a>
+			<a class="content_item" myid="2哈哈">
+				<div class="left">
+					<div class="photo_warp">购物赠送积分</div>
+					<span>2020-04-17 10:32</span>
+				</div>
+				<div class="right">
+					+5
+				</div>
+			</a>
+		</div>
+	</div>
+	<!--	<div class="fui-content navbar">-->
+	<!--		&lt;!&ndash;	一级 二级	&ndash;&gt;-->
+	<!--		{if $this->set['level']>=2}-->
+	<!--		<div class="fui-tab fui-tab-warning" id="tab">-->
+	<!--			<a class="active" href="javascript:void(0)" data-tab='level1'>{php echo $this->set['texts']['c1']}({$level1})</a>-->
+	<!--			{if $this->set['level']>=2}<a href="javascript:void(0)" data-tab='level2'>{php echo $this->set['texts']['c2']}({$level2})</a>{/if}-->
+	<!--			{if $this->set['level']>=3}<a href="javascript:void(0)" data-tab='level3'>{php echo $this->set['texts']['c3']}({$level3})</a>{/if}-->
+	<!--		</div>-->
+	<!--		{/if}-->
+	<!--	</div>-->
+
+</div>
+<script>
+	// tab栏 点击高亮js
+	let tabIndex = 0;//这是tab栏的索引
+	var buttons=document.querySelectorAll(".topBar>div");
+	function active(buttons) {
+		var l=buttons.length;
+		for(var i=0;i<l;i++){
+			buttons[i].onclick=function(){
+				for(var j=0;j<l;j++){
+					if(this==buttons[j]){
+						this.className="active";
+						tabIndex = j
+						console.log(tabIndex)
+					}else{
+						buttons[j].className="";
+					}
+
+				}
+			}
+		}
+	}
+	active(buttons)
+	//点击每一项 弹出层
+	$('.fans_content').on("click",".content_item",function(){
+		//拿到点击项的id
+		let myid = $(this).attr('myid')
+	})
+</script>
+<!----------------------------自己写的页面 结束----------------------------------->
+<style>
+	a{
+		color: #000;
+	}
+	/*---------------------------漂浮块样式------------------------*/
+	.fans_warp .top_bar{
+		background: #fe7d01;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 29vw;
+		margin-bottom: 23vw;
+		position: relative;
+	}
+	.fans_warp .top_bar .referrer{
+		color: #fff;
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		height: 12vw;
+		line-height: 12vw;
+		padding: 0 3vw;
+	}
+	.fans_warp .top_bar .fans_banner{
+		width: 95%;
+		background: #fff;
+		border-radius: 10px;
+		padding: 3vw 0;
+		box-shadow: 0 0 6px #ccc;
+		position: absolute;
+		top: 12vw;
+	}
+
+	.fans_warp .top_bar .fans_banner>div{
+		display: flex;
+		justify-content: space-between;
+	}
+	.fans_warp .top_bar .fans_banner .name{
+		font-size: 4.7vw;
+		font-weight: bold;
+		justify-content: center;
+		color: #000;
+		padding-bottom: 1vw;
+	}
+	.fans_warp .top_bar .fans_banner>div>div{
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+	.fans_warp .top_bar .fans_banner .img_warp{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.fans_warp .top_bar .fans_banner .img_warp img{
+		width: 7.5vw;
+	}
+	.fans_warp .top_bar .title{
+		color: black;
+		font-size: 4.15vw;
+	}
+
+	.fans_warp .top_bar .center>div{
+		padding: 1vw 0 2vw 0;
+		font-size: 7vw;
+		color: black;
+		font-weight: bold;
+	}
+
+	/*-----------------------------切换栏---------------------------*/
+	.topBar{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 0 1rem;
+	}
+	.topBar>div{
+		border-bottom: 3px solid transparent;
+		font-size: 4vw;
+	}
+	.topBar>div a{
+		color: #000;
+	}
+	.topBar>div.active{
+		border-bottom: 3px solid #fe7d01;
+	}
+	.topBar>div.active a{
+		color:#fe7d01;
+	}
+	/*-----------------切换栏下面显示的内容--------------------*/
+	.fans_content{
+		padding: 3vw;
+	}
+	.fans_content .content_item{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1vw 0;
+		border-bottom: .6px solid #ccc;
+	}
+	.fans_content .content_item .left span{
+		color: #666;
+		font-size: 0.6rem;
+	}
+
+	.fans_content .content_item .right{
+		color: #666;
+	}
+	.fui-page.fui-page-current, .fui-page-group.fui-page-current{
+		overflow-y: auto;
+	}
+
+</style>
 {template '_footer'}
 <!--6Z2S5bKb5piT6IGU5LqS5Yqo572R57uc56eR5oqA5pyJ6ZmQ5YWs5Y+454mI5p2D5omA5pyJ-->

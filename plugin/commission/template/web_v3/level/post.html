@@ -80,6 +80,19 @@
                     </div>
                 </div>
                     {/if}
+				<div class="form-group">
+					<label class="col-sm-2 control-label">零售返佣比例</label>
+					<div class="col-sm-9 col-xs-12">
+						{ife 'commission.level' $level}
+						<div class='input-group'>
+							<input type="text" name="commission_retail" class="form-control" value="{$level['commission_retail']}" />
+							<div class='input-group-addon'>%</div>
+						</div>
+						{else}
+						<div class='form-control-static'>{$level['commission_retail']}%</div>
+						{/if}
+					</div>
+				</div>
 					{if $level['id']!='default'}
                   <div class="form-group">
                     <label class="col-sm-2 control-label">升级条件</label>

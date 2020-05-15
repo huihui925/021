@@ -64,7 +64,7 @@
                     {ife 'member.level' $level}
                         <div class='input-group fixsingle-input-group'>
                             {if empty($set['shop']['leveltype'])}
-                                <span class='input-group-addon'>完成订单金额满</span>
+                                <span class='input-group-addon'>完成佣金满</span>
                                 <input type="text" name="ordermoney" class="form-control" value="{$level['ordermoney']}" />
                                 <span class='input-group-addon'>元</span>
                             {/if}
@@ -72,6 +72,13 @@
                                 <span class='input-group-addon'>完成订单数量满</span>
                                 <input type="text" name="ordercount" class="form-control" value="{$level['ordercount']}" />
                                 <span class='input-group-addon'>个</span>
+                            {/if}
+                        </div>
+                        <div class='input-group fixsingle-input-group'>
+                            {if empty($set['shop']['leveltype'])}
+                            <span class='input-group-addon'>充值</span>
+                            <input type="text" name="ordermoney2" class="form-control" value="{$level['ordermoney2']}" />
+                            <span class='input-group-addon'>余额</span>
                             {/if}
                         </div>
                         <span class='help-block'>会员升级条件，不填写默认为不自动升级, 设置<a href="{php echo webUrl('sysset/member')}">【会员升级依据】</a> </span>

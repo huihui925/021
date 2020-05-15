@@ -1,214 +1,355 @@
 {template '_header'}
-<script>document.title = "紫钻兑换"</script>
+<script>document.title = "兑换紫钻"</script>
 <!--<script>document.title = "{if empty($this->merch_user)}{$_W['shopset']['shop']['name']}{else}{php echo $this->merch_user['merchname']}{/if}"</script>-->
 <link rel="stylesheet" href="../addons/ewei_shopv2/plugin/creditshop/template/mobile/default/images/common.css" />
 <link rel="stylesheet" href="../addons/ewei_shopv2/plugin/creditshop/static/css/common.css" />
 <style type="text/css">
     .fui-navbar ~ .fui-content, .fui-content.navbar{padding:0;}
 </style>
-<div class='fui-page  fui-page-current creditshop-index-page'>
-    {if is_h5app()}
-    <div class="fui-header">
-        <div class="fui-header-left">
-            <a class="back"></a>
-        </div>
-        <div class="title">{$_W['shopset']['trade']['credittext']}商城</div>
-        <div class="fui-header-right"></div>
-    </div>
-    {/if}
-    <div class='fui-content navbar'>
-        {if !empty($advs)}
-        <div class='fui-swipe' data-transition="500" data-gap="1">
-            <div class='fui-swipe-wrapper'>
-                {loop $advs $adv}
-                <a class='fui-swipe-item external' href="{if !empty($adv['link'])}{$adv['link']}{else}javascript:;{/if}"><img src="{php echo tomedia($adv['thumb'])}" /></a>
-                {/loop}
-            </div>
-            <div class='fui-swipe-page'></div>
-        </div>
-        {/if}
-        <div class="menu">
-            <a class="item" href="javascript:void(0);">
-                <span class="text"><i class="icon icon-jifen"></i> {$_W['shopset']['trade']['credittext']}{$credit}</span>
-            </a>
-            <a class="item" href="{php echo mobileUrl('creditshop/creditlog')}">
-                <span class="text"><i class="icon icon-navlist"></i> 参与记录</span>
-            </a>
-        </div>
-        {if count($category)>0 && !empty($category)}
-        <div class="fui-icon-group noborder circle" style="margin-top: 0.5rem">
-            {loop $category $cate}
-            <div class="fui-icon-col">
-                <a href="{php echo mobileUrl('creditshop/lists', array('cate'=>$cate['id']))}" class="external">
-                    <div class="icon"><img src="{php echo tomedia($cate['thumb'])}"></div>
-                    <div class="text">{$cate['name']}</div>
-                </a>
-            </div>
-            {/loop}
-        </div>
-        {/if}
-        <!--特色抽奖区-->
-        {if count($lotterydraws)>0 && !empty($lotterydraws)}
-        <div class="fui-cell-group fui-cell-click">
-            <a class="fui-cell">
-                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>
-                <div class="fui-cell-text"><p>抽奖专区</p></div>
-            </a>
-        </div>
-        <div class="fui-goods-group white block">
-            {loop $lotterydraws $item}
-            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">
-                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>
-                <div class="detail">
-                    <div class="name">
-                        <span class="fui-subtext">
-                            {if $item['goodstype']==0}商品{/if}
-                            {if $item['goodstype']==1}优惠券{/if}
-                            {if $item['goodstype']==2}余额{/if}
-                            {if $item['goodstype']==3}红包{/if}
-                        </span>
-                        {$item['title']}
-                    </div>
-                    <div class="price" style="display: block;">
-                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">
-                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>
-                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>
-                            {if $item['money'] > 0}
-                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>
-                            {/if}
-                        </span>
-                        <span class="fui-text text-danger2" style="float:right;">抽奖</span>
-                    </div>
-                </div>
-            </a>
-            {/loop}
-        </div>
-        {/if}
-        <!--{$_W['shopset']['trade']['credittext']}实物兑换-->
-        {if count($exchanges)>0 && !empty($exchanges)}
-        <div class="fui-cell-group fui-cell-click">
-            <a class="fui-cell">
-                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>
-                <div class="fui-cell-text"><p>{$_W['shopset']['trade']['credittext']}实物兑换</p></div>
-            </a>
-        </div>
-        <div class="fui-goods-group white block">
-            {loop $exchanges $item}
-            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">
-                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>
-                <div class="detail">
-                    <div class="name">
-                        {$item['title']}
-                    </div>
-                    <div class="price" style="display: block;">
-                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">
-                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>
-                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>
-                            {if $item['money'] > 0}
-                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>
-                            {/if}
-                        </span>
-                        <span class="fui-text text-danger2" style="float:right;">兑换</span>
-                    </div>
-                </div>
-            </a>
-            {/loop}
-        </div>
-        {/if}
+<!--<div class='fui-page  fui-page-current creditshop-index-page'>-->
+<!--    {if is_h5app()}-->
+<!--    <div class="fui-header">-->
+<!--        <div class="fui-header-left">-->
+<!--            <a class="back"></a>-->
+<!--        </div>-->
+<!--        <div class="title">{$_W['shopset']['trade']['credittext']}商城</div>-->
+<!--        <div class="fui-header-right"></div>-->
+<!--    </div>-->
+<!--    {/if}-->
+<!--    <div class='fui-content navbar'>-->
+<!--        {if !empty($advs)}-->
+<!--        <div class='fui-swipe' data-transition="500" data-gap="1">-->
+<!--            <div class='fui-swipe-wrapper'>-->
+<!--                {loop $advs $adv}-->
+<!--                <a class='fui-swipe-item external' href="{if !empty($adv['link'])}{$adv['link']}{else}javascript:;{/if}"><img src="{php echo tomedia($adv['thumb'])}" /></a>-->
+<!--                {/loop}-->
+<!--            </div>-->
+<!--            <div class='fui-swipe-page'></div>-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--        <div class="menu">-->
+<!--            <a class="item" href="javascript:void(0);">-->
+<!--                <span class="text"><i class="icon icon-jifen"></i> {$_W['shopset']['trade']['credittext']}{$credit}</span>-->
+<!--            </a>-->
+<!--            <a class="item" href="{php echo mobileUrl('creditshop/creditlog')}">-->
+<!--                <span class="text"><i class="icon icon-navlist"></i> 参与记录</span>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        {if count($category)>0 && !empty($category)}-->
+<!--        <div class="fui-icon-group noborder circle" style="margin-top: 0.5rem">-->
+<!--            {loop $category $cate}-->
+<!--            <div class="fui-icon-col">-->
+<!--                <a href="{php echo mobileUrl('creditshop/lists', array('cate'=>$cate['id']))}" class="external">-->
+<!--                    <div class="icon"><img src="{php echo tomedia($cate['thumb'])}"></div>-->
+<!--                    <div class="text">{$cate['name']}</div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--        &lt;!&ndash;特色抽奖区&ndash;&gt;-->
+<!--        {if count($lotterydraws)>0 && !empty($lotterydraws)}-->
+<!--        <div class="fui-cell-group fui-cell-click">-->
+<!--            <a class="fui-cell">-->
+<!--                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>-->
+<!--                <div class="fui-cell-text"><p>抽奖专区</p></div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-goods-group white block">-->
+<!--            {loop $lotterydraws $item}-->
+<!--            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">-->
+<!--                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>-->
+<!--                <div class="detail">-->
+<!--                    <div class="name">-->
+<!--                        <span class="fui-subtext">-->
+<!--                            {if $item['goodstype']==0}商品{/if}-->
+<!--                            {if $item['goodstype']==1}优惠券{/if}-->
+<!--                            {if $item['goodstype']==2}余额{/if}-->
+<!--                            {if $item['goodstype']==3}红包{/if}-->
+<!--                        </span>-->
+<!--                        {$item['title']}-->
+<!--                    </div>-->
+<!--                    <div class="price" style="display: block;">-->
+<!--                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">-->
+<!--                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>-->
+<!--                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>-->
+<!--                            {if $item['money'] > 0}-->
+<!--                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                        <span class="fui-text text-danger2" style="float:right;">抽奖</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--        &lt;!&ndash;{$_W['shopset']['trade']['credittext']}实物兑换&ndash;&gt;-->
+<!--        {if count($exchanges)>0 && !empty($exchanges)}-->
+<!--        <div class="fui-cell-group fui-cell-click">-->
+<!--            <a class="fui-cell">-->
+<!--                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>-->
+<!--                <div class="fui-cell-text"><p>{$_W['shopset']['trade']['credittext']}实物兑换</p></div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-goods-group white block">-->
+<!--            {loop $exchanges $item}-->
+<!--            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">-->
+<!--                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>-->
+<!--                <div class="detail">-->
+<!--                    <div class="name">-->
+<!--                        {$item['title']}-->
+<!--                    </div>-->
+<!--                    <div class="price" style="display: block;">-->
+<!--                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">-->
+<!--                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>-->
+<!--                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>-->
+<!--                            {if $item['money'] > 0}-->
+<!--                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                        <span class="fui-text text-danger2" style="float:right;">兑换</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
 
-        <!--红包兑换区-->
-        {if count($redbags)>0 && !empty($redbags)}
-        <div class="fui-cell-group fui-cell-click">
-            <a class="fui-cell">
-                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>
-                <div class="fui-cell-text"><p>红包兑换区</p></div>
-            </a>
-        </div>
-        <div class="fui-goods-group white block">
-            {loop $redbags $item}
-            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">
-                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>
-                <div class="detail">
-                    <div class="name">{$item['title']}</div>
-                    <div class="price" style="display: block;">
-                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">
-                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>
-                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>
-                            {if $item['money'] > 0}
-                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>
-                            {/if}
-                        </span>
-                        <span class="fui-text text-danger2" style="float:right;">兑换</span>
-                    </div>
-                </div>
-            </a>
-            {/loop}
-        </div>
-        {/if}
+<!--        &lt;!&ndash;红包兑换区&ndash;&gt;-->
+<!--        {if count($redbags)>0 && !empty($redbags)}-->
+<!--        <div class="fui-cell-group fui-cell-click">-->
+<!--            <a class="fui-cell">-->
+<!--                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>-->
+<!--                <div class="fui-cell-text"><p>红包兑换区</p></div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-goods-group white block">-->
+<!--            {loop $redbags $item}-->
+<!--            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">-->
+<!--                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>-->
+<!--                <div class="detail">-->
+<!--                    <div class="name">{$item['title']}</div>-->
+<!--                    <div class="price" style="display: block;">-->
+<!--                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">-->
+<!--                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>-->
+<!--                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>-->
+<!--                            {if $item['money'] > 0}-->
+<!--                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                        <span class="fui-text text-danger2" style="float:right;">兑换</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
 
-        <!--{$_W['shopset']['trade']['credittext']}兑换券-->
-        {if count($coupons)>0 && !empty($coupons)}
-        <div class="fui-cell-group fui-cell-click">
-            <a class="fui-cell">
-                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>
-                <div class="fui-cell-text"><p>{$_W['shopset']['trade']['credittext']}兑换劵</p></div>
-            </a>
-        </div>
-        <div class="fui-goods-group">
-            {loop $coupons $item}
-            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">
-                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>
-                <div class="detail">
-                    <div class="name">{$item['title']}</div>
-                    <div class="price" style="display: block;">
-                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">
-                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>
-                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>
-                            {if $item['money'] > 0}
-                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>
-                            {/if}
-                        </span>
-                        <span class="fui-text text-danger2" style="float:right;">兑换</span>
-                    </div>
-                </div>
-            </a>
-            {/loop}
-        </div>
-        {/if}
-        <!--余额兑换区-->
-        {if count($balances)>0 && !empty($balances)}
-        <div class="fui-cell-group fui-cell-click">
-            <a class="fui-cell">
-                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>
-                <div class="fui-cell-text"><p>余额兑换区</p></div>
-            </a>
-        </div>
-        <div class="fui-goods-group white block">
-            {loop $balances $item}
-            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">
-                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>
-                <div class="detail">
-                    <div class="name">{$item['title']}</div>
-                    <div class="price" style="display: block;">
-                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">
-                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>
-                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>
-                            {if $item['money'] > 0}
-                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>
-                            {/if}
-                        </span>
-                        <span class="fui-text text-danger2" style="float:right;">兑换</span>
-                    </div>
-                </div>
-            </a>
-            {/loop}
-        </div>
-        {/if}
-    </div>
+<!--        &lt;!&ndash;{$_W['shopset']['trade']['credittext']}兑换券&ndash;&gt;-->
+<!--        {if count($coupons)>0 && !empty($coupons)}-->
+<!--        <div class="fui-cell-group fui-cell-click">-->
+<!--            <a class="fui-cell">-->
+<!--                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>-->
+<!--                <div class="fui-cell-text"><p>{$_W['shopset']['trade']['credittext']}兑换劵</p></div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-goods-group">-->
+<!--            {loop $coupons $item}-->
+<!--            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">-->
+<!--                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>-->
+<!--                <div class="detail">-->
+<!--                    <div class="name">{$item['title']}</div>-->
+<!--                    <div class="price" style="display: block;">-->
+<!--                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">-->
+<!--                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>-->
+<!--                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>-->
+<!--                            {if $item['money'] > 0}-->
+<!--                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                        <span class="fui-text text-danger2" style="float:right;">兑换</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--        &lt;!&ndash;余额兑换区&ndash;&gt;-->
+<!--        {if count($balances)>0 && !empty($balances)}-->
+<!--        <div class="fui-cell-group fui-cell-click">-->
+<!--            <a class="fui-cell">-->
+<!--                <div class="fui-cell-icon"><i class="icon icon-gifts"></i></div>-->
+<!--                <div class="fui-cell-text"><p>余额兑换区</p></div>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="fui-goods-group white block">-->
+<!--            {loop $balances $item}-->
+<!--            <a class="fui-goods-item external" href="{php echo mobileUrl('creditshop/detail',array('id'=>$item['id']))}" data-nocache="true">-->
+<!--                <div class="image" data-lazyloaded="true" style="background-image: url('{php echo tomedia($item['thumb'])}');"></div>-->
+<!--                <div class="detail">-->
+<!--                    <div class="name">{$item['title']}</div>-->
+<!--                    <div class="price" style="display: block;">-->
+<!--                        <span style="font-size: 0.5rem;float:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:78%;">-->
+<!--                            <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">{$item['credit']}</span>-->
+<!--                            <span style="color:#999;">{$_W['shopset']['trade']['credittext']}</span>-->
+<!--                            {if $item['money'] > 0}-->
+<!--                             + <span style="font-size: 0.8rem;font-weight: bold;padding-right: 0.1rem;">&yen;{$item['money']}</span>-->
+<!--                            {/if}-->
+<!--                        </span>-->
+<!--                        <span class="fui-text text-danger2" style="float:right;">兑换</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </a>-->
+<!--            {/loop}-->
+<!--        </div>-->
+<!--        {/if}-->
+<!--    </div>-->
 
-</div>
+<!--</div>-->
 
 {php echo 456}
 <!--{php $this->footerMenus()-->
+<div class='fui-page  fui-page-current creditshop-index-page integral_warp'>
+    <div class='fui-content integral_navbar'>
+        <div class="topbar">
+            <div class="integral">当前共{$_W['shopset']['trade']['credittext']}{$credit}积分</div>
+            <div class="rate">1000积分兑换1紫钻</div>
+        </div>
+        <div class="integral_main">
+                <input type="text" placeholder="请输入兑换数量" inputmode="decimal">
+            <div class="tip">
+                <span>将消耗5000积分</span>
+                <span>剩余1810积分</span>
+                </div>
+            <div class="btn">确认兑换</div>
+        </div>
+        <div class="van-toast van-toast--middle van-toast--text" style="z-index: 2002; display: none;">
+            <div class="van-toast__text">提示内容</div>
+        </div>
+    </div>
+</div>
+<style>
+    .fui-navbar ~ .fui-content, .fui-content.navbar{
+        padding: 3vw 2vw;
+    }
+    .integral_navbar{
+        margin: 3vw 2vw;
 
+    }
+    .integral_navbar .topbar{
+        background: #ebebebeb;
+        border-radius: 13px;
+        box-shadow: 0 0 5px #b3b1b1b8;
+        /* overflow: hidden; */
+        display: flex;
+        justify-content: space-between;
+        padding: 3vw 3vw;
+        /* margin-bottom: 2vw; */
+        /* border: 0.1px solid #ccc; */
+        margin: 0 1px 4vw 0;
+    }
+    .integral_navbar .topbar .integral{
+        color: #000;
+        font-size: 0.75rem;
+    }
+    .integral_navbar .topbar .rate{
+        color: #666;
+    }
+
+    .integral_navbar .integral_main{
+        background: #f3f3f3;
+        box-shadow: 0 0 5px #b3b1b1b8;
+        padding: 6vw 3vw 5vw 5vw;
+        border-radius: 13px;
+        margin: 0 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .integral_navbar .integral_main .input_warp{
+
+    }
+    .integral_navbar .integral_main input{
+        display: block;
+        box-sizing: border-box;
+        width: 50%;
+        min-width: 0;
+        margin: 0;
+        padding: 3vw;
+        color: #323233;
+        line-height: inherit;
+        text-align: left;
+        background-color: transparent;
+        border: 0;
+        resize: none;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 4vw;
+        font-size: 4.5vw;
+    }
+    .integral_navbar .integral_main .tip span{
+        padding: 0 5vw;
+    }
+    .integral_main .btn{
+        background: #fe7d01;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 5vw;
+        margin-top: 5vw;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .van-toast{
+        min-width: 96px;
+        min-height: 0;
+        padding: 8px 12px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        box-sizing: content-box;
+        color: #fff;
+        font-size: 0.75rem;
+        line-height: 20px;
+        white-space: pre-wrap;
+        text-align: center;
+        word-wrap: break-word;
+        background-color: rgba(50, 50, 51, 0.88);
+        border-radius: 8px;
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .van-toast--text .van-toast__text, .van-toast--html .van-toast__text {
+        margin-top: 0;
+    }
+</style>
+<script>
+    let toast = function(msg) {
+        $('.van-toast__text').html(msg);
+        $('.van-toast').fadeIn();
+        setTimeout(function() {
+            $('.van-toast').fadeOut();
+    },1300)
+    }
+    $('.btn').click(function () {
+        let input_value = $('.integral_main input').val()
+        if(input_value == ''){
+            toast('兑换数量不能为空')
+            return
+        }
+    //    通过判断发请求 且弹窗提示请求内容
+    //     toast('兑换失败')
+    //     return;
+    //    兑换成功则直接跳转页面
+        window.location.href='http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=12'
+    })
+</script>
 {template '_footer'}

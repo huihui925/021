@@ -63,12 +63,12 @@ if (!class_exists('CommissionModel')) {
 				$param[':uniacid'] = $_W['uniacid'];
 				$condition .= ' AND og.orderid in(' . $parent_sql . ')';
 				$goods_sql = 'select og.id,og.realprice,og.total,g.hasoption,og.goodsid,og.optionid,g.hascommission,g.nocommission, g.commission1_rate,g.commission1_pay,g.commission2_rate,g.commission2_pay,
-          g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid,g.sale_type from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid ' . $condition;
+          g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid ' . $condition;
 				$goods = pdo_fetchall($goods_sql, $param);
 			}
 			else {
 				$goods = pdo_fetchall('select og.id,og.realprice,og.total,g.hasoption,og.goodsid,og.optionid,g.hascommission,g.nocommission, g.commission1_rate,g.commission1_pay,g.commission2_rate,g.commission2_pay,
-                  g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid,g.sale_type from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid' . ' where og.orderid=:orderid and og.uniacid=:uniacid', array(':orderid' => $orderid, ':uniacid' => $_W['uniacid']));
+                  g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid' . ' where og.orderid=:orderid and og.uniacid=:uniacid', array(':orderid' => $orderid, ':uniacid' => $_W['uniacid']));
 			}
 
 			$real_pay_price = false;
@@ -126,12 +126,11 @@ if (!class_exists('CommissionModel')) {
 					}
 					else {
 						$goods_commission = !empty($cinfo['commission']) ? json_decode($cinfo['commission'], true) : '';
-                        //判断是否参与分佣
+
 						if (empty($cinfo['nocommission'])) {
 							$hascommission = true;
-                            //判断是否独立佣金
-							if ($cinfo['hascommission'] == 1) {
 
+							if ($cinfo['hascommission'] == 1) {
 								if (empty($goods_commission['type'])) {
 									$cinfo['commission1'] = array('default' => 1 <= $set['level'] ? (0 < $cinfo['commission1_rate'] ? round($cinfo['commission1_rate'] * $price / 100, 2) . '' : round($cinfo['commission1_pay'] * $cinfo['total'], 2)) : 0);
 									$cinfo['commission2'] = array('default' => 2 <= $set['level'] ? (0 < $cinfo['commission2_rate'] ? round($cinfo['commission2_rate'] * $price / 100, 2) . '' : round($cinfo['commission2_pay'] * $cinfo['total'], 2)) : 0);
@@ -255,17 +254,14 @@ if (!class_exists('CommissionModel')) {
 								}
 							}
 							else {
-
 								$cinfo['commission1'] = array('default' => 1 <= $set['level'] ? round($set['commission1'] * $price / 100, 2) . '' : 0);
 								$cinfo['commission2'] = array('default' => 2 <= $set['level'] ? round($set['commission2'] * $price / 100, 2) . '' : 0);
 								$cinfo['commission3'] = array('default' => 3 <= $set['level'] ? round($set['commission3'] * $price / 100, 2) . '' : 0);
-								$cinfo['commission_retail'] = array('default' => round($set['commission_retail'] * $price / 100, 2));
 
 								foreach ($levels as $level) {
 									$cinfo['commission1']['level' . $level['id']] = 1 <= $set['level'] ? round($level['commission1'] * $price / 100, 2) . '' : 0;
 									$cinfo['commission2']['level' . $level['id']] = 2 <= $set['level'] ? round($level['commission2'] * $price / 100, 2) . '' : 0;
 									$cinfo['commission3']['level' . $level['id']] = 3 <= $set['level'] ? round($level['commission3'] * $price / 100, 2) . '' : 0;
-									$cinfo['commission_retail']['level' . $level['id']] = round($level['commission_retail'] * $price / 100, 2);
 								}
 							}
 
@@ -309,37 +305,23 @@ if (!class_exists('CommissionModel')) {
 						$commissions = array('level1' => 0, 'level2' => 0, 'level3' => 0);
 
 						if (!empty($agentid)) {
+							$m1 = m('member')->getMember($agentid);
+							if ($m1['isagent'] == 1 && $m1['status'] == 1) {
+								$l1 = $this->getLevel($m1['openid']);
+								$commissions['level1'] = empty($l1) ? round($cinfo['commission1']['default'], 2) : round($cinfo['commission1']['level' . $l1['id']], 2);
 
-                            $m1 = m('member')->getMember($agentid);
-                            if ($m1['isagent'] == 1 && $m1['status'] == 1) {
+								if (!empty($m1['agentid'])) {
+									$m2 = m('member')->getMember($m1['agentid']);
+									$l2 = $this->getLevel($m2['openid']);
+									$commissions['level2'] = empty($l2) ? round($cinfo['commission2']['default'], 2) : round($cinfo['commission2']['level' . $l2['id']], 2);
 
-                                //判断商品类型 1、零售；2、优选
-                                if($cinfo['sale_type'] == '2') {
-                                    $l1 = $this->getLevel($m1['openid']);
-                                    $commissions['level1'] = empty($l1) ? round($cinfo['commission1']['default'], 2) : round($cinfo['commission1']['level' . $l1['id']], 2);
-
-                                    if (!empty($m1['agentid'])) {
-                                        $m2 = m('member')->getMember($m1['agentid']);
-                                        $l2 = $this->getLevel($m2['openid']);
-                                        $commissions['level2'] = empty($l2) ? round($cinfo['commission2']['default'], 2) : round($cinfo['commission2']['level' . $l2['id']], 2);
-
-                                        if (!empty($m2['agentid'])) {
-                                            $m3 = m('member')->getMember($m2['agentid']);
-                                            $l3 = $this->getLevel($m3['openid']);
-                                            $commissions['level3'] = empty($l3) ? round($cinfo['commission3']['default'], 2) : round($cinfo['commission3']['level' . $l3['id']], 2);
-                                        }
-                                    }
-                                } elseif ($cinfo['sale_type'] == '1') {
-                                    //判断提现等级
-                                    if(0 < $m1['level']){
-                                        $m_level = m("member")->getLevel($agentid);
-                                        $commissions['level1'] = round($price * (10 - $m_level['discount']) / 10, 2);
-                                    } else {
-                                        $l1 = $this->getLevel($m1['openid']);
-                                        $commissions['level1'] = empty($l1) ? round($cinfo['commission_retail']['default'], 2) : round($cinfo['commission_retail']['level' . $l1['id']], 2);
-                                    }
-                                }
-                            }
+									if (!empty($m2['agentid'])) {
+										$m3 = m('member')->getMember($m2['agentid']);
+										$l3 = $this->getLevel($m3['openid']);
+										$commissions['level3'] = empty($l3) ? round($cinfo['commission3']['default'], 2) : round($cinfo['commission3']['level' . $l3['id']], 2);
+									}
+								}
+							}
 						}
 
 						pdo_update('ewei_shop_order_goods', array('commission1' => iserializer($cinfo['commission1']), 'commission2' => iserializer($cinfo['commission2']), 'commission3' => iserializer($cinfo['commission3']), 'commissions' => iserializer($commissions), 'nocommission' => $cinfo['nocommission']), array('id' => $cinfo['id']));
@@ -2139,7 +2121,7 @@ if (!class_exists('CommissionModel')) {
 			}
 		}
 
-		//最终分佣
+		//观察中
 		public function checkOrderFinish($orderid = '')
 		{
 			global $_W;
@@ -3056,13 +3038,19 @@ if (!class_exists('CommissionModel')) {
 
 
                 //计算代理一级数量
-
-                if($oldlevel['id'] >= 1) {
-                    $resellerUpgrade = $this->resellerUpgrade($oldlevel, $m);
-                    if (!empty($resellerUpgrade)) {
-                        $newlevel = $resellerUpgrade;
-                    } else {
-                        return null;
+                if($oldlevel['id'] >= 1){
+                    //星级总数=>经理
+                    $downs1 = pdo_fetchall('select id from ' . tablename('ewei_shop_member') . ' where `agentlevel` >= 1 and agentid=:agentid and uniacid=:uniacid ', array(':agentid' => $m['id'], ':uniacid' => $_W['uniacid']), 'id');
+                    $downcount1 = count($downs1);
+                    $newlevel1 = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $downcount1 . ' >= downcount and downcount>0 and `level`=2 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
+                    //经理总数=>合伙人
+                    $downs2 = pdo_fetchall('select id from ' . tablename('ewei_shop_member') . ' where `agentlevel` >= 2 and agentid=:agentid and uniacid=:uniacid ', array(':agentid' => $m['id'], ':uniacid' => $_W['uniacid']), 'id');
+                    $downcount2 = count($downs2);
+                    $newlevel2 = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $downcount2 . ' >= downcount and downcount>0 and `level`=3 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
+                    if(!empty($newlevel1) && !empty($newlevel2)){
+                        $newlevel = $newlevel2;
+                    }elseif(!empty($newlevel1) && empty($newlevel2)){
+                        $newlevel = $newlevel1;
                     }
                 }
 
@@ -3082,34 +3070,12 @@ if (!class_exists('CommissionModel')) {
 			$this->sendMessage($m['openid'], array('nickname' => $m['nickname'], 'oldlevel' => $oldlevel, 'newlevel' => $newlevel), TM_COMMISSION_UPGRADE);
             //计算上级是否升级
             $agent_member = m('member')->getMember($m['agentid']);
-            $this->agent($agent_member);
-		}
-
-		/**
-		 *经理、合伙人升级
-         */
-		private function resellerUpgrade($oldlevel,$m){
-            global $_W;
-            switch ($oldlevel['id']){
-                case '1' :
-                    //升级经理
-                    $manager_num = pdo_fetch('select count(id) as num from '.tablename('ewei_shop_member_level_statistics').' where uniacid=:uniacid and id=:id and `level` = 1 and agentlevel >= 1 LIMIT 1', array(':uniacid' => $_W['uniacid'],':id'=>$m['id']))['num'];
-                    $newlevel = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $manager_num . ' >= downcount and downcount>0 and `id`=2 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
-                    break;
-                case '2' :
-                    //升级合伙人
-                    $partner_num = pdo_fetch('select count(id) as num from '.tablename('ewei_shop_member_level_statistics').' where uniacid=:uniacid and id=:id and agentlevel >= 2 LIMIT 1', array(':uniacid' => $_W['uniacid'],':id'=>$m['id']))['num'];
-                    $newlevel = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $partner_num . ' >= downcount and downcount>0 and `id`=3 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
-                    break;
-                case '3' :
-                    return false;
-                    break;
-                default:
-                    return false;
-                    break;
+            if(!empty($agent_member)){
+                if(($agent_member['agentlevel'] >= 1) && ($agent_member['agentlevel'] < 3) && ($agent_member['agentlevel'] <= $newlevel['level'])){
+                    $this->agent($agent_member);
+                }
             }
-            return $newlevel;
-        }
+		}
 
 		private function agent($m){
 
@@ -3117,34 +3083,35 @@ if (!class_exists('CommissionModel')) {
 		        return false;
             }
 
-            $oldlevel = $this->getLevel($m['openid']);
+            global $_W;
 
-            $resellerUpgrade = $this->resellerUpgrade($oldlevel);
-            if(empty($resellerUpgrade)){
-                return false;
-            } else {
-                $newlevel = $resellerUpgrade;
+            $oldlevel = $m['agentlevel'];
+            $newlevel['id'] = 0;
+            //星级总数=>经理
+            $downs1 = pdo_fetchall('select id from ' . tablename('ewei_shop_member') . ' where `agentlevel` >= 1 and agentid=:agentid and uniacid=:uniacid ', array(':agentid' => $m['id'], ':uniacid' => $_W['uniacid']), 'id');
+            $downcount1 = count($downs1);
+            $newlevel1 = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $downcount1 . ' >= downcount and downcount>0 and `level`=2 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
+            //经理总数=>合伙人
+            $downs2 = pdo_fetchall('select id from ' . tablename('ewei_shop_member') . ' where `agentlevel` >= 2 and agentid=:agentid and uniacid=:uniacid ', array(':agentid' => $m['id'], ':uniacid' => $_W['uniacid']), 'id');
+            $downcount2 = count($downs2);
+            $newlevel2 = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . (' where uniacid=:uniacid  and ' . $downcount2 . ' >= downcount and downcount>0 and `level`=3 order by downcount desc limit 1'), array(':uniacid' => $_W['uniacid']));
+            if(!empty($newlevel1) && !empty($newlevel2)){
+                $newlevel = $newlevel2;
+            }elseif(!empty($newlevel1) && empty($newlevel2)){
+                $newlevel = $newlevel1;
             }
 
-            if (!empty($oldlevel['level'])) {
-                if ($oldlevel['level'] == $newlevel['level']) {
-                    return NULL;
-                }
-
-                if ($newlevel['level'] < $oldlevel['level']) {
-                    return NULL;
-                }
-            }
-
-            if($oldlevel['id'] < $newlevel['id']){
+            if($oldlevel < $newlevel['id']){
                 pdo_update('ewei_shop_member', array('agentlevel' => $newlevel['id']), array('id' => $m['id']));
                 $this->sendMessage($m['openid'], array('nickname' => $m['nickname'], 'oldlevel' => $oldlevel, 'newlevel' => $newlevel), TM_COMMISSION_UPGRADE);
-                //计算上级是否升级
-                $agent_member = m('member')->getMember($m['agentid']);
-                return $this->agent($agent_member);
             }
 
-            return false;
+            $agent_member = m('member')->getMember($m['agentid']);
+            if(($agent_member['agentlevel'] >= 1) && ($agent_member['agentlevel'] < 3) && ($agent_member['agentlevel'] <= $newlevel['level'])){
+                return $this->agent($agent_member);
+            } else {
+                return true;
+            }
         }
 
 		/**
