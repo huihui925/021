@@ -4,7 +4,123 @@
 	.fui-navbar ~ .fui-content, .fui-content.navbar{padding:0;}
 	.fui-cell-group{margin-top:0;}
 </style>
+
 <link rel="stylesheet" href="../addons/ewei_shopv2/plugin/creditshop/template/mobile/default/images/common.css" />
+<!--自己写的样式-->
+<style>
+	a{
+		color: #000;
+	}
+	/*---------------------------漂浮块样式------------------------*/
+	.fans_warp .top_bar{
+		background: #fe7d01;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 29vw;
+		margin-bottom: 23vw;
+		position: relative;
+	}
+	.fans_warp .top_bar .referrer{
+		color: #fff;
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		height: 12vw;
+		line-height: 12vw;
+		padding: 0 3vw;
+	}
+	.fans_warp .top_bar .fans_banner{
+		width: 95%;
+		background: #fff;
+		border-radius: 10px;
+		padding: 3vw 0;
+		box-shadow: 0 0 6px #ccc;
+		position: absolute;
+		top: 12vw;
+	}
+
+	.fans_warp .top_bar .fans_banner>div{
+		display: flex;
+		justify-content: space-between;
+	}
+	.fans_warp .top_bar .fans_banner .name{
+		font-size: 4.7vw;
+		font-weight: bold;
+		justify-content: center;
+		color: #000;
+		padding-bottom: 1vw;
+	}
+	.fans_warp .top_bar .fans_banner>div>div{
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+	.fans_warp .top_bar .fans_banner .img_warp{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.fans_warp .top_bar .fans_banner .img_warp img{
+		width: 7.5vw;
+	}
+	.fans_warp .top_bar .title{
+		color: black;
+		font-size: 4.15vw;
+	}
+
+	.fans_warp .top_bar .center>div{
+		padding: 1vw 0 2vw 0;
+		font-size: 7vw;
+		color: black;
+		font-weight: bold;
+	}
+
+	/*-----------------------------切换栏---------------------------*/
+	.topBar{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 0 1rem;
+	}
+	.topBar>div{
+		border-bottom: 3px solid transparent;
+		font-size: 4vw;
+	}
+	.topBar>div a{
+		color: #000;
+	}
+	.topBar>div.active{
+		border-bottom: 3px solid #fe7d01;
+	}
+	.topBar>div.active a{
+		color:#fe7d01;
+	}
+	/*-----------------切换栏下面显示的内容--------------------*/
+	.fans_content{
+		padding: 3vw;
+	}
+	.fans_content .content_item{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1vw 0;
+		border-bottom: .6px solid #ccc;
+	}
+	.fans_content .content_item .left span{
+		color: #666;
+		font-size: 0.6rem;
+	}
+
+	.fans_content .content_item .right{
+		color: #666;
+	}
+	.fui-page.fui-page-current, .fui-page-group.fui-page-current{
+		overflow-y: auto;
+	}
+
+</style>
 <!--<div class='fui-page fui-page-current creditshop-creditlog-page'>-->
 <!--&lt;!&ndash;		<div class="fui-header">&ndash;&gt;-->
 <!--&lt;!&ndash;				<div class="fui-header-left">&ndash;&gt;-->
@@ -180,119 +296,6 @@
 	})
 </script>
 <!----------------------------自己写的页面 结束----------------------------------->
-<style>
-	a{
-		color: #000;
-	}
-	/*---------------------------漂浮块样式------------------------*/
-	.fans_warp .top_bar{
-		background: #fe7d01;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 29vw;
-		margin-bottom: 23vw;
-		position: relative;
-	}
-	.fans_warp .top_bar .referrer{
-		color: #fff;
-		display: flex;
-		justify-content: flex-end;
-		width: 100%;
-		height: 12vw;
-		line-height: 12vw;
-		padding: 0 3vw;
-	}
-	.fans_warp .top_bar .fans_banner{
-		width: 95%;
-		background: #fff;
-		border-radius: 10px;
-		padding: 3vw 0;
-		box-shadow: 0 0 6px #ccc;
-		position: absolute;
-		top: 12vw;
-	}
 
-	.fans_warp .top_bar .fans_banner>div{
-		display: flex;
-		justify-content: space-between;
-	}
-	.fans_warp .top_bar .fans_banner .name{
-		font-size: 4.7vw;
-		font-weight: bold;
-		justify-content: center;
-		color: #000;
-		padding-bottom: 1vw;
-	}
-	.fans_warp .top_bar .fans_banner>div>div{
-		flex: 1;
-		display: flex;
-		justify-content: center;
-	}
-	.fans_warp .top_bar .fans_banner .img_warp{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.fans_warp .top_bar .fans_banner .img_warp img{
-		width: 7.5vw;
-	}
-	.fans_warp .top_bar .title{
-		color: black;
-		font-size: 4.15vw;
-	}
-
-	.fans_warp .top_bar .center>div{
-		padding: 1vw 0 2vw 0;
-		font-size: 7vw;
-		color: black;
-		font-weight: bold;
-	}
-
-	/*-----------------------------切换栏---------------------------*/
-	.topBar{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		padding: 0 1rem;
-	}
-	.topBar>div{
-		border-bottom: 3px solid transparent;
-		font-size: 4vw;
-	}
-	.topBar>div a{
-		color: #000;
-	}
-	.topBar>div.active{
-		border-bottom: 3px solid #fe7d01;
-	}
-	.topBar>div.active a{
-		color:#fe7d01;
-	}
-	/*-----------------切换栏下面显示的内容--------------------*/
-	.fans_content{
-		padding: 3vw;
-	}
-	.fans_content .content_item{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1vw 0;
-		border-bottom: .6px solid #ccc;
-	}
-	.fans_content .content_item .left span{
-		color: #666;
-		font-size: 0.6rem;
-	}
-
-	.fans_content .content_item .right{
-		color: #666;
-	}
-	.fui-page.fui-page-current, .fui-page-group.fui-page-current{
-		overflow-y: auto;
-	}
-
-</style>
 {template '_footer'}
 <!--6Z2S5bKb5piT6IGU5LqS5Yqo572R57uc56eR5oqA5pyJ6ZmQ5YWs5Y+454mI5p2D5omA5pyJ-->

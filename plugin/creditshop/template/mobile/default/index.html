@@ -213,7 +213,7 @@
 <div class='fui-page  fui-page-current creditshop-index-page integral_warp'>
     <div class='fui-content integral_navbar'>
         <div class="topbar">
-            <div class="integral">当前共{$_W['shopset']['trade']['credittext']}{$credit}积分</div>
+            <div class="integral">当前{$_W['shopset']['trade']['credittext']}{$credit}</div>
             <div class="rate">1000积分兑换1紫钻</div>
         </div>
         <div class="integral_main">
@@ -348,8 +348,8 @@
     //    通过判断发请求 且弹窗提示请求内容
     //     toast('兑换失败')
     //     return;
-    //    兑换成功则直接跳转页面
-        window.location.href='http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=12'
+    //    兑换成功则直接跳转页面 注意 : 成功后要把兑换的紫钻数量传过去
+        window.location.href='http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=12'+'&qqt_num='+998//这里999假装是兑换的紫钻数量
     })
 </script>
 {template '_footer'}
