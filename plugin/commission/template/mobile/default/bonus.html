@@ -1,0 +1,32 @@
+{template '_header'}
+<style>
+    .fui-list-inner .text{
+        color: #999;
+        font-size: .6rem;
+    }
+    .fui-list-inner .title{
+        font-size: .65rem;
+    }
+</style>
+<div class='fui-page  fui-page-current member-log-page'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">明细</div>
+    </div>
+    <div class='fui-content navbar' >
+    {loop $list $log}
+    <div>
+        <div>
+            <span>{$log['title']}</span> <span {if $log['type']=='11'}style="color: red"{/if}>{$log['money']}</span>
+        </div>
+        <div>
+            <?php echo date("Y-m-d H:i:s", $log['createtime']); ?>
+        </div>
+    </div>
+    <hr />
+    {/loop}
+    </div>
+</div>
+{template '_footer'}

@@ -51,4 +51,26 @@
 		<span class="help-block">自定义分销佣金显示文字，如：<span class="text text-danger">可获得佣金**元</span></span>
 	</div>
 </div>
+<div class="form-group" >
+	<label class="col-lg control-label">经理极差</label>
+	<div class="col-sm-9 col-xs-12">
+		{ifp 'commission.set.edit'}
+		<input type="text" name="data[manager]" class="form-control" value="{$data['manager']}" maxlength="6">
+		{else}
+		{$data['manager']}
+		{/if}
+		<span class="help-block">自定义经理极差奖金百分比，如：<span class="text text-danger">10</span></span>
+	</div>
+</div>
+<div class="form-group" >
+	<label class="col-lg control-label">合伙人极差</label>
+	<div class="col-sm-9 col-xs-12">
+		{ifp 'commission.set.edit'}
+		<input type="text" name="data[partner]" class="form-control" value="{$data['partner']}" maxlength="6">
+		{else}
+		{$data['partner']}
+		{/if}
+		<span class="help-block">自定义合伙人极差奖金百分比，如：<span class="text text-danger">15</span></span>
+	</div>
+</div>
 </div>

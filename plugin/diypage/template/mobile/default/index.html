@@ -35,6 +35,10 @@
         margin-left: .3em;
     }
 </style>
+<!--续费开通-->
+{if $page['id'] == '29'}
+{template 'diypage/template/tpl_29'}
+{/if}
 <!--个人中心页面 开始-->
 {if $page['data']['page']['title']=='我的'}
 <style>
@@ -1328,6 +1332,10 @@
 
 
 
-
+<script>
+    function goUrl(url){
+        window.location.href=url
+    }
+</script>
 
 {template '_footer'}

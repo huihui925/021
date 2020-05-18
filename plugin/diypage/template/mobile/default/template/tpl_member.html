@@ -1,4 +1,9 @@
 {if empty($diyitem['params']['style']) || $diyitem['params']['style']=='default1'}
+<script>
+    function goUrl(url){
+        window.location.href=url
+    }
+</script>
 <div style="overflow: hidden;height: 9rem;position: relative;background: #fff">
     <div class="headinfo" style="{if !empty($diyitem['style']['background'])}border: none;{/if};z-index: 100">
         {if !empty($diyitem['params']['seticon'])}
@@ -72,17 +77,23 @@
         </div>
         <div class="float_warp" >
             <!-- 积分-->
-            <a class="credit" href="./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=creditshop.creditlog">
+            <a class="credit"
+               href="#"
+               onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=creditshop.creditlog')">
                 <span>{$diyitem['info']['credit']}</span>
                 <div>{$diyitem['info']['textcredit']}</div>
             </a>
             <!-- 粉丝总数 这里的数据需要接口-->
-            <a class="credit">
-                <span>???</span>
+            <a class="credit"
+               href="#"
+               onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=commission.down&mid=36')">
+                <span>0</span>
                 <div>粉丝总数</div>
             </a>
             <!-- 余额-->
-            <a class="credit" href="./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=member.log">
+            <a class="credit"
+               href="#"
+               onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=member.log')">
                 <span>{$diyitem['info']['money']}</span>
                 <div>{$diyitem['info']['textmoney']}</div>
             </a>

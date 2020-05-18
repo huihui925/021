@@ -1,4 +1,5 @@
 {template '_header'}
+<script>document.title = "{if $_W['shopset']['trade']['withdraw']}{$_W['shopset']['trade']['moneytext']}明细{else}充值记录{/if}"</script>
 <style>
     .fui-list-inner .text{
         color: #999;
@@ -15,12 +16,12 @@
     }
 </style>
 <div class='fui-page  fui-page-current member-log-page'>
-    <div class="fui-header">
-        <div class="fui-header-left">
-            <a class="back"></a>
-        </div>
-        <div class="title">{if $_W['shopset']['trade']['withdraw']}{$_W['shopset']['trade']['moneytext']}明细{else}充值记录{/if}</div>
-    </div>
+<!--    <div class="fui-header">-->
+<!--        <div class="fui-header-left">-->
+<!--            <a class="back"></a>-->
+<!--        </div>-->
+<!--        <div class="title">{if $_W['shopset']['trade']['withdraw']}{$_W['shopset']['trade']['moneytext']}明细{else}充值记录{/if}</div>-->
+<!--    </div>-->
 
     <div class='fui-content navbar' >
 

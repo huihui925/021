@@ -49,7 +49,7 @@
                             {/if}
                         <!--分销佣金-->
                         {if $goodsitem['cansee']>0 &&  $goodsitem['seecommission']>0 }
-                        <div class="goods-Commission">
+                        <div class="goods-Commission" style="display:none;">
                             {php echo empty($goodsitem['seetitle'])?'预计最高佣金':$goodsitem['seetitle']}￥{$goodsitem['seecommission']}
                         </div>
                         {/if}

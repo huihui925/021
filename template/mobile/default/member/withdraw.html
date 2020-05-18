@@ -1,4 +1,5 @@
 {template '_header'}
+<script>document.title = "{$_W['shopset']['trade']['moneytext']}提现"</script>
 <style>
     .fui-cell-group .fui-cell .fui-cell-icon{
         width: auto;
@@ -19,14 +20,14 @@
     }
 </style>
 <div class='fui-page  fui-page-current'>
-    <div class="fui-header">
-        <div class="fui-header-left">
-            <a class="back"></a>
-        </div>
-        <div class="title">{$_W['shopset']['trade']['moneytext']}提现
-        </div>
-        <div class="fui-header-right">&nbsp;</div>
-    </div>
+<!--    <div class="fui-header">-->
+<!--        <div class="fui-header-left">-->
+<!--            <a class="back"></a>-->
+<!--        </div>-->
+<!--        <div class="title">{$_W['shopset']['trade']['moneytext']}提现-->
+<!--        </div>-->
+<!--        <div class="fui-header-right">&nbsp;</div>-->
+<!--    </div>-->
     <div class='fui-content ' >
         <div class='fui-cell-title' style="height: 2.45rem">
             <div class='fui-cell-info' style='font-size:.7rem;color:#666;position: relative;height: 100%;line-height: 1.425rem'>可提现金额: ￥<span id='current'>{php echo number_format($credit,2)}</span> <a id='btn-all' class='text-danger external' href='#' style="position: absolute;right: 0;text-decoration: underline">全部提现</a></div>

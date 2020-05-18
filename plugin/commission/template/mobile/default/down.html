@@ -1,429 +1,85 @@
 {template '_header'}
-<script>document.title = "{php echo $this->set['texts']['mydown']}({$total})"</script>
 {template 'commission/common'}
-<!--<div class="fui-page fui-page-current page-commission-down">-->
-<!--&lt;!&ndash;    <div class="fui-hea.fans_warp .top_bar .fans_banner .img_warp imgder">&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="fui-header-left">&ndash;&gt;-->
-<!--&lt;!&ndash;            <a class="back"></a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div class="title">{php echo $this->set['texts']['mydown']}({$total})</div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--    <div class="fui-content navbar">-->
-<!--&lt;!&ndash;	一级 二级	&ndash;&gt;-->
-<!--        {if $this->set['level']>=2}-->
-<!--        <div class="fui-tab fui-tab-warning" id="tab">-->
-<!--            <a class="active" href="javascript:void(0)" data-tab='level1'>{php echo $this->set['texts']['c1']}({$level1})</a>-->
-<!--            {if $this->set['level']>=2}<a href="javascript:void(0)" data-tab='level2'>{php echo $this->set['texts']['c2']}({$level2})</a>{/if}-->
-<!--            {if $this->set['level']>=3}<a href="javascript:void(0)" data-tab='level3'>{php echo $this->set['texts']['c3']}({$level3})</a>{/if}-->
-<!--        </div>-->
-<!--        {/if}-->
+<div class="fui-page fui-page-current page-commission-down">
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">{php echo $this->set['texts']['mydown']}({$total})</div>
+    </div>
+    <div class="fui-content navbar">
+        {if $this->set['level']>=2}
+        <div class="fui-tab fui-tab-warning" id="tab">
+            <a class="active" href="javascript:void(0)" data-tab='level1'>{php  $this->set['texts']['c1']}直推({$level1})</a>
+            {if $this->set['level']>=2}<a href="javascript:void(0)" data-tab='level2'>{php $this->set['texts']['c2']}间推({$level2})</a>{/if}
+            {if $this->set['level']>=3}<a href="javascript:void(0)" data-tab='level3'>{php echo $this->set['texts']['c3']}({$level3})</a>{/if}
+        </div>
+        {/if}
+
+        <div class="fui-title"><i class="icon icon-star text-danger"></i> 代表已成为{php echo $this->set['texts']['agent']}的{php echo $this->set['texts']['down']}
+
+        </div>
+        <div class="fui-list-group" id="container"></div>
+        <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
+
+		<div class='content-empty' style='display:none;'>
+			<!--<i class='icon icon-group'></i><br/>暂时没有任何数据-->
+			<img src="{EWEI_SHOPV2_STATIC}images/nomeb.png" style="width: 6rem;margin-bottom: .5rem;"><br/><p style="color: #999;font-size: .75rem">暂时没有任何数据</p>
+		</div>
+
+    </div>
 
 
-<!--        <div class="fui-title"><i class="icon icon-star text-danger"></i> 代表已成为{php echo $this->set['texts']['agent']}的{php echo $this->set['texts']['down']}-->
+	<script id='tpl_commission_down_list' type='text/html'>
+		<%each list as user%>
+		<div class="fui-list" style="height: 3.5rem">
+			<div class="fui-list-media">
+				<%if user.avatar%>
+				<img data-lazy="<%user.avatar%>" class="round" style="width:2rem;height:2rem">
+				<%else%>
+				<i class="icon icon-my2"></i>
+				<%/if%>
+			</div>
+			<div class="fui-list-inner">
+				<div class="row">
+				      <div class="row-text" >
+					  <%if user.isagent==1 && user.status==1%>
+					  <i class="icon icon-star text-danger"></i>
+					  <%/if%>
+					  <%if user.nickname%><%user.nickname%><%else%>未获取<%/if%>
 
-<!--        </div>-->
-<!--        <div class="fui-list-group" id="container"></div>-->
-<!--        <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>-->
-
-<!--		<div class='content-empty' style='display:none;'>-->
-<!--			&lt;!&ndash;<i class='icon icon-group'></i><br/>暂时没有任何数据&ndash;&gt;-->
-<!--			<img src="{EWEI_SHOPV2_STATIC}images/nomeb.png" style="width: 6rem;margin-bottom: .5rem;"><br/><p style="color: #999;font-size: .75rem">暂时没有任何数据</p>-->
-<!--		</div>-->
-
-<!--    </div>-->
-
-
-<!--	<script id='tpl_commission_down_list' type='text/html'>-->
-<!--		<%each list as user%>-->
-<!--		<div class="fui-list" style="height: 3.5rem">-->
-<!--			<div class="fui-list-media">-->
-<!--				<%if user.avatar%>-->
-<!--				<img data-lazy="<%user.avatar%>" class="round" style="width:2rem;height:2rem">-->
-<!--				<%else%>-->
-<!--				<i class="icon icon-my2"></i>-->
-<!--				<%/if%>-->
-<!--			</div>-->
-<!--			<div class="fui-list-inner">-->
-<!--				<div class="row">-->
-<!--				      <div class="row-text" >-->
-<!--					  <%if user.isagent==1 && user.status==1%>-->
-<!--					  <i class="icon icon-star text-danger"></i>-->
-<!--					  <%/if%>-->
-<!--					  <%if user.nickname%><%user.nickname%><%else%>未获取<%/if%>-->
-
-<!--				      </div>-->
-<!--				</div>-->
-<!--				<div class="subtitle">-->
-<!--					<%if user.isagent==1 && user.status==1%>-->
-<!--				    成为{php echo $this->set['texts']['agent']}时间:<%if user.agenttime=='1970-01-01 08:00' %> <%user.createtime%> <%else%> <%user.agenttime%> <%/if%>-->
-<!--				    <%else%>-->
-<!--				    注册时间:  <%user.createtime%>-->
-<!--				    <%/if%>-->
+				      </div>
+				</div>
+				<div class="subtitle">
+					<%if user.isagent==1 && user.status==1%>
+				    成为{php echo $this->set['texts']['agent']}时间:<%if user.agenttime=='1970-01-01 08:00' %> <%user.createtime%> <%else%> <%user.agenttime%> <%/if%>
+				    <%else%>
+				    注册时间:  <%user.createtime%>
+				    <%/if%>
 
 
 
-<!--				</div>-->
-<!--			</div>-->
-<!--			<div class="row-remark">-->
-<!--				<%if user.isagent==1 && user.status==1%>-->
-<!--				<p>+<%user.commission_total%></p>-->
-<!--				<p><%user.agentcount%>个成员</p>-->
-<!--				<%else%>-->
-<!--				<p>消费: <%user.moneycount%>{php echo $this->set['texts']['yuan']}</p>-->
-<!--				<p><%user.ordercount%>个订单</p>-->
-<!--				<%/if%>-->
+				</div>
+			</div>
+			<div class="row-remark">
+				<%if user.isagent==1 && user.status==1%>
+				<p>+<%user.commission_total%></p>
+				<p><%user.agentcount%>个成员</p>
+				<%else%>
+				<p>消费: <%user.moneycount%>{php echo $this->set['texts']['yuan']}</p>
+				<p><%user.ordercount%>个订单</p>
+				<%/if%>
 
-<!--			</div>-->
-<!--		</div>-->
-<!--		<%/each%>-->
-<!--	</script>-->
+			</div>
+		</div>
+		<%/each%>
+	</script>
 
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/commission/static/js/down.js'], function (modal) {
 			modal.init({fromDetail: false});
 		});
 	</script>
-<!--</div>-->
-<!--{php $this->footerMenus()-->
-<!--{php $this->footerMenus(3,0)-->
-<!--自己写的样式开始-->
-<style>
-	a{
-		color: #000;
-	}
-	/*---------------------------漂浮块样式------------------------*/
-	.fans_warp .top_bar{
-		background: #fe7d01;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 29vw;
-		margin-bottom: 21vw;
-		position: relative;
-	}
-	.fans_warp .top_bar .referrer{
-		color: #fff;
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		height: 12vw;
-		line-height: 12vw;
-	}
-	.fans_warp .top_bar .fans_banner{
-		width: 95%;
-		background: #fff;
-		border-radius: 10px;
-		padding: 3vw;
-		box-shadow: 0 0 6px #ccc;
-		position: absolute;
-		top: 12vw;
-	}
-	.fans_warp .top_bar .fans_banner>div{
-		display: flex;
-		justify-content: space-between;
-	}
-	.fans_warp .top_bar .fans_banner>div>div{
-		flex: 1;
-		display: flex;
-		justify-content: center;
-	}
-	.fans_warp .top_bar .fans_banner .img_warp{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.fans_warp .top_bar .fans_banner .img_warp img{
-		width: 6.9vw;
-	}
-	.fans_warp .top_bar .title{
-		color: black;
-		font-size: 4.15vw;
-		font-weight: bold;
-	}
-
-	.fans_warp .top_bar .center>div{
-		padding: 1vw 0 2vw 0;
-		font-size: 5vw;
-		color: black;
-		font-weight: bold;
-	}
-	.fans_warp .top_bar .center .center_2,
-	.fans_warp .top_bar .bottom span{
-		color: #fe7d01;
-	}
-
-	/*-----------------------------切换栏---------------------------*/
-	.topBar{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		padding: 0 1rem;
-	}
-	.topBar>div{
-		border-bottom: 3px solid transparent;
-		font-size: 4vw;
-	}
-	.topBar>div a{
-		color: #000;
-	}
-	.topBar>div.active{
-		border-bottom: 3px solid #fe7d01;
-	}
-	.topBar>div.active a{
-		color:#fe7d01;
-	}
-	/*-----------------切换栏下面显示的内容--------------------*/
-	.fans_content{
-		padding: 3vw;
-	}
-	.fans_content .content_item{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1vw 0;
-		border-bottom: .6px solid #ccc;
-	}
-	.fans_content .content_item .left{
-		display: flex;
-		align-items: center;
-	}
-	.photo_warp{
-		width: 7.5vw;
-		overflow: hidden;
-		border-radius: 50%;
-		position: relative;
-		display: inline-block;
-		margin-right: 2vw;
-	}
-	.photo_warp img{
-		object-fit: cover;
-		border-radius: inherit;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	.fans_content .content_item .center.active{
-		color:#fe7d01;
-	}
-	.fans_content .content_item .right{
-		color: #666;
-	}
-	.fui-page.fui-page-current, .fui-page-group.fui-page-current{
-		overflow-y: auto;
-	}
-	/*	弹出层样式*/
-	.van-overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 1;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.7);
-	}
-	.van-popup--bottom {
-		bottom: 0;
-		left: 0;
-		width: 100%;
-	}
-	.van-popup {
-		position: fixed;
-		max-height: 100%;
-		overflow-y: auto;
-		background-color: #fff;
-		-webkit-overflow-scrolling: touch;
-		padding: 0 3vw;
-	}
-	/*	弹出层内容的样式*/
-	.van-popup .title{
-		display: flex;
-		justify-content: space-between;
-		font-size: 4.5vw;
-		color: #000;
-	}
-	.van-popup span{
-		display: flex;
-		align-items: center;
-	}
-	.van-popup .close{
-		font-size: 8vw;
-	}
-	.van-popup .img_warp{
-		display: flex;
-		justify-content: center;
-	}
-	.van-popup .photo_warp{
-		width: 13.5vw;
-	}
-	.van-popup .rank{
-		font-size: 4.2vw;
-		color: #000;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 3vw 0 2vw 0;
-	}
-	.van-popup .rank img{
-		width: 7vw;
-		margin-left: 2vw;
-	}
-	.van-popup .fans_num{
-		display: flex;
-		justify-content: center;
-		padding: 0.6vw;
-		color: #666;
-	}
-	.van-popup .fans_num span{
-		margin-left: 2vw;
-		color: #fe7d01;
-	}
-
-</style>
-<!----------------------------自己写的页面 开始----------------------------------->
-<div class="fui-page fui-page-current page-commission-down fans_warp">
-	<div class="top_bar">
-		<a href="" class="referrer">查看我的推荐人 ></a>
-		<div class="fans_banner">
-			<div class="top">
-				<div class="title">粉丝总人数</div>
-				<div class="img_warp">
-					<img src="/addons/ewei_shopv2/static/021img/xingji.png" alt="">
-
-				</div>
-			</div>
-			<div class="center">
-				<div class="center_l">407</div>
-				<div class="center_2">星级用户</div>
-			</div>
-			<div class="bottom">
-				<div>
-					直接粉丝数 : <span>1512人</span>
-				</div>
-				<div>
-					间接粉丝数 : <span>1512人</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="fans_main">
-		<!--tab切换栏-->
-		<div class="topBar">
-			<div class="active"><a href="">全部粉丝</a></div>
-			<div><a href="">星级用户</a></div>
-			<div><a href="">经理</a></div>
-			<div ><a href="">合伙人</a></div>
-		</div>
-<!--		tab栏下面显示的内容-->
-		<div class="fans_content">
-<!--			每一项-->
-			<a class="content_item" myid="1哈哈" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=23&fans_fans=12">
-				<div class="left">
-					<div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
-					<span>海洋</span>
-				</div>
-				<div class="center active">
-					合伙人
-				</div>
-				<div class="right">
-					粉丝数:178 >
-				</div>
-			</a>
-			<a class="content_item" myid="2哈哈" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=23&fans_fans=13">
-				<div class="left">
-					<div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
-					<span>海洋</span>
-				</div>
-				<div class="center">
-					经理
-				</div>
-				<div class="right">
-					粉丝数:178 >
-				</div>
-			</a>
-		</div>
-<!--		点击每一项的弹出层-->
-		<div class="van-overlay" style="z-index: 2011; display: none;"></div>
-		<div class="van-popup van-popup--bottom" style="height: 40vh; z-index: 2012; display: none;">
-			<div class="title">
-				<div></div>
-				<span>我的推荐人</span>
-				<div class="close">×</div>
-			</div>
-			<div class="img_warp">
-				<div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
-			</div>
-			<div class="rank">
-				级别:合伙人
-				<img src="/addons/ewei_shopv2/static/021img/xingji.png" alt=""></div>
-			<div class="fans_num">
-				直接粉丝数:
-				<span>1512人</span>
-			</div>
-			<div class="fans_num">
-				间接粉丝数:
-				<span>1512人</span>
-			</div>
-		</div>
-	</div>
-<!--	<div class="fui-content navbar">-->
-<!--		&lt;!&ndash;	一级 二级	&ndash;&gt;-->
-<!--		{if $this->set['level']>=2}-->
-<!--		<div class="fui-tab fui-tab-warning" id="tab">-->
-<!--			<a class="active" href="javascript:void(0)" data-tab='level1'>{php echo $this->set['texts']['c1']}({$level1})</a>-->
-<!--			{if $this->set['level']>=2}<a href="javascript:void(0)" data-tab='level2'>{php echo $this->set['texts']['c2']}({$level2})</a>{/if}-->
-<!--			{if $this->set['level']>=3}<a href="javascript:void(0)" data-tab='level3'>{php echo $this->set['texts']['c3']}({$level3})</a>{/if}-->
-<!--		</div>-->
-<!--		{/if}-->
-<!--	</div>-->
-
 </div>
-<script>
-// tab栏 点击高亮js
-	let tabIndex = 0;//这是tab栏的索引
-	var buttons=document.querySelectorAll(".topBar>div");
-	function active(buttons) {
-		var l=buttons.length;
-		for(var i=0;i<l;i++){
-			buttons[i].onclick=function(){
-				for(var j=0;j<l;j++){
-					if(this==buttons[j]){
-						this.className="active";
-						tabIndex = j
-						console.log(tabIndex)
-					}else{
-						buttons[j].className="";
-					}
-
-				}
-			}
-		}
-	}
-	active(buttons)
-// //点击每一项 弹出层
-// $('.fans_content').on("click",".content_item",function(){
-// 	//拿到点击项的id
-// 	let myid = $(this).attr('myid')
-// })
-$(".referrer").click(function(){
-	//弹出层淡入淡出和滑动
-	$('.van-overlay').fadeIn();
-	$(".van-popup").slideDown();
-});
-$(".close").click(function(){
-	$('.van-overlay').fadeOut();;
-	$(".van-popup").slideUp();
-	return false;
-});
-$(".van-overlay").click(function(){
-	$('.van-overlay').fadeOut();;
-	$(".van-popup").slideUp();
-	return false;
-});
-</script>
-<!----------------------------自己写的页面 结束----------------------------------->
-
-
-
+{php $this->footerMenus()}
 {template '_footer'}
-

@@ -92,7 +92,9 @@ class Index_EweiShopV2Page extends PluginMobilePage
 		$this->page = $page;
 		$startadv = $this->model->getStartAdv($page['diyadv']);
 		$this->model->setShare($page);
-
+		if($page['id'] == '29'){
+            $member_next_level = $this->renew();
+		}
 		if ($_GPC['simple']) {
 			include $this->template('diypage/index_simple');
 			return NULL;
@@ -660,6 +662,19 @@ class Index_EweiShopV2Page extends PluginMobilePage
 		$level = pdo_fetch('select * from ' . tablename('ewei_shop_commission_level') . ' where uniacid=:uniacid and id=:id limit 1', array(':uniacid' => $_W['uniacid'], ':id' => $member['agentlevel']));
 		return $level;
 	}
+
+	/*续费*/
+	public function renew(){
+        global $_W;
+
+		$member = m("member")->getMember($_W['openid']);
+		if($member['level'] < 3){
+			$id = $member['level']+1;
+		} else {
+			$id = $member['level'];
+		}
+		return pdo_fetch('select * from ' . tablename('ewei_shop_member_level') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
+    }
 }
 
 ?>
