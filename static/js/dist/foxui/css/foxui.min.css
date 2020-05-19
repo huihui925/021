@@ -40,7 +40,8 @@ body {
 
 	font-size: 0.7rem;
 	line-height: 1.5;
-	color: #333;
+	/*color: #333;*/
+	color:black;
 	background: #fafafa;
 	overflow: hidden;
 }

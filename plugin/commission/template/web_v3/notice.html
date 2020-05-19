@@ -146,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="form-group-title">新增下级通知</div>
+            <div class="form-group-title">新增粉丝通知</div>
 
             <div class="form-group">
                 <label class="col-lg control-label">标题</label>
@@ -154,7 +154,7 @@
                     {ifp 'commission.notice.edit'}
                     <input type="text" name="data[commission_agent_newtitle]" class="form-control" value="{$data['tm']['commission_agent_newtitle']}" />
                     <div class="help-block">
-                        标题，默认"恭喜您新增下级成员"&nbsp;&nbsp;&nbsp; 默认通知等级 :
+                        标题，默认"恭喜您新增粉丝成员"&nbsp;&nbsp;&nbsp; 默认通知等级 :
                         <label class="radio-inline">
                             <input type="radio" value="0" name="data[commission_agent_new_notice]" {if empty($data['tm']['commission_agent_new_notice'])}checked=""{/if}> {php echo empty($data['texts']['c1'])?'一级':$data['texts']['c1']}[默认]
                         </label>
@@ -175,7 +175,7 @@
                 <div class="col-sm-9 col-xs-12">
                     {ifp 'commission.notice.edit'}
                     <textarea  name="data[commission_agent_new]" class="form-control" rows="5">{$data['tm']['commission_agent_new']}</textarea>
-                    <div class='help-block'>模板变量: [下级昵称] [时间] [下线层级]</div>
+                    <div class='help-block'>模板变量: [粉丝昵称] [时间] [粉丝层级]</div>
                     {else}
                     <div class='form-control-static'>{$data['tm']['commission_agent_new']}</div>
                     {/if}
@@ -194,7 +194,7 @@
                 </div>
             </div>
 
-            <div class="form-group-title">下级付款通知</div>
+            <div class="form-group-title">粉丝付款通知</div>
 
             <div class="form-group">
                 <label class="col-lg control-label">标题</label>
@@ -202,7 +202,7 @@
                     {ifp 'commission.notice.edit'}
                     <input type="text" name="data[commission_order_paytitle]" class="form-control" value="{$data['tm']['commission_order_paytitle']}" />
                     <div class="help-block">
-                        标题，默认"您有下级付款了"&nbsp;&nbsp;&nbsp;默认通知等级 :
+                        标题，默认"您有粉丝付款了"&nbsp;&nbsp;&nbsp;默认通知等级 :
                         <label class="radio-inline">
                             <input type="radio" value="0" name="data[commission_order_pay_notice]" {if empty($data['tm']['commission_order_pay_notice'])}checked=""{/if}> {php echo empty($data['texts']['c1'])?'一级':$data['texts']['c1']}[默认]
                         </label>
@@ -224,7 +224,7 @@
                 <div class="col-sm-9 col-xs-12">
                     {ifp 'commission.notice.edit'}
                     <textarea  name="data[commission_order_pay]" class="form-control" rows="5">{$data['tm']['commission_order_pay']}</textarea>
-                    <div class="help-block">模板变量 [下级昵称] [订单编号] [订单金额] [商品详情] [佣金金额] [时间] [下线层级]</div>
+                    <div class="help-block">模板变量 [粉丝昵称] [订单编号] [订单金额] [商品详情] [佣金金额] [时间] [粉丝层级]</div>
                     <div class="help-block">注意: 此 [佣金金额] ，不代表上级用户会立即获得，为可能获得的佣金金额</div>
                     {else}
                     <div class='form-control-static'>{$data['tm']['commission_order_pay']}</div>
@@ -244,7 +244,7 @@
                 </div>
             </div>
 
-            <div class="form-group-title">下级确认收货通知</div>
+            <div class="form-group-title">粉丝确认收货通知</div>
 
             <div class="form-group">
                 <label class="col-lg control-label">标题</label>
@@ -252,7 +252,7 @@
                     {ifp 'commission.notice.edit'}
                     <input type="text" name="data[commission_order_finishtitle]" class="form-control" value="{$data['tm']['commission_order_finishtitle']}" />
                     <div class="help-block">
-                        标题，默认"您有下级确认收货了"&nbsp;&nbsp;&nbsp;默认通知等级 :
+                        标题，默认"您有粉丝确认收货了"&nbsp;&nbsp;&nbsp;默认通知等级 :
                         <label class="radio-inline">
                             <input type="radio" value="0" name="data[commission_order_finish_notice]" {if empty($data['tm']['commission_order_finish_notice'])}checked=""{/if}> {php echo empty($data['texts']['c1'])?'一级':$data['texts']['c1']}[默认]
                         </label>
@@ -274,7 +274,7 @@
                 <div class="col-sm-9 col-xs-12">
                     {ifp 'commission.notice.edit'}
                     <textarea  name="data[commission_order_finish]" class="form-control" rows="5">{$data['tm']['commission_order_finish']}</textarea>
-                    <div class="help-block">模板变量 [下级昵称] [订单编号] [订单金额] [商品详情] [佣金金额] [时间] [下线层级]</div>
+                    <div class="help-block">模板变量 [粉丝昵称] [订单编号] [订单金额] [商品详情] [佣金金额] [时间] [粉丝层级]</div>
                     <div class="help-block">注意: 此 [佣金金额] ，不代表上级用户会立即获得，为可能获得的佣金金额</div>
                     {else}
                     <div class='form-control-static'>{$data['tm']['commission_order_finish']}</div>
@@ -586,10 +586,10 @@
                 </tr>
                 <tr>
 
-                    <td>新增下级通知</td>
+                    <td>新增粉丝通知</td>
                     <td>
                         <select class="select2" {ifp 'commission.notice.edit'}name="data[commission_agent_new_advanced]"{else}disabled{/if}>
-                        <option value=''>[默认]新增下级通知</option>
+                        <option value=''>[默认]新增粉丝通知</option>
                         {loop $template_list['commission_agent_new'] $template_val}
                         <option value="{$template_val['id']}" {if $data['tm']['commission_agent_new_advanced'] == $template_val['id'] }selected{/if}>{$template_val['title']}</option>
                         {/loop}
@@ -629,7 +629,7 @@
 
             <table class="table table-responsive">
                 <thead style="background: #ededed">
-                <th>买家通知-下级通知</th>
+                <th>买家通知-粉丝通知</th>
                 <th class="w200">模板消息</th>
                 <th class="w60 is_advanced"><!--<input class="js-switch small checkall" data-type="tpl-advanced" type="checkbox" />--></th>
                 <th class="w200 is_sms">短信模板</th>
@@ -638,10 +638,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>下级付款通知</td>
+                    <td>粉丝付款通知</td>
                     <td>
                         <select class="select2" {ifp 'commission.notice.edit'}name="data[commission_order_pay_advanced]"{else}disabled{/if}>
-                        <option value=''>[默认]下级付款通知</option>
+                        <option value=''>[默认]粉丝付款通知</option>
                         {loop $template_list['commission_order_pay'] $template_val}
                         <option value="{$template_val['id']}" {if $data['tm']['commission_order_pay_advanced'] == $template_val['id'] }selected{/if}>{$template_val['title']}</option>
                         {/loop}
@@ -675,10 +675,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>下级确认收货通知</td>
+                    <td>粉丝确认收货通知</td>
                     <td>
                         <select class="select2" {ifp 'commission.notice.edit'}name="data[commission_order_finish_advanced]"{else}disabled{/if}>
-                        <option value=''>[默认]下级确认收货通知</option>
+                        <option value=''>[默认]粉丝确认收货通知</option>
                         {loop $template_list['commission_order_finish'] $template_val}
                         <option value="{$template_val['id']}" {if $data['tm']['commission_order_finish_advanced'] == $template_val['id'] }selected{/if}>{$template_val['title']}</option>
                         {/loop}

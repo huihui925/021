@@ -34,7 +34,58 @@
         top: -0.5vw;
         margin-left: .3em;
     }
+    .photo_warp{
+        width: 7.5vw;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        margin-right: 2vw;
+    }
+    .photo_warp img{
+        object-fit: cover;
+        border-radius: inherit;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+     .radio_warp{
+        padding: 0 3vw;
+    }
+    .radio_warp .radio_item{
+        display: flex;
+        padding: 4vw 0;
+        border-bottom: 0.3px solid #d9d9d9;
+    }
+    .radio_warp .radio_item img{
+        width: 5.5vw;
+        height: 5.5vw;
+    }
+    .radio_warp .radio_item .name{
+        padding: 0 7vw 0 5vw;
+    }
+    .radio_warp .radio_item .astrict{
+        color: #666;
+        flex: 1;
+    }
+    .radio_warp .right_radio{
+        width: 5vw;
+        height: 5vw;
+        border-radius: 50%;
+        border: 0.5px solid #ccc;
+    }
+    .tip_warp{
+        color: #666;
+    }
+    .tip_warp>div:nth-child(2){
+        padding-bottom: 2vw;
+    }
 </style>
+<script>
+    function goUrl(link) {
+        window.location.href=link
+    }
+</script>
 <!--续费开通-->
 {if $page['id'] == '29'}
 {template 'diypage/template/tpl_29'}
@@ -79,7 +130,7 @@
         width: 1.2rem;
     }
     .fui-icon-group .fui-icon-col .text {
-         padding-top: 0;
+        padding-top: 0;
     }
 
     .fui-title a{
@@ -245,7 +296,7 @@
 {/if}
 <!--我的紫钻页面 结束-->
 <!--本月月报页面 开始-->
-{if $page['data']['page']['title']=='本月月报'||$page['data']['page']['title']=='本月流水'||$page['data']['page']['title']=='昨日收益'}
+{if $page['data']['page']['title']=='本月月报'||$page['data']['page']['title']=='本月流水'||$page['data']['page']['title']=='昨日收益'||$page['data']['page']['title']=='交易大厅'||$page['data']['page']['title']=='发布'}
 <style>
     a{
         color: #000;
@@ -352,7 +403,7 @@
     }
 
     .fans_warp .top_bar .center>div{
-        padding: 1vw 0 2vw 0;
+        padding: 3vw 0 2vw 0;
         color: black;
     }
     /*-----------------切换栏下面显示的内容--------------------*/
@@ -363,28 +414,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1vw 0;
+        padding: 1.5vw 0;
         border-bottom: .6px solid #ccc;
     }
     .fans_content .content_item .left{
         display: flex;
         align-items: center;
     }
-    .photo_warp{
-        width: 7.5vw;
-        overflow: hidden;
-        border-radius: 50%;
-        position: relative;
-        display: inline-block;
-        margin-right: 2vw;
-    }
-    .photo_warp img{
-        object-fit: cover;
-        border-radius: inherit;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
+
 
     .fans_content .content_item .right{
         color: #666;
@@ -396,12 +433,190 @@
         top: 5vw;
     }
     .wallet_warp  .top_bar {
-        margin-bottom: 6vw;
+        margin-bottom: 16vw;
+        height: 22vw;
+    }
+    .wallet_warp .fans_banner .top{
+        background: #eee;
+        border-radius: 5px;
+        padding: 1vw 3vw;
+    }
+    .wallet_warp .fans_banner .top .title{
+        justify-content: flex-start;
+    }
+    .wallet_warp .fans_banner .top span{
+        color: #fe7d01;
+        padding-left: 2vw;
+    }
+    .wallet_warp .fans_banner .top .img_warp{
+        color: #fe7d01;
+        justify-content: flex-end;
+    }
+    .wallet_warp .fans_banner .bottom{
+        font-size: 5vw;
+        font-weight: bold;
+    }
+    .wallet_warp .right_arrows:after{
+        top: 50%;
+        margin-right: 3vw;
+    }
+    .wallet_warp .photo_warp{
+         border-radius:0;
+        padding: 1vw;
     }
 </style>
 {/if}
 <!--我的钱包 结束-->
+<!--交易大厅 开始-->
+{if $page['data']['page']['title']=='交易大厅'}
+<style>
+    .trading_floor {
+        padding: 0;
+    }
+    .trading_floor .topbar{
+        display: flex;
+        justify-content: space-between;
+        padding: 1vw 3vw;
+        background: #fe7d01;
+        color: #fe7d01;
+        align-items: center;
+    }
+    .trading_floor .classify{
+        display: flex;
+        border-radius: 16px;
+        background: #fff;
+    }
+    .trading_floor .sell{
+        padding: 1vw 3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .no-active{
+        padding: 1vw 3vw;
+        background: #fe7d01;
+        color: #fff;
+        border-radius: 16px;
+        border: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .issue{
+        color: #fff;
+    }
+    .trading_floor .sort{
+        display: flex;
+        justify-content: space-around;
+        padding: 1.5vw;
+    }
+    .trading_floor .sort>div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .sort>div img{
+        width: 3vw;
+        margin-left: 1vw;
+    }
+    .trading_floor .monthly_item{
+        flex-direction: column;
+    }
+    .trading_floor .name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .center{
+        display: flex;
+        width: 100%;
+        padding: 1vw;
+    }
+    .trading_floor .center>div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .center>div img{
+        width: 3vw;
+        height: 3vw;
+    }
+    .current_monthly .monthly_main .monthly_item {
+        padding: 3vw 0;
+    }
 
+</style>
+{/if}
+<!--交易大厅 结束-->
+<!--发布 开始-->
+{if $page['data']['page']['title']=='发布'}
+<style>
+    .issue_warp .monthly_item{
+        flex-direction: column;
+    }
+    .issue_warp .monthly_item .info .num{
+        font-size: 4vw;
+    }
+</style>
+{/if}
+<!--发布 结束-->
+<!--支付方式 开始-->
+{if $page['data']['page']['title']=='支付方式'||$page['data']['page']['title']=='求购购买'}
+<style>
+.pay_way .radio_active{
+  background: url("/addons/ewei_shopv2/static/021img/success_icon.png") no-repeat;
+  background-size: 100%;
+}
+.pay_way .right_radio.radio_active{
+    border:none;
+
+}
+.pay_way{
+    padding: 0 3vw;
+}
+.pay_way .title{
+    text-align: center;
+    padding: 6vw 0 2vw 0;
+    color: #666;
+}
+.pay_way .money{
+    text-align: center;
+    font-size: 7vw;
+    font-weight: bold;
+}
+.pay_way .money span{
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+.pay_way .integral{
+    text-align: center;
+    padding: 3vw 0;
+    font-size: 0.75rem;
+}
+
+.pay_way .public_021btn{
+    margin: 12vw 0 12vw 0;
+}
+
+
+
+</style>
+{/if}
+<!--支付方式 结束-->
+<!--求购购买 开始-->
+{if $page['data']['page']['title']=='求购购买'}
+<style>
+.ask_buy.pay_way .public_021btn{
+    margin: 8vw 0;
+}
+    .ask_buy.pay_way .money img{
+        width: 4vw;
+    }
+
+</style>
+{/if}
+<!--求购购买 结束-->
 <!--我的股权 开始-->
 {if $page['data']['page']['title']=='我的股权'||$page['data']['page']['title']=='股权分红'}
 <style>
@@ -455,8 +670,14 @@
 {/if}
 <!--股权分红 结束-->
 <!--紫钻兑换股权 开始-->
-{if $page['data']['page']['title']=='紫钻兑换'}
+{if $page['data']['page']['title']=='紫钻兑换'||$page['data']['page']['title']=='积分出售'||$page['data']['page']['title']=='发起求购'}
 <style>
+    input::-ms-input-placeholder{
+        text-align: center;
+    }
+    input::-webkit-input-placeholder{
+        text-align: center;
+    }
     .fui-navbar ~ .fui-content, .fui-content.navbar{
         padding: 3vw 2vw;
     }
@@ -559,6 +780,30 @@
     }
 </style>
 {/if}
+{if $page['data']['page']['title']=='积分出售'||$page['data']['page']['title']=='发起求购'}
+<style>
+.Integral_sale .money{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vw;
+}
+.Integral_sale .integral_main .money input{
+    font-size: 0.7rem;
+    padding: 1vw;
+    margin: 0;
+}
+.Integral_sale .integral_main .num{
+    width: 70%;
+    font-size: 4.5vw;
+}
+
+.Integral_sale .tip_warp {
+    color: #666;
+    padding: 5vw 4vw;
+}
+</style>
+{/if}
 <!--紫钻兑换股权 结束-->
 <!--本月流水页面 开始-->
 {if $page['data']['page']['title']=='本月流水'}
@@ -629,7 +874,9 @@
     {if $page['data']['page']['title']=='我的紫钻'}
     <div class="fui-page fui-page-current page-commission-down fans_warp">
         <div class="top_bar">
-            <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=19" class="referrer">兑换股权 ></a>
+            <a
+                    href="#"
+                    onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=19')" class="referrer">兑换股权 ></a>
             <div class="fans_banner">
                 <div class="name">
                     我的紫钻
@@ -638,7 +885,8 @@
                     5
                 </div>
                 <div class="center">
-                    <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=18" >
+                    <a href="#"
+                       onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=18')">
                         查看紫钻收益 >
                     </a>
                 </div>
@@ -650,7 +898,7 @@
                 <!--			每一项-->
                 <a class="content_item">
                     <div class="left">
-                        <div class="photo_warp">
+                        <div>
                             500积分兑换5紫钻
                         </div>
                     </div>
@@ -660,7 +908,7 @@
                 </a>
                 <a class="content_item" >
                     <div class="left">
-                        <div class="photo_warp ">
+                        <div>
                             500积分兑换5紫钻
                         </div>
                     </div>
@@ -726,7 +974,10 @@
             </a>
 
         </div>
-        <a class="public_021btn btn current_monthly_btn" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=14" style="display: block">
+        <a class="public_021btn btn current_monthly_btn"
+           href="#"
+           onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=14')"
+          style="display: block">
             查看本月月报
         </a>
     </div>
@@ -761,7 +1012,9 @@
         </div>
         <img src="/addons/ewei_shopv2/static/021img/success_icon.png" alt="" style="width: 18vw;">
         <div class="exchange_result_text qqt_num">恭喜你, 成功兑换<?php  echo $_GET['equity_num']; ?>股权</div>
-        <a class="exchange_result_btn public_021btn btn" style="display: block" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=21">
+        <a class="exchange_result_btn public_021btn btn" style="display: block"
+           href="#"
+           onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=21')">
             查看我的股权
         </a>
     </div>
@@ -770,8 +1023,11 @@
     <!--我的股权 开始-->
     {if $page['data']['page']['title']=='我的股权'}
     <div class="my_equity">
-        <div><a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=19" class="referrer">兑换股权 ></a></div>
-        <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123">
+        <div><a
+                href="#"
+                onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=19')" class="referrer">兑换股权 ></a></div>
+        <a href="#"
+           onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
             <div class="title">
                 XXX有限公司
             </div>
@@ -781,7 +1037,8 @@
             </span>
         </a>
 <!--        company_id为传过去的公司id 另一个页面根据此参数渲染数据-->
-        <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123">
+        <a  href="#"
+            onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
             <div class="title">
                 XXX有限公司
             </div>
@@ -797,7 +1054,8 @@
     <!--股权分红 开始-->
     {if $page['data']['page']['title']=='股权分红'}
     <div class="my_equity equity_dividend">
-        <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123">
+        <a href="#"
+           onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
             <div class="title">
                 <div>XXX有限公司</div>
                 <div class="time">2020-04-01</div>
@@ -807,7 +1065,8 @@
             </span>
         </a>
 <!--        company_id为传过去的公司id 另一个页面根据此参数渲染数据-->
-        <a href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123">
+        <a href="#"
+                onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
             <div class="title">
                 <div>XXX有限公司</div>
                 <div class="time">2020-04-01</div>
@@ -1126,7 +1385,7 @@
                         可提现:
                     <span>5713.11</span>
                     </div>
-                    <div class="img_warp">
+                    <div class="img_warp" onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=member.withdraw')">
                         提现
                     </div>
                 </div>
@@ -1148,25 +1407,34 @@
             <!--		tab栏下面显示的内容-->
             <div class="fans_content">
                 <!--			每一项-->
-                <a class="content_item" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=18">
+                <a class="content_item"
+                   href="#"
+                   onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=18')"
+                 >
                     <div class="left">
-                        <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+                        <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/zrshouyi.png" alt=""></div>
                         <span>昨日收益</span>
                     </div>
                     <div class="right right_arrows">
                     </div>
                 </a>
-                <a class="content_item"href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=14">
+                <a class="content_item"
+                   href="#"
+                   onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=14')"
+               >
                 <div class="left">
-                    <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+                    <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/byyuebao.png" alt=""></div>
                     <span>本月月报</span>
                 </div>
                 <div class="right right_arrows">
                 </div>
             </a>
-                <a class="content_item" href="http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22">
+                <a class="content_item"
+                   href="#"
+                   onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22')"
+                  >
                     <div class="left">
-                        <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+                        <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/gqfenhong.png" alt=""></div>
                         <span>股权分红</span>
                     </div>
                     <div class="right right_arrows">
@@ -1197,8 +1465,204 @@
                 </div>
             </div>
         </div>
+    </div>
     {/if}
     <!--我的钱包 结束-->
+        <!--交易大厅 开始-->
+        {if $page['data']['page']['title']=='交易大厅'}
+            <div class="current_monthly trading_floor">
+                <div class="topbar">
+                    <div class="classify">
+                        <div class="sell ">出售</div>
+                        <div class="buy no-active">求购</div>
+                    </div>
+                    <div class="issue" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=31')">发布</div>
+                </div>
+                <div class="sort">
+                    <div class="sell_num">
+                        <span>出售数量</span>
+                        <img src="/addons/ewei_shopv2/static/021img/jiangxu.png" alt="">
+                    </div>
+                    <div class="money">
+                        <span>金额</span>
+                        <img src="/addons/ewei_shopv2/static/021img/shengxu.png" alt="">
+                    </div>
+                </div>
+                <div class="monthly_main">
+                    <a class="monthly_item" href="#"
+                       onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=30')">
+                        <div class="name">
+                            <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+                            傻二哈
+                        </div>
+                        <div class="center">
+                            <div class="title">出售数量</div>
+                            <div class="title">金额</div>
+                        </div>
+                        <div class="center">
+                            <div>
+                                <img src="/addons/ewei_shopv2/static/021img/shuliang.png" alt="">1000
+                            </div>
+                            <div>
+                                ￥200
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                </div>
+            </div>
+        {/if}
+        <!--交易大厅 结束-->
+        <!--支付方式 开始-->
+        {if $page['data']['page']['title']=='支付方式'}
+        <div class="pay_way">
+            <div class="title">支付金额</div>
+            <div class="money">
+                <span>￥</span>
+                200
+            </div>
+            <div class="integral">支付成功将获得1000积分</div>
+            <div class="radio_warp">
+                <div class="radio_item">
+                    <img src="/addons/ewei_shopv2/static/021img/yue.png" alt="">
+                    <div class="name">余额支付</div>
+                    <div class="astrict">当前余额556元</div>
+                    <div class="right_radio radio_active"></div>
+                </div>
+                <div class="radio_item">
+                    <img src="/addons/ewei_shopv2/static/021img/zfb.png" alt="">
+                    <div class="name">余额支付</div>
+                    <div class="astrict">当前余额556元</div>
+                    <div class="right_radio"></div>
+                </div>
+                <div class="radio_item">
+                    <img src="/addons/ewei_shopv2/static/021img/wx.png" alt="">
+                    <div class="name">余额支付</div>
+                    <div class="astrict">当前余额556元</div>
+                    <div class="right_radio">
+                    </div>
+                </div>
+            </div>
+            <div class="exchange_result_btn public_021btn btn">
+                确认支付
+            </div>
+            <div class="tip_warp">
+                <div>ps:</div>
+                <div>
+                    来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+                </div>
+                <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+            </div>
+        </div>
+        {/if}
+        <!--支付方式 结束-->
+        <!--求购购买 开始-->
+        {if $page['data']['page']['title']=='求购购买'}
+        <div class="pay_way ask_buy">
+            <div class="title">支付积分</div>
+            <div class="money">
+                <img src="/addons/ewei_shopv2/static/021img/shuliang.png" alt="">
+                1000
+            </div>
+            <div class="integral">支付成功将获得200元</div>
+            <div class="exchange_result_btn public_021btn btn">
+                确认支付
+            </div>
+            <div class="tip_warp">
+                <div>ps:</div>
+                <div>
+                    来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+                </div>
+                <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+            </div>
+        </div>
+        {/if}
+        <!--求购购买 结束-->
+        <!--发布 开始-->
+        {if $page['data']['page']['title']=='发布'}
+        <div class="issue_warp current_monthly">
+            <div class="monthly_main">
+                <a class="monthly_item" href="#" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=33')">
+                    <div class="img_warp">
+                        <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                    </div>
+                    <div class="info">
+                        <b class="num">发起出售</b>
+                    </div>
+                </a>
+                <a class="monthly_item" href="#" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=34')">
+                    <div class="img_warp">
+                        <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                    </div>
+                    <div class="info">
+                        <b class="num" >发起求购</b>
+                    </div>
+                </a>
+            </div>
+            <div class="tip_warp">
+                <div>ps:</div>
+                <div>
+                    来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+                </div>
+                <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+            </div>
+        </div>
+        {/if}
+        <!--发布 结束-->
+    <!--积分出售 开始-->
+    {if $page['data']['page']['title']=='积分出售'}
+    <div class="integral_navbar Integral_sale">
+        <div class="topbar">
+            <div class="integral">当前共 6317 积分</div>
+        </div>
+        <div class="integral_main">
+            <div class="money">
+                <div>售价: </div><input type="text" placeholder="请输入出售价格" inputmode="decimal">
+                <div>单元(元)</div>
+            </div>
+            <input class="num" type="text" placeholder="请输入出售积分数量" inputmode="decimal">
+            <div class="tip">
+                <span>将消耗1000积分</span>
+                <span>剩余5317积分</span>
+            </div>
+            <div class="btn">确认出售</div>
+        </div>
+        <div class="tip_warp">
+            <div>ps:</div>
+            <div>
+                来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+            </div>
+            <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+        </div>
+    </div>
+    {/if}
+    <!--积分出售 结束-->
+    <!--发起求购 开始-->
+    {if $page['data']['page']['title']=='发起求购'}
+    <div class="integral_navbar Integral_sale">
+        <div class="topbar">
+            <div class="integral">当前共 17 积分</div>
+        </div>
+        <div class="integral_main">
+            <div class="money">
+                <div>售价: </div><input type="text" placeholder="请输入购买价格" inputmode="decimal">
+                <div>单元(元)</div>
+            </div>
+            <input class="num" type="text" placeholder="请输入购买积分数量" inputmode="decimal">
+            <div class="btn">马上支付</div>
+        </div>
+        <div class="tip_warp">
+            <div>ps:</div>
+            <div>
+                来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+            </div>
+            <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+        </div>
+    </div>
+    {/if}
+    <!--发起求购 结束-->
     {if $diy_topmenu}
     {template 'diypage/template/tpl_topmenu_data'}
     {/if}
@@ -1251,7 +1715,6 @@
 {/if}
 
 
-
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZQiFErjQB7inrGpx27M1GR5w3TxZ64k7&s={php echo time()}"></script>
 <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.12&key=1fb308f0707e5ff11db5997d42660396&s={php echo time()}"></script>
 <script language="javascript">
@@ -1269,14 +1732,9 @@
 </script>
 {/if}
 <!--积分兑换紫钻的兑换结果页面 结束-->
-<!--我的紫钻页面 开始-->
-{if $page['data']['page']['title']=='我的紫钻'}
-<script>
-</script>
-{/if}
-<!--我的紫钻页面 结束-->
+
 <!--紫钻兑换股权 开始-->
-{if $page['data']['page']['title']=='紫钻兑换'}
+{if $page['data']['page']['title']=='紫钻兑换'||$page['data']['page']['title']=='积分出售'}
 <script>
     let toast = function(msg) {
         $('.van-toast__text').html(msg);
@@ -1309,33 +1767,9 @@
 </script>
 {/if}
 <!--本月月报页面 结束-->
-<!--本月流水页面 开始-->
-{if $page['data']['page']['title']=='本月流水'}
 
-{/if}
-<!--本月流水页面 结束-->
-<!--我的股权 开始-->
-{if $page['data']['page']['title']=='我的股权'}
-<script>
 
-</script>
-{/if}
-<!--我的股权 结束-->
-<!--下线的粉丝 开始-->
-{if $page['data']['page']['title']=='下线的粉丝'}
-<script>
 
-</script>
-{/if}
-<!--下线的粉丝 结束-->
 </div>
-
-
-
-<script>
-    function goUrl(url){
-        window.location.href=url
-    }
-</script>
 
 {template '_footer'}
