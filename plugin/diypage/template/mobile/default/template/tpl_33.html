@@ -1,0 +1,154 @@
+<style>
+    input::-ms-input-placeholder{
+        text-align: center;
+    }
+    input::-webkit-input-placeholder{
+        text-align: center;
+    }
+    .fui-navbar ~ .fui-content, .fui-content.navbar{
+        padding: 3vw 2vw;
+    }
+    .integral_navbar{
+        margin: 3vw 2vw;
+
+    }
+    .integral_navbar .topbar{
+        background: #ebebebeb;
+        border-radius: 13px;
+        box-shadow: 0 0 5px #b3b1b1b8;
+        /* overflow: hidden; */
+        display: flex;
+        justify-content: space-between;
+        padding: 3vw 3vw;
+        /* margin-bottom: 2vw; */
+        /* border: 0.1px solid #ccc; */
+        margin: 0 1px 4vw 0;
+    }
+    .integral_navbar .topbar .integral{
+        color: #000;
+        font-size: 0.75rem;
+    }
+    .integral_navbar .topbar .rate{
+        color: #666;
+    }
+
+    .integral_navbar .integral_main{
+        background: #f3f3f3;
+        box-shadow: 0 0 5px #b3b1b1b8;
+        padding: 6vw 3vw 5vw 5vw;
+        border-radius: 13px;
+        margin: 0 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .integral_navbar .integral_main .input_warp{
+
+    }
+    .integral_navbar .integral_main input{
+        display: block;
+        box-sizing: border-box;
+        width: 50%;
+        min-width: 0;
+        margin: 0;
+        padding: 3vw;
+        color: #323233;
+        line-height: inherit;
+        text-align: left;
+        background-color: transparent;
+        border: 0;
+        resize: none;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 4vw;
+        font-size: 4.5vw;
+    }
+    .integral_navbar .integral_main .tip span{
+        padding: 0 5vw;
+    }
+    .integral_main .btn{
+        background: #fe7d01;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 5vw;
+        margin-top: 5vw;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .van-toast{
+        min-width: 96px;
+        min-height: 0;
+        padding: 8px 12px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        box-sizing: content-box;
+        color: #fff;
+        font-size: 0.75rem;
+        line-height: 20px;
+        white-space: pre-wrap;
+        text-align: center;
+        word-wrap: break-word;
+        background-color: rgba(50, 50, 51, 0.88);
+        border-radius: 8px;
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .van-toast--text .van-toast__text, .van-toast--html .van-toast__text {
+        margin-top: 0;
+    }
+</style>
+<style>
+    .Integral_sale .money{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3vw;
+    }
+    .Integral_sale .integral_main .money input{
+        font-size: 0.7rem;
+        padding: 1vw;
+        margin: 0;
+    }
+    .Integral_sale .integral_main .num{
+        width: 70%;
+        font-size: 4.5vw;
+    }
+
+    .Integral_sale .tip_warp {
+        color: #666;
+        padding: 5vw 4vw;
+    }
+</style>
+<div class="integral_navbar Integral_sale">
+    <div class="topbar">
+        <div class="integral">当前共 6317 积分</div>
+    </div>
+    <div class="integral_main">
+        <div class="money">
+            <div>售价: </div><input type="text" placeholder="请输入出售价格" inputmode="decimal">
+            <div>单位(元)</div>
+        </div>
+        <input class="num" type="text" placeholder="请输入出售积分数量" inputmode="decimal">
+        <div class="tip">
+            <span>将消耗1000积分</span>
+            <span>剩余5317积分</span>
+        </div>
+        <div class="btn">确认出售</div>
+    </div>
+    <div class="tip_warp">
+        <div>ps:</div>
+        <div>
+            来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+        </div>
+        <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+    </div>
+</div>

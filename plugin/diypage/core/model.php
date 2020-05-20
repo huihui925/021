@@ -143,7 +143,7 @@ class DiypageModel extends PluginModel
 										$goods = pdo_fetchall('select id, title, thumb, price as productprice, money as minprice, credit, total, showgroups, `type`, goodstype from ' . tablename('ewei_shop_creditshop_goods') . (' where id in( ' . $newgoodsids . ' ) and status=1 and deleted=0 and uniacid=:uniacid order by displayorder desc '), array(':uniacid' => $_W['uniacid']));
 									}
 									else {
-										$goods = pdo_fetchall('select id,`presellend`,`preselltimeend`,isdiscount, isdiscount_time, title, subtitle, thumb, productprice, minprice, total,`type`,showlevels, showgroups,hascommission,nocommission,commission,commission1_rate,marketprice,commission1_pay,maxprice, bargain, merchid, sales, salesreal,ispresell,presellprice from ' . tablename('ewei_shop_goods') . (' where id in( ' . $newgoodsids . ' ) and status=1 and deleted=0 and checked=0 and uniacid=:uniacid order by displayorder desc '), array(':uniacid' => $_W['uniacid']));
+										$goods = pdo_fetchall('select id,`presellend`,`preselltimeend`,isdiscount, isdiscount_time, title, subtitle, thumb, productprice, minprice, total,`type`,showlevels, showgroups,hascommission,nocommission,commission,commission1_rate,marketprice,commission1_pay,maxprice, bargain, merchid, sales, salesreal,ispresell,presellprice,sale_type from ' . tablename('ewei_shop_goods') . (' where id in( ' . $newgoodsids . ' ) and status=1 and deleted=0 and checked=0 and uniacid=:uniacid order by displayorder desc '), array(':uniacid' => $_W['uniacid']));
 										if (!empty($goods) && is_array($goods)) {
 											foreach ($goods as $key => $value) {
 												if ($value['ispresell'] == 1 && time() < $value['preselltimeend']) {
@@ -1362,13 +1362,22 @@ class DiypageModel extends PluginModel
 		}
 		else {
 			if ($level != 'false' && !empty($level)) {
-				$commission = 1 <= $set['level'] ? round($level['commission1'] * $goods['marketprice'] / 100, 2) : 0;
+				if($goods['sale_type'] == 2){
+                    $commission = 1 <= $set['level'] ? round($level['commission1'] * $goods['marketprice'] / 100, 2) : 0;
+				} else {
+                    $commission = round($level['commission_retail'] * $goods['marketprice'] / 100, 2);
+				}
+
 			}
 			else {
-				$commission = 1 <= $set['level'] ? round($set['commission1'] * $goods['marketprice'] / 100, 2) : 0;
+				if($goods['sale_type'] == 2){
+                    $commission = 1 <= $set['level'] ? round($set['commission1'] * $goods['marketprice'] / 100, 2) : 0;
+				} else {
+                    $commission = round($set['commission_retail'] * $goods['marketprice'] / 100, 2);
+				}
+
 			}
 		}
-
 		return $commission;
 	}
 

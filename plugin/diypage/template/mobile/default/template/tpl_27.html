@@ -1,0 +1,162 @@
+<style>
+    a{
+        color: #000;
+    }
+    .current_monthly{
+        padding: 4vw;
+    }
+    .current_monthly .monthly_main{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .current_monthly .monthly_main .monthly_item{
+        width: 47%;
+        margin-right: 4.9%;
+        margin-bottom: 3.5vw;
+        box-shadow: 0 0 5px #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4vw 0;
+        border-radius: 10px;
+    }
+    .current_monthly .monthly_main .monthly_item:nth-child(2n){
+        margin-right: 0;
+    }
+    .current_monthly .monthly_item .img_warp img{
+        width: 8vw;
+    }
+    .current_monthly .monthly_item .info .num{
+        font-size: 5vw;
+        text-align: center;
+    }
+    .current_monthly .monthly_item .info .title{
+        text-align: center;
+    }
+    .num{
+        display: block;
+    }
+
+
+</style>
+<style>
+    .trading_floor {
+        padding: 0;
+    }
+    .trading_floor .topbar{
+        display: flex;
+        justify-content: space-between;
+        padding: 1vw 3vw;
+        background: #fe7d01;
+        color: #fe7d01;
+        align-items: center;
+    }
+    .trading_floor .classify{
+        display: flex;
+        border-radius: 16px;
+        background: #fff;
+    }
+    .trading_floor .sell{
+        padding: 1vw 3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .no-active{
+        padding: 1vw 3vw;
+        background: #fe7d01;
+        color: #fff;
+        border-radius: 16px;
+        border: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .issue{
+        color: #fff;
+    }
+    .trading_floor .sort{
+        display: flex;
+        justify-content: space-around;
+        padding: 1.5vw;
+    }
+    .trading_floor .sort>div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .sort>div img{
+        width: 3vw;
+        margin-left: 1vw;
+    }
+    .trading_floor .monthly_item{
+        flex-direction: column;
+    }
+    .trading_floor .name{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .center{
+        display: flex;
+        width: 100%;
+        padding: 1vw;
+    }
+    .trading_floor .center>div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .trading_floor .center>div img{
+        width: 3vw;
+        height: 3vw;
+    }
+    .current_monthly .monthly_main .monthly_item {
+        padding: 3vw 0;
+    }
+
+</style>
+<div class="current_monthly trading_floor">
+    <div class="topbar">
+        <div class="classify">
+            <div class="sell ">出售</div>
+            <div class="buy no-active">求购</div>
+        </div>
+        <div class="issue" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=31')">发布</div>
+    </div>
+    <div class="sort">
+        <div class="sell_num">
+            <span>出售数量</span>
+            <img src="/addons/ewei_shopv2/static/021img/jiangxu.png" alt="">
+        </div>
+        <div class="money">
+            <span>金额</span>
+            <img src="/addons/ewei_shopv2/static/021img/shengxu.png" alt="">
+        </div>
+    </div>
+    <div class="monthly_main">
+        <a class="monthly_item" href="#"
+           onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=30')">
+            <div class="name">
+                <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+                傻二哈
+            </div>
+            <div class="center">
+                <div class="title">出售数量</div>
+                <div class="title">金额</div>
+            </div>
+            <div class="center">
+                <div>
+                    <img src="/addons/ewei_shopv2/static/021img/shuliang.png" alt="">1000
+                </div>
+                <div>
+                    ￥200
+                </div>
+            </div>
+        </a>
+
+
+
+    </div>
+</div>

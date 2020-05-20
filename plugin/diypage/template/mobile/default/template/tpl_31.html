@@ -1,0 +1,76 @@
+<style>
+    a{
+        color: #000;
+    }
+    .current_monthly{
+        padding: 4vw;
+    }
+    .current_monthly .monthly_main{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .current_monthly .monthly_main .monthly_item{
+        width: 47%;
+        margin-right: 4.9%;
+        margin-bottom: 3.5vw;
+        box-shadow: 0 0 5px #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4vw 0;
+        border-radius: 10px;
+    }
+    .current_monthly .monthly_main .monthly_item:nth-child(2n){
+        margin-right: 0;
+    }
+    .current_monthly .monthly_item .img_warp img{
+        width: 8vw;
+    }
+    .current_monthly .monthly_item .info .num{
+        font-size: 5vw;
+        text-align: center;
+    }
+    .current_monthly .monthly_item .info .title{
+        text-align: center;
+    }
+    .num{
+        display: block;
+    }
+
+
+</style>
+<style>
+    .issue_warp .monthly_item{
+        flex-direction: column;
+    }
+    .issue_warp .monthly_item .info .num{
+        font-size: 4vw;
+    }
+</style>
+<div class="issue_warp current_monthly">
+    <div class="monthly_main">
+        <a class="monthly_item" href="#" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=33')">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/fqcs.png" alt="">
+            </div>
+            <div class="info">
+                <b class="num">发起出售</b>
+            </div>
+        </a>
+        <a class="monthly_item" href="#" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=34')">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/fqqg.png" alt="">
+            </div>
+            <div class="info">
+                <b class="num" >发起求购</b>
+            </div>
+        </a>
+    </div>
+    <div class="tip_warp">
+        <div>ps:</div>
+        <div>
+            来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+        </div>
+        <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+    </div>
+</div>

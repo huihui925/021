@@ -1,0 +1,68 @@
+<style>
+    .equity_dividend .time{
+        font-weight: normal;
+        color: #666;
+        font-size: 3.8vw;
+        padding-top: 1vw;
+    }
+    .equity_dividend .full_money{
+        color: #FE7D01;
+        font-weight: bold;
+        text-align: center;
+        padding: 5vw 0;
+        font-size: 4.5vw;
+    }
+</style>
+<style>
+    .my_equity{
+        padding: 0 3vw;
+    }
+    .my_equity>a{
+        color: #000;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 4vw;
+        border-radius: 10px;
+        box-shadow: 0 0 5px #ccc;
+        font-size: 4vw;
+        font-weight: bold;
+        margin: 3vw 0;
+    }
+    .my_equity>a>span{
+        color: #FE7D01;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4.5vw;
+    }
+    .my_equity>div{
+        text-align: right;
+        padding-top: 3vw;
+    }
+
+</style>
+<div class="my_equity equity_dividend">
+    <a href="#">
+        <div class="title">
+            <div>XXX有限公司</div>
+            <div class="time">2020-04-01</div>
+        </div>
+        <span>
+                120.00
+            </span>
+    </a>
+    <!--        company_id为传过去的公司id 另一个页面根据此参数渲染数据-->
+    <a href="#">
+        <div class="title">
+            <div>XXX有限公司</div>
+            <div class="time">2020-04-01</div>
+        </div>
+        <span>
+                120.00
+            </span>
+    </a>
+    <div class="full_money">
+        共计: 480元
+    </div>
+</div>

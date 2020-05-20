@@ -23,7 +23,7 @@ if (!class_exists('CommissionModel')) {
 			$set = parent::getSet($uniacid);
 			$tradeSet = m('common')->getSysset('trade');
 			$moneytext = isset($tradeSet['moneytext']) ? trim($tradeSet['moneytext']) : '余额';
-			$set['texts'] = array('agent' => empty($set['texts']['agent']) ? '分销商' : $set['texts']['agent'], 'shop' => empty($set['texts']['shop']) ? '小店' : $set['texts']['shop'], 'myshop' => empty($set['texts']['myshop']) ? '我的小店' : $set['texts']['myshop'], 'center' => empty($set['texts']['center']) ? '分销中心' : $set['texts']['center'], 'become' => empty($set['texts']['become']) ? '成为分销商' : $set['texts']['become'], 'withdraw' => empty($set['texts']['withdraw']) ? '提现' : $set['texts']['withdraw'], 'commission' => empty($set['texts']['commission']) ? '佣金' : $set['texts']['commission'], 'commission1' => empty($set['texts']['commission1']) ? '分销佣金' : $set['texts']['commission1'], 'commission_total' => empty($set['texts']['commission_total']) ? '累计佣金' : $set['texts']['commission_total'], 'commission_ok' => empty($set['texts']['commission_ok']) ? '可提现佣金' : $set['texts']['commission_ok'], 'commission_apply' => empty($set['texts']['commission_apply']) ? '已申请佣金' : $set['texts']['commission_apply'], 'commission_check' => empty($set['texts']['commission_check']) ? '待打款佣金' : $set['texts']['commission_check'], 'commission_lock' => empty($set['texts']['commission_lock']) ? '未结算佣金' : $set['texts']['commission_lock'], 'commission_detail' => empty($set['texts']['commission_detail']) ? '提现明细' : ($set['texts']['commission_detail'] == '佣金明细' ? '提现明细' : $set['texts']['commission_detail']), 'commission_pay' => empty($set['texts']['commission_pay']) ? '成功提现佣金' : $set['texts']['commission_pay'], 'commission_wait' => empty($set['texts']['commission_wait']) ? '待收货佣金' : $set['texts']['commission_wait'], 'commission_fail' => empty($set['texts']['commission_fail']) ? '无效佣金' : $set['texts']['commission_fail'], 'commission_charge' => empty($set['texts']['commission_charge']) ? '扣除提现手续费' : $set['texts']['commission_charge'], 'order' => empty($set['texts']['order']) ? '分销订单' : $set['texts']['order'], 'c1' => empty($set['texts']['c1']) ? '一级' : $set['texts']['c1'], 'c2' => empty($set['texts']['c2']) ? '二级' : $set['texts']['c2'], 'c3' => empty($set['texts']['c3']) ? '三级' : $set['texts']['c3'], 'mydown' => empty($set['texts']['mydown']) ? '我的下线' : $set['texts']['mydown'], 'down' => empty($set['texts']['down']) ? '下线' : $set['texts']['down'], 'up' => empty($set['texts']['up']) ? '推荐人' : $set['texts']['up'], 'yuan' => empty($set['texts']['yuan']) ? '元' : $set['texts']['yuan'], 'icode' => empty($set['texts']['icode']) ? '邀请码' : $set['texts']['icode'], 'moneytext' => $moneytext);
+			$set['texts'] = array('agent' => empty($set['texts']['agent']) ? '分销商' : $set['texts']['agent'], 'shop' => empty($set['texts']['shop']) ? '小店' : $set['texts']['shop'], 'myshop' => empty($set['texts']['myshop']) ? '我的小店' : $set['texts']['myshop'], 'center' => empty($set['texts']['center']) ? '分销中心' : $set['texts']['center'], 'become' => empty($set['texts']['become']) ? '成为分销商' : $set['texts']['become'], 'withdraw' => empty($set['texts']['withdraw']) ? '提现' : $set['texts']['withdraw'], 'commission' => empty($set['texts']['commission']) ? '佣金' : $set['texts']['commission'], 'commission1' => empty($set['texts']['commission1']) ? '分销佣金' : $set['texts']['commission1'], 'commission_total' => empty($set['texts']['commission_total']) ? '累计佣金' : $set['texts']['commission_total'], 'commission_ok' => empty($set['texts']['commission_ok']) ? '可提现佣金' : $set['texts']['commission_ok'], 'commission_apply' => empty($set['texts']['commission_apply']) ? '已申请佣金' : $set['texts']['commission_apply'], 'commission_check' => empty($set['texts']['commission_check']) ? '待打款佣金' : $set['texts']['commission_check'], 'commission_lock' => empty($set['texts']['commission_lock']) ? '未结算佣金' : $set['texts']['commission_lock'], 'commission_detail' => empty($set['texts']['commission_detail']) ? '提现明细' : ($set['texts']['commission_detail'] == '佣金明细' ? '提现明细' : $set['texts']['commission_detail']), 'commission_pay' => empty($set['texts']['commission_pay']) ? '成功提现佣金' : $set['texts']['commission_pay'], 'commission_wait' => empty($set['texts']['commission_wait']) ? '待收货佣金' : $set['texts']['commission_wait'], 'commission_fail' => empty($set['texts']['commission_fail']) ? '无效佣金' : $set['texts']['commission_fail'], 'commission_charge' => empty($set['texts']['commission_charge']) ? '扣除提现手续费' : $set['texts']['commission_charge'], 'order' => empty($set['texts']['order']) ? '分销订单' : $set['texts']['order'], 'c1' => empty($set['texts']['c1']) ? '一级' : $set['texts']['c1'], 'c2' => empty($set['texts']['c2']) ? '二级' : $set['texts']['c2'], 'c3' => empty($set['texts']['c3']) ? '三级' : $set['texts']['c3'], 'mydown' => empty($set['texts']['mydown']) ? '我的粉丝' : $set['texts']['mydown'], 'down' => empty($set['texts']['down']) ? '粉丝' : $set['texts']['down'], 'up' => empty($set['texts']['up']) ? '推荐人' : $set['texts']['up'], 'yuan' => empty($set['texts']['yuan']) ? '元' : $set['texts']['yuan'], 'icode' => empty($set['texts']['icode']) ? '邀请码' : $set['texts']['icode'], 'moneytext' => $moneytext);
 			return $set;
 		}
 
@@ -3056,7 +3056,7 @@ if (!class_exists('CommissionModel')) {
 				$oldlevel = array('levelname' => empty($set['levelname']) ? '普通等级' : $set['levelname'], 'commission1' => $set['commission1'], 'commission2' => $set['commission2'], 'commission3' => $set['commission3'], 'level' => 0);
 			}
 
-			$orders = pdo_fetchall('select og.goodsid from ' . tablename('ewei_shop_order') . ' o ' . ' left join  ' . tablename('ewei_shop_order_goods') . ' og on og.orderid=o.id ' . ' where o.openid=:openid and ((o.status>=3 and og.sale_type=1) OR (o.status>=1 and og.sale_type=2)) and o.uniacid=:uniacid and og.orderid=:orderid', array(':uniacid' => $_W['uniacid'], ':openid' => $openid, 'orderid' => $orderid));
+			$orders = pdo_fetchall('select og.goodsid from ' . tablename('ewei_shop_order') . ' o ' . ' left join  ' . tablename('ewei_shop_order_goods') . ' og on og.orderid=o.id ' . ' where o.openid=:openid and ((o.status>=3 and og.sale_type=1) OR (o.status>=1 and og.sale_type=2162+)) and o.uniacid=:uniacid and og.orderid=:orderid', array(':uniacid' => $_W['uniacid'], ':openid' => $openid, 'orderid' => $orderid));
 
 			if ($leveltype == 11) {
 				$newlevel = pdo_fetchall('select * from ' . tablename('ewei_shop_commission_level') . ' where uniacid=:uniacid  ', array(':uniacid' => $_W['uniacid']), 'level');
@@ -3223,7 +3223,7 @@ if (!class_exists('CommissionModel')) {
 						'first'    => array('value' => '亲爱的' . $member['nickname'] . '，您新增了一个' . $set['texts']['down'] . $data['nickname'], 'color' => '#ff0000'),
 						'keyword1' => array('title' => '业务类型', 'value' => '会员通知', 'color' => '#000000'),
 						'keyword2' => array('title' => '业务内容', 'value' => '您新增了一个下级', 'color' => '#000000'),
-						'keyword3' => array('title' => '处理结果', 'value' => '新增下级通知' . $data['nickname'], 'color' => '#000000'),
+						'keyword3' => array('title' => '处理结果', 'value' => '新增粉丝通知' . $data['nickname'], 'color' => '#000000'),
 						'keyword4' => array('title' => '操作时间', 'value' => date('Y-m-d H:i:s', time()) . $data['nickname'], 'color' => '#000000'),
 						'remark'   => array('value' => '
 感谢您的支持', 'color' => '#000000')
@@ -3239,7 +3239,7 @@ if (!class_exists('CommissionModel')) {
 					$message = str_replace('[下级昵称]', $data['nickname'], $message);
 					$message = str_replace('[时间]', date('Y-m-d H:i:s', $data['childtime']), $message);
 					$msg = array(
-						'keyword1' => isset($tm['commission_agent_newtitle']) && trim($tm['commission_agent_newtitle']) == '新增下级通知' ? '' : array('value' => '新增下级通知', 'color' => '#73a68d'),
+						'keyword1' => isset($tm['commission_agent_newtitle']) && trim($tm['commission_agent_newtitle']) == '新增粉丝通知' ? '' : array('value' => '新增粉丝通知', 'color' => '#73a68d'),
 						'keyword2' => array('value' => !empty($tm['commission_agent_newtitle']) ? $tm['commission_agent_newtitle'] : '恭喜您新增下级成员', 'color' => '#73a68d'),
 						'keyword3' => array('value' => $message, 'color' => '#73a68d'),
 						'keyword4' => array('value' => date('Y-m-d H:i:s', time()))
@@ -3755,23 +3755,23 @@ if (!class_exists('CommissionModel')) {
 									unset($datas[$k]);
 								}
 
-								if ($v['name'] == '下线层级') {
+								if ($v['name'] == '粉丝层级') {
 									unset($datas[$k]);
 								}
 							}
 
 							$datas[] = array('name' => $set['texts']['down'], 'value' => $set['texts']['c2'] . $set['texts']['down']);
-							$datas[] = array('name' => '下线层级', 'value' => $set['texts']['c2']);
+							$datas[] = array('name' => '粉丝层级', 'value' => $set['texts']['c2']);
 							if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 								$datas[] = array('name' => '佣金金额', 'value' => $data['commission2']);
 							}
 
 							if ($tag == 'commission_order_pay') {
-								$text = '您的二级下线' . $data['nickname'] . '已付款！';
+								$text = '您的二级粉丝' . $data['nickname'] . '已付款！';
 							}
 							else {
 								if ($tag == 'commission_order_finish') {
-									$text = '您的二级下线' . $data['nickname'] . '已确认收货！';
+									$text = '您的二级粉丝' . $data['nickname'] . '已确认收货！';
 								}
 							}
 						}
@@ -3782,23 +3782,23 @@ if (!class_exists('CommissionModel')) {
 									unset($datas[$k]);
 								}
 
-								if ($v['name'] == '下线层级') {
+								if ($v['name'] == '粉丝层级') {
 									unset($datas[$k]);
 								}
 							}
 
 							$datas[] = array('name' => $set['texts']['down'], 'value' => $set['texts']['c3'] . $set['texts']['down']);
-							$datas[] = array('name' => '下线层级', 'value' => $set['texts']['c3']);
+							$datas[] = array('name' => '粉丝层级', 'value' => $set['texts']['c3']);
 							if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 								$datas[] = array('name' => '佣金金额', 'value' => $data['commission3']);
 							}
 
 							if ($tag == 'commission_order_pay') {
-								$text = '您的三级下线' . $data['nickname'] . '已付款！';
+								$text = '您的三级粉丝' . $data['nickname'] . '已付款！';
 							}
 							else {
 								if ($tag == 'commission_order_finish') {
-									$text = '您的三级下线' . $data['nickname'] . '已确认收货！';
+									$text = '您的三级粉丝' . $data['nickname'] . '已确认收货！';
 								}
 							}
 						}
@@ -3815,23 +3815,23 @@ if (!class_exists('CommissionModel')) {
 										unset($datas[$k]);
 									}
 
-									if ($v['name'] == '下线层级') {
+									if ($v['name'] == '粉丝层级') {
 										unset($datas[$k]);
 									}
 								}
 
 								$datas[] = array('name' => $set['texts']['down'], 'value' => $set['texts']['c1'] . $set['texts']['down']);
-								$datas[] = array('name' => '下线层级', 'value' => $set['texts']['c1']);
+								$datas[] = array('name' => '粉丝层级', 'value' => $set['texts']['c1']);
 								if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 									$datas[] = array('name' => '佣金金额', 'value' => $data['commission1']);
 								}
 
 								if ($tag == 'commission_order_pay') {
-									$text = '您的一级下线' . $data['nickname'] . '已付款！';
+									$text = '您的一级粉丝' . $data['nickname'] . '已付款！';
 								}
 								else {
 									if ($tag == 'commission_order_finish') {
-										$text = '您的一级下线' . $data['nickname'] . '已确认收货！';
+										$text = '您的一级粉丝' . $data['nickname'] . '已确认收货！';
 									}
 								}
 							}
@@ -3842,23 +3842,23 @@ if (!class_exists('CommissionModel')) {
 										unset($datas[$k]);
 									}
 
-									if ($v['name'] == '下线层级') {
+									if ($v['name'] == '粉丝层级') {
 										unset($datas[$k]);
 									}
 								}
 
 								$datas[] = array('name' => $set['texts']['down'], 'value' => $set['texts']['c2'] . $set['texts']['down']);
-								$datas[] = array('name' => '下线层级', 'value' => $set['texts']['c2']);
+								$datas[] = array('name' => '粉丝层级', 'value' => $set['texts']['c2']);
 								if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 									$datas[] = array('name' => '佣金金额', 'value' => $data['commission2']);
 								}
 
 								if ($tag == 'commission_order_pay') {
-									$text = '您的二级下线' . $data['nickname'] . '已付款！';
+									$text = '您的二级粉丝' . $data['nickname'] . '已付款！';
 								}
 								else {
 									if ($tag == 'commission_order_finish') {
-										$text = '您的二级下线' . $data['nickname'] . '已确认收货！';
+										$text = '您的二级粉丝' . $data['nickname'] . '已确认收货！';
 									}
 								}
 							}
@@ -3869,23 +3869,23 @@ if (!class_exists('CommissionModel')) {
 										unset($datas[$k]);
 									}
 
-									if ($v['name'] == '下线层级') {
+									if ($v['name'] == '粉丝层级') {
 										unset($datas[$k]);
 									}
 								}
 
 								$datas[] = array('name' => $set['texts']['down'], 'value' => $set['texts']['c3'] . $set['texts']['down']);
-								$datas[] = array('name' => '下线层级', 'value' => $set['texts']['c3']);
+								$datas[] = array('name' => '粉丝层级', 'value' => $set['texts']['c3']);
 								if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 									$datas[] = array('name' => '佣金金额', 'value' => $data['commission3']);
 								}
 
 								if ($tag == 'commission_order_pay') {
-									$text = '您的三级下线' . $data['nickname'] . '已付款！';
+									$text = '您的三级粉丝' . $data['nickname'] . '已付款！';
 								}
 								else {
 									if ($tag == 'commission_order_finish') {
-										$text = '您的三级下线' . $data['nickname'] . '已确认收货！';
+										$text = '您的三级粉丝' . $data['nickname'] . '已确认收货！';
 									}
 								}
 							}
@@ -3974,8 +3974,8 @@ if (!class_exists('CommissionModel')) {
 			$res = $this->getAgentsByMember($touser, intval($tm[$tag . '_notice']));
 			$set = $this->getSet();
 			$msgbk = $msg;
-			$msgbk['keyword3']['value'] = str_replace('[下线层级]', $set['texts']['c1'], $msgbk['keyword3']['value']);
-			$msgbk['keyword3']['value'] = str_replace('[下线]', $set['texts']['down'], $msgbk['keyword3']['value']);
+			$msgbk['keyword3']['value'] = str_replace('[粉丝层级]', $set['texts']['c1'], $msgbk['keyword3']['value']);
+			$msgbk['keyword3']['value'] = str_replace('[粉丝]', $set['texts']['down'], $msgbk['keyword3']['value']);
 			if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 				if ($datas['isagent']) {
 					$msgbk['keyword3']['value'] = str_replace('[佣金金额]', $datas['commission2'], $msgbk['keyword3']['value']);
@@ -3996,8 +3996,8 @@ if (!class_exists('CommissionModel')) {
 				$msgbk = $msg;
 
 				if ($key == 0) {
-					$msgbk['keyword3']['value'] = str_replace('[下线层级]', $set['texts']['c2'], $msgbk['keyword3']['value']);
-					$msgbk['keyword3']['value'] = str_replace('[下线]', $set['texts']['c2'] . $set['texts']['down'], $msgbk['keyword3']['value']);
+					$msgbk['keyword3']['value'] = str_replace('[粉丝层级]', $set['texts']['c2'], $msgbk['keyword3']['value']);
+					$msgbk['keyword3']['value'] = str_replace('[粉丝]', $set['texts']['c2'] . $set['texts']['down'], $msgbk['keyword3']['value']);
 					if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 						if ($datas['isagent']) {
 							$msgbk['keyword3']['value'] = str_replace('[佣金金额]', $datas['commission3'], $msgbk['keyword3']['value']);
@@ -4009,8 +4009,8 @@ if (!class_exists('CommissionModel')) {
 				}
 
 				if ($key == 1) {
-					$msgbk['keyword3']['value'] = str_replace('[下线层级]', $set['texts']['c3'], $msgbk['keyword3']['value']);
-					$msgbk['keyword3']['value'] = str_replace('[下线]', $set['texts']['c3'] . $set['texts']['down'], $msgbk['keyword3']['value']);
+					$msgbk['keyword3']['value'] = str_replace('[粉丝层级]', $set['texts']['c3'], $msgbk['keyword3']['value']);
+					$msgbk['keyword3']['value'] = str_replace('[粉丝]', $set['texts']['c3'] . $set['texts']['down'], $msgbk['keyword3']['value']);
 					if ($tag == 'commission_order_finish' || $tag == 'commission_order_pay') {
 						if ($datas['isagent']) {
 							$msgbk['keyword3']['value'] = str_replace('[佣金金额]', 0, $msgbk['keyword3']['value']);
@@ -4036,7 +4036,7 @@ if (!class_exists('CommissionModel')) {
 			$set = $this->getSet();
 			$msgbk = $msg;
 			$msgbk = $this->replaceArray($msgbk, '[' . $set['texts']['down'] . ']', $set['texts']['c1'] . $set['texts']['down']);
-			$msgbk = $this->replaceArray($msgbk, '[下线层级]', $set['texts']['c1']);
+			$msgbk = $this->replaceArray($msgbk, '[粉丝层级]', $set['texts']['c1']);
 			if ($tag == 'commission_order_finish_advanced' || $tag == 'commission_order_pay_advanced') {
 				$msgbk = $this->replaceArray($msgbk, '[佣金金额]', $datas['commission1']);
 			}
@@ -4052,7 +4052,7 @@ if (!class_exists('CommissionModel')) {
 				if ($key == 0) {
 					$msgbk = $msg;
 					$msgbk = $this->replaceArray($msgbk, '[' . $set['texts']['down'] . ']', $set['texts']['c2'] . $set['texts']['down']);
-					$msgbk = $this->replaceArray($msgbk, '[下线层级]', $set['texts']['c2']);
+					$msgbk = $this->replaceArray($msgbk, '[粉丝层级]', $set['texts']['c2']);
 					if ($tag == 'commission_order_finish_advanced' || $tag == 'commission_order_pay_advanced') {
 						$msgbk = $this->replaceArray($msgbk, '[佣金金额]', $datas['commission2']);
 					}
@@ -4061,7 +4061,7 @@ if (!class_exists('CommissionModel')) {
 				if ($key == 1) {
 					$msgbk = $msg;
 					$msgbk = $this->replaceArray($msgbk, '[' . $set['texts']['down'] . ']', $set['texts']['c3'] . $set['texts']['down']);
-					$msgbk = $this->replaceArray($msgbk, '[下线层级]', $set['texts']['c3']);
+					$msgbk = $this->replaceArray($msgbk, '[粉丝层级]', $set['texts']['c3']);
 					if ($tag == 'commission_order_finish_advanced' || $tag == 'commission_order_pay_advanced') {
 						$msgbk = $this->replaceArray($msgbk, '[佣金金额]', $datas['commission3']);
 					}
@@ -4130,7 +4130,7 @@ if (!class_exists('CommissionModel')) {
 		protected function templateValue($member, $data)
 		{
 			$set = $this->getSet();
-			return array('[昵称]' => $member['nickname'], '[时间]' => date('Y-m-d H:i:s', time()), '[金额]' => !empty($data['commission']) ? $data['commission'] : '', '[提现方式]' => !empty($data['type']) ? $data['type'] : '', '[订单编号]' => !empty($data['ordersn']) ? $data['ordersn'] : '', '[订单金额]' => !empty($data['price']) ? $data['price'] : '', '[商品详情]' => !empty($data['goods']) ? $data['goods'] : '', '[旧等级]' => !empty($data['oldlevel']['levelname']) ? $data['oldlevel']['levelname'] : '', '[旧一级分销比例]' => !empty($data['oldlevel']['commission1']) ? $data['oldlevel']['commission1'] . '%' : '', '[旧二级分销比例]' => !empty($data['oldlevel']['commission2']) ? $data['oldlevel']['commission2'] . '%' : '', '[旧三级分销比例]' => !empty($data['oldlevel']['commission3']) ? $data['oldlevel']['commission3'] . '%' : '', '[新等级]' => !empty($data['newlevel']['levelname']) ? $data['newlevel']['levelname'] : '', '[新一级分销比例]' => !empty($data['newlevel']['commission1']) ? $data['newlevel']['commission1'] . '%' : '', '[新二级分销比例]' => !empty($data['newlevel']['commission2']) ? $data['newlevel']['commission2'] . '%' : '', '[新三级分销比例]' => !empty($data['newlevel']['commission3']) ? $data['newlevel']['commission3'] . '%' : '', '[下线]' => '[' . $set['texts']['down'] . ']');
+			return array('[昵称]' => $member['nickname'], '[时间]' => date('Y-m-d H:i:s', time()), '[金额]' => !empty($data['commission']) ? $data['commission'] : '', '[提现方式]' => !empty($data['type']) ? $data['type'] : '', '[订单编号]' => !empty($data['ordersn']) ? $data['ordersn'] : '', '[订单金额]' => !empty($data['price']) ? $data['price'] : '', '[商品详情]' => !empty($data['goods']) ? $data['goods'] : '', '[旧等级]' => !empty($data['oldlevel']['levelname']) ? $data['oldlevel']['levelname'] : '', '[旧一级分销比例]' => !empty($data['oldlevel']['commission1']) ? $data['oldlevel']['commission1'] . '%' : '', '[旧二级分销比例]' => !empty($data['oldlevel']['commission2']) ? $data['oldlevel']['commission2'] . '%' : '', '[旧三级分销比例]' => !empty($data['oldlevel']['commission3']) ? $data['oldlevel']['commission3'] . '%' : '', '[新等级]' => !empty($data['newlevel']['levelname']) ? $data['newlevel']['levelname'] : '', '[新一级分销比例]' => !empty($data['newlevel']['commission1']) ? $data['newlevel']['commission1'] . '%' : '', '[新二级分销比例]' => !empty($data['newlevel']['commission2']) ? $data['newlevel']['commission2'] . '%' : '', '[新三级分销比例]' => !empty($data['newlevel']['commission3']) ? $data['newlevel']['commission3'] . '%' : '', '[粉丝]' => '[' . $set['texts']['down'] . ']');
 		}
 
 		public function getLastApply($mid, $type = -1)
@@ -4597,8 +4597,11 @@ if (!class_exists('CommissionModel')) {
             $log = array('uniacid' => $_W['uniacid'], 'applyid' => $apply['id'], 'mid' => $member['id'], 'commission' => $commission_ok, 'commission_pay' => $commission_ok, 'realmoney' => $realmoney, 'deductionmoney' => $deductionmoney, 'charge' => $set_array['charge'], 'createtime' => $time, 'type' => $type);
             pdo_insert('ewei_shop_commission_log', $log);
 
-            pdo_update('ewei_shop_member', array('credit2'=>$member['credit2']+$commission_ok), array('id'=>$member['id']));
-
+            $new_credit2 = $member['credit2']+$commission_ok;
+            pdo_update('ewei_shop_member', array('credit2'=>$new_credit2), array('id'=>$member['id']));
+            if($commission_ok != 0) {
+                m("member")->addLog($member['openid'], 10, '余额变动', 1, $commission_ok, "余额从{$member['credit2']}变更到{$new_credit2}");
+            }
 		}
 
         /**

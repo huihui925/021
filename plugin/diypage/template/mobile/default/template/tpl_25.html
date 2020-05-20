@@ -1,0 +1,205 @@
+<style>
+    a{
+        color: #000;
+    }
+    /*---------------------------漂浮块样式------------------------*/
+    .fans_warp .top_bar{
+        background: #fe7d01;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 29vw;
+        margin-bottom: 21vw;
+        position: relative;
+    }
+    .fans_warp .top_bar .referrer{
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 12vw;
+        line-height: 12vw;
+    }
+    .fans_warp .top_bar .fans_banner{
+        width: 95%;
+        background: #fff;
+        border-radius: 10px;
+        padding: 3vw;
+        box-shadow: 0 0 6px #ccc;
+        position: absolute;
+        top: 12vw;
+    }
+    .fans_warp .top_bar .fans_banner>div{
+        display: flex;
+        justify-content: space-between;
+    }
+    .fans_warp .top_bar .fans_banner>div>div{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+    .fans_warp .top_bar .fans_banner .img_warp{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fans_warp .top_bar .fans_banner .img_warp img{
+        width: 6.9vw;
+    }
+    .fans_warp .top_bar .title{
+        color: black;
+
+    }
+
+    .fans_warp .top_bar .center>div{
+        padding: 3vw 0 2vw 0;
+        color: black;
+    }
+    /*-----------------切换栏下面显示的内容--------------------*/
+    .fans_content{
+        padding: 3vw;
+    }
+    .fans_content .content_item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5vw 0;
+        border-bottom: .6px solid #ccc;
+    }
+    .fans_content .content_item .left{
+        display: flex;
+        align-items: center;
+    }
+
+
+    .fans_content .content_item .right{
+        color: #666;
+    }
+    .fui-page.fui-page-current, .fui-page-group.fui-page-current{
+        overflow-y: auto;
+    }
+    .wallet_warp .top_bar .fans_banner {
+        top: 5vw;
+    }
+    .wallet_warp  .top_bar {
+        margin-bottom: 16vw;
+        height: 22vw;
+    }
+    .wallet_warp .fans_banner .top{
+        background: #eee;
+        border-radius: 5px;
+        padding: 1vw 3vw;
+    }
+    .wallet_warp .fans_banner .top .title{
+        justify-content: flex-start;
+    }
+    .wallet_warp .fans_banner .top span{
+        color: #fe7d01;
+        padding-left: 2vw;
+    }
+    .wallet_warp .fans_banner .top .img_warp{
+        color: #fe7d01;
+        justify-content: flex-end;
+    }
+    .wallet_warp .fans_banner .bottom{
+        font-size: 5vw;
+        font-weight: bold;
+    }
+    .wallet_warp .right_arrows:after{
+        top: 50%;
+        margin-right: 3vw;
+    }
+    .wallet_warp .photo_warp{
+        border-radius:0;
+        padding: 1vw;
+    }
+</style>
+<div class="fui-page fui-page-current page-commission-down fans_warp wallet_warp">
+    <div class="top_bar">
+        <div class="fans_banner">
+            <div class="top">
+                <div class="title">
+                    可提现:
+                    <span>5713.11</span>
+                </div>
+                <div class="img_warp" onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=member.withdraw')">
+                    提现
+                </div>
+            </div>
+            <div class="center">
+                <div class="center_l">累计收益</div>
+                <div class="center_2">累计提现</div>
+            </div>
+            <div class="bottom">
+                <div>
+                    6310.00
+                </div>
+                <div>
+                    1110.07
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fans_main">
+        <!--		tab栏下面显示的内容-->
+        <div class="fans_content">
+            <!--			每一项-->
+            <a class="content_item"
+               href="#"
+               onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=18')"
+            >
+                <div class="left">
+                    <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/zrshouyi.png" alt=""></div>
+                    <span>昨日收益</span>
+                </div>
+                <div class="right right_arrows">
+                </div>
+            </a>
+            <a class="content_item"
+               href="#"
+               onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=14')"
+            >
+                <div class="left">
+                    <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/byyuebao.png" alt=""></div>
+                    <span>本月月报</span>
+                </div>
+                <div class="right right_arrows">
+                </div>
+            </a>
+            <a class="content_item"
+               href="#"
+               onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22')"
+            >
+                <div class="left">
+                    <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/gqfenhong.png" alt=""></div>
+                    <span>股权分红</span>
+                </div>
+                <div class="right right_arrows">
+                </div>
+            </a>
+        </div>
+        <!--		点击每一项的弹出层-->
+        <div class="van-overlay" style="z-index: 2011; display: none;"></div>
+        <div class="van-popup van-popup--bottom" style="height: 40vh; z-index: 2012; display: none;">
+            <div class="title">
+                <div></div>
+                <span>我的推荐人</span>
+                <div class="close">×</div>
+            </div>
+            <div class="img_warp">
+                <div class="photo_warp"><img src="/addons/ewei_shopv2/static/021img/touxiang.png" alt=""></div>
+            </div>
+            <div class="rank">
+                级别:合伙人
+                <img src="/addons/ewei_shopv2/static/021img/xingji.png" alt=""></div>
+            <div class="fans_num">
+                直接粉丝数:
+                <span>1512人</span>
+            </div>
+            <div class="fans_num">
+                间接粉丝数:
+                <span>1512人</span>
+            </div>
+        </div>
+    </div>
+</div>

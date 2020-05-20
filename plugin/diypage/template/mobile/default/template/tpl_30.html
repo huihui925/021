@@ -1,0 +1,78 @@
+<style>
+    .pay_way .radio_active{
+        background: url("/addons/ewei_shopv2/static/021img/success_icon.png") no-repeat;
+        background-size: 100%;
+    }
+    .pay_way .right_radio.radio_active{
+        border:none;
+
+    }
+    .pay_way{
+        padding: 0 3vw;
+    }
+    .pay_way .title{
+        text-align: center;
+        padding: 6vw 0 2vw 0;
+        color: #666;
+    }
+    .pay_way .money{
+        text-align: center;
+        font-size: 7vw;
+        font-weight: bold;
+    }
+    .pay_way .money span{
+        font-size: 0.75rem;
+        font-weight: normal;
+    }
+    .pay_way .integral{
+        text-align: center;
+        padding: 3vw 0;
+        font-size: 0.75rem;
+    }
+
+    .pay_way .public_021btn{
+        margin: 12vw 0 12vw 0;
+    }
+
+
+
+</style>
+<div class="pay_way">
+    <div class="title">支付金额</div>
+    <div class="money">
+        <span>￥</span>
+        200
+    </div>
+    <div class="integral">支付成功将获得1000积分</div>
+    <div class="radio_warp">
+        <div class="radio_item">
+            <img src="/addons/ewei_shopv2/static/021img/yue.png" alt="">
+            <div class="name">余额支付</div>
+            <div class="astrict">当前余额556元</div>
+            <div class="right_radio radio_active"></div>
+        </div>
+        <div class="radio_item">
+            <img src="/addons/ewei_shopv2/static/021img/zfb.png" alt="">
+            <div class="name">支付宝支付</div>
+            <div class="astrict">限额5000元</div>
+            <div class="right_radio"></div>
+        </div>
+        <div class="radio_item">
+            <img src="/addons/ewei_shopv2/static/021img/wx.png" alt="">
+            <div class="name">微信支付</div>
+            <div class="astrict">限额5000元</div>
+            <div class="right_radio">
+            </div>
+        </div>
+    </div>
+    <div class="exchange_result_btn public_021btn btn">
+        确认支付
+    </div>
+    <div class="tip_warp">
+        <div>ps:</div>
+        <div>
+            来店趣酷积分交易只限来店趣酷OTC交易平台进行交易，未授权个人和商家在其他平台进行交易。
+        </div>
+        <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
+    </div>
+</div>

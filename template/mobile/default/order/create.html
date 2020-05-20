@@ -1,4 +1,5 @@
 {template '_header'}
+<script>document.title = "确认订单"</script>
 <link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon.css?v=2.0.0">
 <link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/template/mobile/default/static/css/coupon-new.css?v=2017030302">
 <style>
@@ -245,13 +246,13 @@
 </style>
 
 <div class='fui-page order-create-page'>
-    <div class="fui-header">
-        <div class="fui-header-left">
-            {if empty($trade['shop_strengthen'])}<a class="back2"></a>{else}<a class="back"></a>{/if}
-        </div>
-        <div class="title">确认订单</div>
-        <div class="fui-header-right" data-nomenu="true">&nbsp;</div>
-    </div>
+<!--    <div class="fui-header">-->
+<!--        <div class="fui-header-left">-->
+<!--            {if empty($trade['shop_strengthen'])}<a class="back2"></a>{else}<a class="back"></a>{/if}-->
+<!--        </div>-->
+<!--        <div class="title">确认订单</div>-->
+<!--        <div class="fui-header-right" data-nomenu="true">&nbsp;</div>-->
+<!--    </div>-->
     <div class='fui-content  navbar'>
 
         {if count($carrier_list)>0 && !$isverify && !$isvirtual&&!$isonlyverifygoods}

@@ -1,0 +1,412 @@
+<script type="text/javascript" src="/addons/ewei_shopv2/plugin/diypage/static/rili/laydate.js"></script>
+<style>
+    a{
+        color: #000;
+    }
+    .current_monthly{
+        padding: 4vw;
+    }
+    .current_monthly .monthly_main{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .current_monthly .monthly_main .monthly_item{
+        width: 47%;
+        margin-right: 4.9%;
+        margin-bottom: 3.5vw;
+        box-shadow: 0 0 5px #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4vw 0;
+        border-radius: 10px;
+    }
+    .current_monthly .monthly_main .monthly_item:nth-child(2n){
+        margin-right: 0;
+    }
+    .current_monthly .monthly_item .img_warp img{
+        width: 8vw;
+    }
+    .current_monthly .monthly_item .info .num{
+        font-size: 5vw;
+        text-align: center;
+    }
+    .current_monthly .monthly_item .info .title{
+        text-align: center;
+    }
+    .num{
+        display: block;
+    }
+
+
+</style>
+<style>
+    .current_running .monthly_main{
+        box-shadow: 0 0 5px #ccc;
+        border-radius: 10px;
+        padding: 0;
+    }
+    .current_running .monthly_main .monthly_item{
+        padding: 2vw 0;
+        box-shadow: none;
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+    .current_monthly{
+        padding: 0 4vw;
+    }
+    .current_running .monthly_item_warp>b{
+        font-size: 4.4vw;
+        display: block;
+        padding: 1.5vw 0;
+        color: #000;
+    }
+
+    /*!*    日历样式*!*/
+    .laydate_body .laydate_top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 2vw;
+    }
+    .laydate_body .laydate_ym label{
+        right: 16vw;
+    }
+    .laydate_body .laydate_y input, .laydate_body .laydate_m input{
+        margin-right: 4vw !important;
+    }
+    .laydate_body .laydate_y input, .laydate_body .laydate_m input {
+        width: 45%;
+    }
+    .laydate_body .laydate_ym label {
+        right: 11vw;
+    }
+    .laydate_body .laydate_ym .laydate_yms{
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+    }
+    .laydate_body .laydate_y .laydate_yms ul{
+        height: auto;
+        overflow: hidden;
+    }
+    .laydate_body .laydate_y .laydate_yms ul li,.laydate_body .laydate_m .laydate_yms span {
+        width: 50%;
+        height: 10vw;
+        line-height: 10vw;
+        font-size: 4vw;
+    }
+    .laydate_body .laydate_m .laydate_yms span{
+        margin: 0;
+    }
+    *{margin:0;padding:0;list-style:none;}
+
+
+    h2{line-height:30px; font-size:20px;}
+
+    a,a:hover{ text-decoration:none;}
+
+    pre{font-family:'微软雅黑'}
+
+    .box a{padding-right:20px;}
+
+    .demo1{margin:5vw 0;}
+
+    h3{margin:10px 0;}
+
+    .layinput{height: 22px;line-height: 22px;width: 150px;margin: 0;}
+    .laydate_bottom{
+        display: flex;
+        align-items: center;
+        height: 50px !important;
+    }
+    .laydate_body .laydate_y .laydate_yms a{
+        height: 8vw;
+    }
+    .laydate-icon, .laydate-icon-default, .laydate-icon-danlan, .laydate-icon-dahong, .laydate-icon-molv {
+        height: 8vw;
+        line-height: 8vw;
+        padding-right: 7vw;
+    }
+    .laydate_body .laydate_ym{
+        flex: 1;
+    }
+    .laydate_body .laydate_y input,.laydate_body .laydate_m input{
+        width: 45%;
+        margin-right: 1vw;
+    }
+    .laydate_body .laydate_box input,.laydate_body .laydate_table thead th,.laydate_body .laydate_bottom,.laydate-icon{
+        font-size: 4vw;
+    }
+    .laydate_body .laydate_box {
+        width: 64vw;
+    }
+    .laydate-icon{
+        width: 60%;
+    }
+    .laydate_body .laydate_box,.laydate_body .laydate_table {
+        width: 90vw!important;
+    }
+    .laydate_body .laydate_table thead {
+        line-height: 8vw!important;
+    }
+    .laydate_body .laydate_table td {
+        line-height: 10vw!important;
+        font-size: 4vw;
+    }
+    .laydate_body .laydate_bottom .laydate_btn a{
+        height: 7vw;
+        padding: 0 2vw;
+        line-height: 7vw;
+        font-size: 4.5vw;
+    }
+    .laydate_body .laydate_box cite, .laydate_body .laydate_box label{
+        border-width: 2vw;
+    }
+    .laydate_body .laydate_choose cite, .laydate_body .laydate_tab cite {
+        transform: translate(-50%, -50%);
+    }
+    .laydate_body .laydate_chnext cite,.laydate_body .laydate_chprev cite{
+        margin: 0;
+    }
+    .laydate_body .laydate_ym{
+        display: flex;
+        justify-content: space-between;
+    }
+    .demo1{
+        display: flex;
+    }
+    .search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 4vw;
+        background: #fe7d01;
+        margin-left: 2vw;
+        border-radius: 5px;
+        color: #fff;
+    }
+</style>
+<div class="current_monthly current_running">
+    <div class="box">
+        <div class="demo1">
+            <input class="laydate-icon" id="demo" placeholder="请选择日期"  readonly="readonly">
+            <div class="search">搜索</div>
+
+        </div>
+    </div>
+    <div class="monthly_item_warp">
+        <b>04月21日</b>
+        <div class="monthly_main">
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">紫钻收益</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">购物返佣</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">星级用户奖励</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">股权分红</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="monthly_item_warp">
+        <b>04月21日</b>
+        <div class="monthly_main">
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">紫钻收益</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">购物返佣</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">星级用户奖励</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">股权分红</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="monthly_item_warp">
+        <b>04月21日</b>
+        <div class="monthly_main">
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">紫钻收益</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">购物返佣</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">星级用户奖励</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">股权分红</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="monthly_item_warp">
+        <b>04月21日</b>
+        <div class="monthly_main">
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">紫钻收益</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">购物返佣</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">星级用户奖励</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">股权分红</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="monthly_item_warp">
+        <b>04月21日</b>
+        <div class="monthly_main">
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">紫钻收益</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">购物返佣</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">星级用户奖励</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+            <a class="monthly_item">
+                <div class="img_warp">
+                    <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="title">股权分红</div>
+                    <b class="num">120.00</b>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+<script>
+    //初始化日历
+    !function(){
+        laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+        laydate({elem: '#demo'});//绑定元素
+    }();
+</script>

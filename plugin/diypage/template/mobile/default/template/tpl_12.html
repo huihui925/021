@@ -1,0 +1,24 @@
+<style>
+    .exchange_result{
+        padding: 15vw 6vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .exchange_result .exchange_result_text{
+        color: #000;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding: 6vw 0 10vw 0;
+    }
+</style>
+<div class="exchange_result">
+    <div class="exchange_result_icon">
+
+    </div>
+    <img src="/addons/ewei_shopv2/static/021img/success_icon.png" alt="" style="width: 18vw;">
+    <div class="exchange_result_text qqt_num">恭喜你, 成功兑换<?php  echo $_GET['qqt_num']; ?>颗紫钻</div>
+    <div class="exchange_result_btn public_021btn btn" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=13')">
+        查看我的紫钻
+    </div>
+</div>

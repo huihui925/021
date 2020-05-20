@@ -1,0 +1,85 @@
+<style>
+    a{
+        color: #000;
+    }
+    .current_monthly{
+        padding: 4vw;
+    }
+    .current_monthly .monthly_main{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .current_monthly .monthly_main .monthly_item{
+        width: 47%;
+        margin-right: 4.9%;
+        margin-bottom: 3.5vw;
+        box-shadow: 0 0 5px #ccc;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 4vw 0;
+        border-radius: 10px;
+    }
+    .current_monthly .monthly_main .monthly_item:nth-child(2n){
+        margin-right: 0;
+    }
+    .current_monthly .monthly_item .img_warp img{
+        width: 8vw;
+    }
+    .current_monthly .monthly_item .info .num{
+        font-size: 5vw;
+        text-align: center;
+    }
+    .current_monthly .monthly_item .info .title{
+        text-align: center;
+    }
+    .num{
+        display: block;
+    }
+
+
+</style>
+<div class="current_monthly">
+    <div class="monthly_main">
+        <a class="monthly_item">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/zizuanshouyi.png" alt="">
+            </div>
+            <div class="info">
+                <div class="title">紫钻收益</div>
+                <b class="num">120.00</b>
+            </div>
+        </a>
+        <a class="monthly_item">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
+            </div>
+            <div class="info">
+                <div class="title">购物返佣</div>
+                <b class="num">120.00</b>
+            </div>
+        </a>
+        <a class="monthly_item">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/xingjijiangli.png" alt="">
+            </div>
+            <div class="info">
+                <div class="title">星级用户奖励</div>
+                <b class="num">120.00</b>
+            </div>
+        </a>
+        <a class="monthly_item">
+            <div class="img_warp">
+                <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
+            </div>
+            <div class="info">
+                <div class="title">股权分红</div>
+                <b class="num">120.00</b>
+            </div>
+        </a>
+
+    </div>
+    <div class="public_021btn btn current_monthly_btn" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=16')">
+        查看本月流水
+    </div>
+</div>

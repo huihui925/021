@@ -88,7 +88,6 @@ class Index_EweiShopV2Page extends PluginMobilePage
 				unset($diyitem);
 			}
 		}
-
 		$this->page = $page;
 		$startadv = $this->model->getStartAdv($page['diyadv']);
 		$this->model->setShare($page);
