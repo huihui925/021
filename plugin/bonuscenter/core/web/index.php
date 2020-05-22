@@ -18,4 +18,18 @@ class Index_EweiShopV2Page extends PluginWebPage
             exit();
         }
     }
+
+    public function set(){
+        global $_W;
+        global $_GPC;
+
+        if($_W['ispost']){
+            $data = is_array($_GPC['data']) ? $_GPC['data'] : array();
+            m('common')->updatePluginset(array('bonuscenter' => $data));
+            show_json(1);
+        }
+        $data = m('common')->getPluginset('bonuscenter');
+
+        include $this->template();
+    }
 }

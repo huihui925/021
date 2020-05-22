@@ -80,11 +80,52 @@
     .tip_warp>div:nth-child(2){
         padding-bottom: 2vw;
     }
+    div.finish_tip{
+        text-align: center !important;
+        padding: 2vw 0!important;
+        color: #666!important;
+    }
+    .van-toast{
+        min-width: 96px;
+        min-height: 0;
+        padding: 8px 12px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        box-sizing: content-box;
+        color: #fff;
+        font-size: 0.75rem;
+        line-height: 20px;
+        white-space: pre-wrap;
+        text-align: center;
+        word-wrap: break-word;
+        background-color: rgba(50, 50, 51, 0.88);
+        border-radius: 8px;
+        transform: translate3d(-50%, -50%, 0);
+    }
+    .van-toast--text .van-toast__text, .van-toast--html .van-toast__text {
+        margin-top: 0;
+    }
 </style>
 <script>
     function goUrl(link) {
-        window.location.href=link
+        window.location.href=link.replace('http://ek021.wanwusl.com/app/','./')
     }
+    var toast = function(msg) {
+        $('.van-toast__text').html(msg);
+        $('.van-toast').fadeIn();
+        setTimeout(function() {
+            $('.van-toast').fadeOut();
+        },1300)
+    }
+    window.toast = toast
 </script>
 <!--续费开通-->
 {if $page['id'] == '29'}
@@ -121,6 +162,11 @@
 
 <div id="amap-container" style="display: none;"></div>
 <div class="fui-content {if $page['diymenu']>-1}navbar{/if}" id="container" style="background-color: {$page['data']['page']['background']}; {if $page['diymenu']>-1}padding-bottom: 0;{/if} {if !empty($diyitem_search) && empty($diy_topmenu)}margin-top: 44px;{/if}">
+    <!--积分兑换股权 开始-->
+    {if $page['id'] == '37'}
+    {template 'diypage/template/tpl_37'}
+    {/if}
+    <!--积分兑换股权 结束-->
     <!--积分兑换紫钻的兑换结果页面 开始-->
     {if $page['id'] == '12'}
     {template 'diypage/template/tpl_12'}
@@ -229,6 +275,9 @@
 
     {template 'goods/picker'}
     {template 'goods/wholesalePicker'}
+    <div class="van-toast van-toast--middle van-toast--text" style="z-index: 2002; display: none;">
+        <div class="van-toast__text">提示内容</div>
+    </div>
 </div>
 
 {if $page['diymenu']>-1}

@@ -1,0 +1,71 @@
+{template '_header'}
+
+<div class="page-header">
+    当前位置：<span class="text-primary">{if !empty($item['id'])}编辑{else}添加{/if}股权公司{if !empty($item['id'])}({$item['advname']}){/if}</span>
+</div>
+
+<div class="page-content">
+    <div class="page-sub-toolbar">
+         <span class=''>
+            {ifp 'shop.adv.add'}
+                <a class="btn btn-primary btn-sm" href="{php echo webUrl('bonuscenter/stock/add')}}">添加新股权公司</a>
+            {/if}
+        </span>
+    </div>
+    <form {ife 'shop.adv' $item}action="" method="post"{/if} class="form-horizontal form-validate" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{$item['id']}"/>
+
+    <div class="form-group">
+        <label class="col-lg control-label must">公司名称</label>
+        <div class="col-sm-9 col-xs-12 ">
+            {ife 'shop.adv' $item}
+            <input type="text" id='advname' name="advname" class="form-control" value="{$item['advname']}" data-rule-required="true"/>
+            {else}
+            <div class='form-control-static'>{$item['advname']}</div>
+            {/if}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg control-label must">兑换积分</label>
+        <div class="col-sm-9 col-xs-12 ">
+            {ife 'shop.credit1' $item}
+            <input type="number" id='credit1' name="credit1" class="form-control" value="{$item['credit1']}" data-rule-required="true"/>
+            {else}
+            <div class='form-control-static'>{$item['credit1']}</div>
+            {/if}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg control-label must">公司数量</label>
+        <div class="col-sm-9 col-xs-12 ">
+            {ife 'shop.num' $item}
+            <input type="number" id='num' name="num" class="form-control" value="{$item['num']}" data-rule-required="true"/>
+            {else}
+            <div class='form-control-static'>{$item['num']}</div>
+            {/if}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg control-label must">每股分红比例(%)</label>
+        <div class="col-sm-9 col-xs-12 ">
+            {ife 'shop.ratio' $item}
+            <input type="number" id='ratio' name="ratio" class="form-control" value="{$item['ratio']}" data-rule-required="true"/>
+            {else}
+            <div class='form-control-static'>{$item['ratio']}</div>
+            {/if}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg control-label"></label>
+        <div class="col-sm-9 col-xs-12">
+            {ife 'shop.adv' $item}
+            <input type="submit" value="提交" class="btn btn-primary"/>
+            {/if}
+            <a class="btn btn-default  btn-sm" href="{php echo webUrl('bonuscenter/stock/stockList')}">返回列表</a>
+        </div>
+    </div>
+    </form>
+</div>
+
+{template '_footer'}

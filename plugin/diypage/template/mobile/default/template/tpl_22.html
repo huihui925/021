@@ -17,7 +17,7 @@
     .my_equity{
         padding: 0 3vw;
     }
-    .my_equity>a{
+    .my_equity>b>a{
         color: #000;
         background: #fff;
         display: flex;
@@ -29,40 +29,89 @@
         font-weight: bold;
         margin: 3vw 0;
     }
-    .my_equity>a>span{
+    .my_equityb>b>a>span{
         color: #FE7D01;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 4.5vw;
     }
-    .my_equity>div{
+    .my_equity>b>div{
         text-align: right;
         padding-top: 3vw;
     }
 
 </style>
 <div class="my_equity equity_dividend">
-    <a href="#">
-        <div class="title">
-            <div>XXX有限公司</div>
-            <div class="time">2020-04-01</div>
+    <b id="dataList" >
+
+    </b>
+    <div class="fans_main">
+        <div class="fans_content">
+            <div class="finish_tip" style="display: none;">没有更多了</div>
         </div>
-        <span>
-                120.00
-            </span>
-    </a>
-    <!--        company_id为传过去的公司id 另一个页面根据此参数渲染数据-->
-    <a href="#">
-        <div class="title">
-            <div>XXX有限公司</div>
-            <div class="time">2020-04-01</div>
-        </div>
-        <span>
-                120.00
-            </span>
-    </a>
+    </div>
     <div class="full_money">
-        共计: 480元
     </div>
 </div>
+
+<script>
+    $(function(){
+        let page = 0//当前页
+        let finish = false//判断数据是否加载完，若为true则不发请求
+        getData();
+        $("#dataList").empty();
+        function getData(){
+            page++
+            $.ajax({
+                url: "{php echo mobileUrl('diypage/stock/stockDetail')}",
+                type: 'post',
+                data: {
+                    'page':page
+                    ,'company_id': "{php echo $_GET['company_id']}"
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if(data.status == 1){
+                        $.each(data.result.data, function(k,d){
+                            html = '<a href="#">'
+                                +'<div class="title">'
+                                +'<div>'+data.result.info.advname+'</div>'
+                                +'<div class="time">'+d.buy_date+'</div>'
+                                +'</div>'
+                                +'<span>'
+                                +d.total_price
+                                +'</span>'
+                                +'</a>';
+                            console.log(html);
+                            $("#dataList").append(html);
+                        })
+                        $(".full_money").html('共计: '+data.result.total_price+'元');
+                    } else {
+                        //数据加载完时进入这里
+                        $(".finish_tip").css("display","block")
+                        finish = true
+                        // console.log(data.result.message);
+                    }
+                }
+            })
+        }
+        /**
+         * 这是滚动触底事件
+         */
+        $(".fans_content").scroll(function(){
+            var h1=$(this).height(),//滚动条局部区域可视高度；
+                h2=$(this).scrollTop(),//滚动条顶部距离可视区域顶部高度（滚动高度）；
+                h3=$("#dataList").height();//需要滚动模块实际高度；
+            //三者关系：h1+h2=h3；
+            if(Math.abs(h1+h2-h3)>0&&Math.abs(h1+h2-h3)<1){
+                if(finish){return}
+                //加载下一页
+                getData();
+            }
+        })
+
+    })
+
+
+</script>

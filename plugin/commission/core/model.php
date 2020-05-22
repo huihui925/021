@@ -4598,9 +4598,13 @@ if (!class_exists('CommissionModel')) {
             pdo_insert('ewei_shop_commission_log', $log);
 
             $new_credit2 = $member['credit2']+$commission_ok;
-            pdo_update('ewei_shop_member', array('credit2'=>$new_credit2), array('id'=>$member['id']));
+            if($member['uid'] == 0){
+                pdo_update('ewei_shop_member', array('credit2'=>$new_credit2), array('id'=>$member['id'],'uid'=>$member['uid'],'uniacid'=>$member['uniacid']));
+            } else {
+                pdo_update('mc_members', array('credit2'=>$new_credit2), array('uniacid'=>$member['uniacid'],'uid'=>$member['uid']));
+            }
             if($commission_ok != 0) {
-                m("member")->addLog($member['openid'], 10, '余额变动', 1, $commission_ok, "余额从{$member['credit2']}变更到{$new_credit2}");
+                m("member")->addLog($member['openid'], 10, '分佣到余额变动', 1, $commission_ok, "余额从{$member['credit2']}变更到{$new_credit2}");
             }
 		}
 

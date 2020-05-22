@@ -107,20 +107,22 @@
     }
 </style>
 <?php
-$qqt_list = m('common')->getPluginset('bonuscenter');
-$member_qqt_num = pdo_fetch('select sum(qqt_num) as qqt_num from '.tablename('ewei_shop_member').' where qqt_num > 0 and uniacid='.$_W['uniacid'])['qqt_num'];
-$qqt_num = $qqt_list['qqt_num']-$member_qqt_num;
+$list = pdo_fetchall('select * from '.tablename('ewei_shop_member_stock_company'));
 ?>
 <div class="integral_navbar">
     <div class="topbar">
-        <div class="integral">当前平台共 {$qqt_num} 紫钻</div>
-        <div class="rate">{$qqt_list['qqt_integral']}积分1紫钻{$qqt_list['ratio']}%分红</div>
+        <div class="integral">当前共 {$member['credit1']} 积分</div>
+        <div class="rate"></div>
     </div>
     <div class="integral_main">
+        <select style="font-size: 4.6vw;">
+            {loop $list $v}
+            <option value="{$v['id']}" data-credit1="{$v['credit1']}">{$v['advname']}-{$v['credit1']}</option>
+            {/loop}
+        </select>
         <input type="number" placeholder="请输入兑换数量" inputmode="decimal">
         <div class="tip">
-            <span>每个将消耗 {$qqt_list['qqt_integral']} 积分</span>
-            <span>剩余{$member['credit1']}积分</span>
+            <span>每个将消耗<span class="consumeCredit1" ></span>积分</span>
         </div>
         <div class="btn">确认兑换</div>
     </div>
@@ -136,23 +138,43 @@ $qqt_num = $qqt_list['qqt_num']-$member_qqt_num;
             $('.van-toast').fadeOut();
         },1300)
     }
+    computed_consume_credit1()
+    //消耗的积分为选择框和输入框值相乘
+    //a. 计算值的方法
+    function computed_consume_credit1(){
+        var input_value = $('.integral_main input').val();
+        var select_credit1 = $('.integral_main select').find("option:selected").data("credit1");
+        $('.consumeCredit1').html(input_value * select_credit1)
+    }
+    //b. 监听input框值变化进行计算
+    $('.integral_main input').bind('input propertychange', function() {
+        computed_consume_credit1()
+    })
+    //c. 监听select变化进行计算
+    $('.integral_main select').change(() => {
+        computed_consume_credit1()
+    });
+
     $('.btn').click(function () {
-        var input_value = $('.integral_main input').val()
+        var input_value = $('.integral_main input').val();
+        var select_value = $('.integral_main select').val();
+        console.log(select_value);
         if(input_value*1 <= 0 ){
             toast('兑换数量不能为空')
             return
         } else {
             $.ajax({
-                url: "{php echo mobileUrl('diypage/qqt/exchangeQqt')}",
+                url: "{php echo mobileUrl('diypage/stock/exchangeStock')}",
                 type: 'post',
                 data: {
                     'num': input_value
+                    ,'sc_id' : select_value
                 },
                 dataType: 'json',
                 success: function (data) {
                     if(data.status == 1){
-//                        toast(data.result.message);
-                        window.location.href="{php echo mobileUrl('diypage',array('id'=>20))}";
+                        toast(data.result.message);
+                        window.location.href="{php echo mobileUrl('diypage',array('id'=>21))}";
                     } else {
                         toast(data.result.message);
                     }
@@ -163,6 +185,6 @@ $qqt_num = $qqt_list['qqt_num']-$member_qqt_num;
         //
         //     return;
         //    兑换成功则直接跳转页面 注意 : 成功后要把兑换的紫钻数量传过去
-//        window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=20'+'&equity_num='+556//这里999假装是兑换的紫钻数量
+//        window.location.href='http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=20'+'&equity_num='+556//这里999假装是兑换的紫钻数量
     })
 </script>

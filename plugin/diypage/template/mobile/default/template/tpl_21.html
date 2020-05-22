@@ -28,29 +28,45 @@
 
 </style>
 <div class="my_equity">
-    <div><a
-            href="#"
-            onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=19')" class="referrer">兑换股权 ></a></div>
-    <a href="#"
-       onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
-        <div class="title">
-            XXX有限公司
-        </div>
-        <span>
-                1000股
-                <i class="right_arrows"></i>
-            </span>
-    </a>
-    <!--        company_id为传过去的公司id 另一个页面根据此参数渲染数据-->
-    <a  href="#"
-        onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=22&company_id=123')">
-        <div class="title">
-            XXX有限公司
-        </div>
-        <span>
-                1000股
-                <i class="right_arrows"></i>
-            </span>
-    </a>
-
+    <div>
+        <a href="#" onclick="goUrl('{php echo mobileUrl('diypage',array('id'=>37))}')" class="referrer">兑换股权 ></a>
+    </div>
+    <div class="finish_tip" style="display: none;">没有更多了</div>
 </div>
+
+<script>
+    getData();
+    function getData(){
+        $.ajax({
+            url: "{php echo mobileUrl('diypage/stock/stockList')}",
+            type: 'post',
+            data: {},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.result.data);
+
+                if(data.status == 1){
+                    if(data.result.data.length<=0){
+                        $(".finish_tip").css("display","block")
+                        return
+                    }
+                    $.each(data.result.data, function(k,d){
+                        html = '<a href="#"'
+                            +"onclick=goUrl('{php echo mobileUrl("diypage",array("id"=>22))}&company_id="+d.id+"')>"
+                            +'<div class="title">'
+                            +d.advname
+                            +'</div>'
+                            +'<span>'
+                            +d.buy_num+'股'
+                            +'<i class="right_arrows"></i>'
+                            +'</span>'
+                            +'</a>'
+                        $(".finish_tip").before(html);
+                    })
+                } else {
+                    // console.log(data.result.message);
+                }
+            }
+        })
+    }
+</script>

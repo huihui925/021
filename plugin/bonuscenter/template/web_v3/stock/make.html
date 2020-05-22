@@ -1,6 +1,156 @@
 {template '_header'}
+<style type='text/css'>
+    .form-control .select2-choice {
+        border: 0 none;
+        border-radius: 2px;
+        height: 32px;    line-height: 32px;
+    }
+    .field-item.field-item-remove span {
+        color:red;
+        position: absolute;right:-5px;top:-10px;cursor: pointer;
+    }
+    .page-toolbar{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+</style>
 <div class="page-header">
     当前位置：<span class="text-primary">股权管理 </span>
 </div>
+<div class="page-content">
+    <form action="" method="post" class="form-horizontal table-search" role="form" onsubmit="return false" id="form1">
+        <div class="panel panel-default">
+            {loop $company_list $k $company}
+            <div class="col-sm-12">
+                <div class='input-group fixmore-input-group' style="width: 100%;">
+                    <input type="hidden" name="data[{$k}][id]" value="{$company['id']}"/>
+                    <span class="input-group-addon">股权公司名称</span>
+                    <input type="text" name="data[{$k}][advname]"  value="{$company['advname']}" class="form-control" />
+                    <span class="input-group-addon">总数量</span>
+                    <input type="text" name="data[{$k}][num]"  value="{$company['num']}" class="form-control" />
+                    <span class='input-group-addon'>分红比例%</span>
+                    <input type="text" name="data[{$k}][ratio]"  value="{$company['ratio']}" class="form-control" />
+                    <span class='input-group-addon'>用户已兑换数量</span>
+                    <input type="text" name="data[{$k}][member_num]"  value="{$company['member_num']}" class="form-control" />
+                    <span class='input-group-addon'>分红金额</span>
+                    <input type="text" name="data[{$k}][total_price]"  value="" class="form-control" />
+                </div>
+            </div>
+            {/loop}
+        </div>
+        <div class="page-toolbar">
+            <div class="input-group">
+               <span class="input-group-btn">
+                    <button type="button" onclick="bonus()" data-export="0" class="btn btn-primary btn-submit"> 保存</button>
+                </span>
+            </div>
+        </div>
+    </form>
+    {if count($list)>0}
+    <div class='page-table-header'>
+        <input type="checkbox"/>
+    </div>
+    <table class="table table-hover table-responsive">
+        <thead class="navbar-inner" >
+        <tr>
+            <th style="width:25px;"></th>
+            <th >名称</th>
+            <th >分红金额</th>
+            <th >每股分红比例</th>
+            <th >创建时间</th>
+            <th >分红时间</th>
+            <th >操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {loop $list $row}
+        <tr >
+            <td>
+                <input type='checkbox'   value="{$row['id']}"/>
+            </td>
 
+            <td style="display: flex">
+                {$row['advname']}
+            </td>
+            <td>
+                {$row['total_price']}
+            </td>
+            <td >
+                {$row['ratio']}
+            </td>
+            <td>
+                {php echo date("Y-m-d H:i:i", $row['create_time'])}
+            </td>
+            <td>
+                {if empty(!$row['bonus_time'])}
+                {php echo date("Y-m-d H:i:i", $row['bonus_time'])}
+                {/if}
+            </td>
+            <td>
+                {if $row['is_bonus'] == 0}
+                <a
+                        data-toggle='ajaxRemove'
+                        href="{php echo webUrl('bonuscenter/stock/bonus', array('id' => $row['id']))}"
+                        class="btn btn-op btn-operation"
+                        data-confirm='确认要分红吗?'
+                >
+                    <span data-toggle="tooltip" data-placement="top" data-original-title="分红">
+                       <i class='icow icow-31'></i>
+                    </span>
+                </a>
+                <a
+                        data-toggle='ajaxRemove'
+                        href="{php echo webUrl('bonuscenter/stock/bonusDelete', array('id' => $row['id']))}"
+                        class="btn btn-op btn-operation"
+                        data-confirm='确认要删除此分红吗?'
+                >
+                    <span data-toggle="tooltip" data-placement="top" data-original-title="删除">
+                       <i class='icow icow-shanchu1'></i>
+                    </span>
+                </a>
+                {/if}
+            </td>
+        </tr>
+        {/loop}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td colspan="3">
+
+            </td>
+            <td colspan="1" class="text-right">{$pager}</td>
+        </tr>
+        </tfoot>
+    </table>
+    {else}
+    <div class='panel panel-default'>
+        <div class='panel-body' style='text-align: center;padding:30px;'>
+            暂时没有分红记录!
+        </div>
+    </div>
+    {/if}
+</div>
+<script>
+    function bonus() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "{php echo webUrl('bonuscenter.stock.make')}" ,
+            data: $('#form1').serialize(),
+            success: function (result) {
+                if(result.status == 1){
+                    window.location.href = result.result.url;
+                } else {
+                    alert(result.result.message);
+                }
+            },
+            error : function() {
+                alert("异常！");
+            }
+        });
+    }
+</script>
 {template '_footer'}

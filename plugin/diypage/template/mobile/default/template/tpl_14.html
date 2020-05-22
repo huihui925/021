@@ -39,6 +39,11 @@
 
 
 </style>
+<?php
+$BeginDate = date("Y-m-01",strtotime("-1 day"));
+$start_time = strtotime($BeginDate);
+$end_time = strtotime(date('Y-m-d', strtotime("$BeginDate +1 month -1 day")));
+?>
 <div class="current_monthly">
     <div class="monthly_main">
         <a class="monthly_item">
@@ -47,9 +52,10 @@
             </div>
             <div class="info">
                 <div class="title">紫钻收益</div>
-                <b class="num">120.00</b>
+                <b class="num qqt_money">0.00</b>
             </div>
         </a>
+        <!--
         <a class="monthly_item">
             <div class="img_warp">
                 <img src="/addons/ewei_shopv2/static/021img/gouwufanyong.png" alt="">
@@ -68,18 +74,42 @@
                 <b class="num">120.00</b>
             </div>
         </a>
+        -->
         <a class="monthly_item">
             <div class="img_warp">
                 <img src="/addons/ewei_shopv2/static/021img/guquanfenhong.png" alt="">
             </div>
             <div class="info">
                 <div class="title">股权分红</div>
-                <b class="num">120.00</b>
+                <b class="num stock_money">0.00</b>
             </div>
         </a>
 
     </div>
-    <div class="public_021btn btn current_monthly_btn" onclick="goUrl('http://ek021.wanwusl.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=16')">
+    <div class="public_021btn btn current_monthly_btn" onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=16')">
         查看本月流水
     </div>
 </div>
+
+<script>
+    $(function(){
+        $.ajax({
+            url: "{php echo mobileUrl('diypage/stock/profit')}",
+            type: 'post',
+            data: {
+                'start_time': {$start_time}
+                ,'end_time': {$end_time}
+            },
+            dataType: 'json',
+            success: function (data) {
+                if(data.status == 1){
+//                        toast(data.result.message);
+                    $(".qqt_money").html(data.result.qqt_money*1);
+                    $(".stock_money").html(data.result.stock_money*1);
+                } else {
+                    toast(data.result.message);
+                }
+            }
+        });
+    })
+</script>
