@@ -70,19 +70,9 @@ class Qqt_EweiShopV2Page extends PluginMobilePage
                 show_json(0,'积分不足');
             }
 
-            if(empty($member['uid'])){
-                $save_data = array(
-                    'credit1'   => $member['credit1']-$buy_money
-                    ,'qqt_num'  => $member['qqt_num']+$buy_num
-                );
-                $save_where = array(
-                    'id'    => $member['id']
-                );
-                pdo_update("ewei_shop_member", $save_data, $save_where);
-            } else {
-                pdo_update("ewei_shop_member", array('qqt_num' => $member['qqt_num']+$buy_num), array('id' => $member['id']));
-                pdo_update('mc_members',array('credit1'=>$member['credit1']-$buy_money), array('uid'=>$member['uid'],'uniacid'=>$member['uniacid']));
-            }
+            m('member')->setCredit($member['openid'],'credit1',-$buy_money,array($member['uid'],"兑换{$buy_num}紫钻消耗{$buy_money}积分"));
+            pdo_update("ewei_shop_member", array('qqt_num' => $member['qqt_num']+$buy_num), array('id' => $member['id']));
+
             m('member')->addLog($member['openid'],14,'兑换紫钻',1,-$buy_money,"兑换{$buy_num}紫钻消耗{$buy_money}积分");
             show_json(1,'兑换成功');
         } else {

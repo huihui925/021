@@ -130,15 +130,15 @@
 </style>
 <div class="integral_navbar Integral_sale">
     <div class="topbar">
-        <div class="integral">当前共 17 积分</div>
+        <div class="integral">当前共<span class="full_integral">6317</span>积分</div>
     </div>
     <div class="integral_main">
         <div class="money">
-            <div>售价: </div><input type="text" placeholder="请输入购买价格" inputmode="decimal">
+            <div>售价: </div><input type="number" class="price" placeholder="请输入购买价格" inputmode="decimal">
             <div>单位(元)</div>
         </div>
-        <input class="num" type="text" placeholder="请输入购买积分数量" inputmode="decimal">
-        <div class="btn">马上支付</div>
+        <input class="num" type="number" placeholder="请输入购买积分数量" inputmode="decimal">
+        <div class="btn" onclick="handleClick()">马上支付</div>
     </div>
     <div class="tip_warp">
         <div>ps:</div>
@@ -148,3 +148,31 @@
         <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
     </div>
 </div>
+<script>
+
+    function handleClick(){
+        var num_value = $('.num').val();
+        var price_value = $('.price').val();
+        if(num_value=="" || price_value==""){
+            toast('请输入正确格式')
+            return
+        } else {
+            $.ajax({
+                url: "{php echo mobileUrl('diypage/integral/release')}",
+                type: 'post',
+                data: {
+                    'type': 2,
+                    'price':price_value,
+                    'num':num_value
+                },
+                dataType: 'json',
+                success: function (data) {
+                    toast(data.result.message);
+                    if (data.status==1){
+                        window.location.href="./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=27"
+                    }
+                }
+            });
+        }
+    }
+</script>

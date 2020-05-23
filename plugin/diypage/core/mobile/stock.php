@@ -145,17 +145,7 @@ class Stock_EweiShopV2Page extends PluginMobilePage
                 show_json(0,'积分不足');
             }
 
-            $save_data = array(
-                'credit1'   => $member['credit1']-$buy_money
-            );
-            $save_where = array(
-                'id'    => $member['id']
-            );
-            if(empty($member['uid'])){
-                pdo_update("ewei_shop_member", $save_data, $save_where);
-            } else {
-                pdo_update('mc_members',$save_data, array('uid'=>$member['uid'],'uniacid'=>$member['uniacid']));
-            }
+            m('member')->setCredit($member['openid'],'credit1',-$buy_money,array($member['uid'],"兑换{$buy_num}{$stock_info['advname']}消耗{$buy_money}积分"));
             m('member')->addLog($member['openid'],15,'兑换股权',1,-$buy_money,"兑换{$buy_num}{$stock_info['advname']}消耗{$buy_money}积分");
 
             $insert_data = array(

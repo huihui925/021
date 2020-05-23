@@ -23,5 +23,36 @@
         }
         var videoid = "#Video{$diyitemid}";
         $(videoid).height(height).width(width);
+
+    </script>
+    <script>
+        var timer = ''
+        var myVideo = document.getElementById("Video{$diyitemid}");
+        //timeupdate 事件在音频/视频（audio/video）的播放位置发生改变时触发。
+        //该事件可以在以下情况被调用:播放音频/视频（audio/video）或 移动音频/视频（audio/video）播放位置
+        myVideo.addEventListener("timeupdate",function(){
+            var timeDisplay;
+            //用秒数来显示当前播放进度
+            timeDisplay = Math.floor(myVideo.currentTime);
+            duration = Math.floor(myVideo.duration);
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+                $(function(){
+                    $.ajax({
+                        url: "{php echo mobileUrl('member/addDayLog')}",
+                        type: 'post',
+                        data: {
+                            'watch_time':timeDisplay
+                            ,'type': 3
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+                });
+            },1000)
+
+        },false);
     </script>
 {/if}
