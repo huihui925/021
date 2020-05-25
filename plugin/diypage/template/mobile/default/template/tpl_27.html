@@ -182,6 +182,7 @@
         toggleObj=obj
         page = 0
         finish = false
+        $(".finish_tip").css("display","none")
         $("#dataList").html('');
         getData();
     }
@@ -289,6 +290,7 @@
             type = $(this).index()+1
             page = 0
             finish = false
+            $(".finish_tip").css("display","none")
             $("#dataList").html('');
             getData();
             handleName()

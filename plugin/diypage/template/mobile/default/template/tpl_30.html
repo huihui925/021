@@ -37,13 +37,16 @@
 
 
 </style>
+<?php
+$info = pdo_fetch("select * from ".tablename('ewei_shop_member_release').' where id='.$_GET['r_id']);
+?>
 <div class="pay_way">
     <div class="title">支付金额</div>
     <div class="money">
         <span>￥</span>
-        200
+        {$info['price']}
     </div>
-    <div class="integral">支付成功将获得1000积分</div>
+    <div class="integral">支付成功将获得{$info['num']}积分</div>
 <!--    <div class="radio_warp">-->
 <!--        <div class="radio_item">-->
 <!--            <img src="/addons/ewei_shopv2/static/021img/yue.png" alt="">-->

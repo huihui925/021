@@ -200,13 +200,19 @@
 		require(['../addons/ewei_shopv2/plugin/creditshop/static/js/creditlog.js'],function(modal){
 			modal.init();
 		});
+		function goUrl(link) {
+			window.location.href=link.replace('http://ek021.wanwusl.com/app/','./')
+		}
 	</script>
 <!--</div>-->
 <!--{php $this->footerMenus()-->
 <!----------------------------自己写的页面 开始----------------------------------->
 <div class="fui-page fui-page-current page-commission-down fans_warp">
 	<div class="top_bar">
-		<a href="./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=creditshop" class="referrer">兑换紫钻 ></a>
+		<a
+		   href="#"
+		   onclick="goUrl('./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=diypage&id=39')"
+		   class="referrer">兑换紫钻 ></a>
 		<div class="fans_banner">
 			<div class="name">
 				我的积分
@@ -217,7 +223,7 @@
 			</div>
 			<div class="center">
 				<div class="center_l">{$credit}</div>
-				<div class="center_2">110</div>
+				<div class="center_2">{$credit1_day_num}</div>
 			</div>
 
 		</div>
@@ -225,34 +231,29 @@
 	<div class="fans_main">
 		<!--tab切换栏-->
 		<div class="topBar">
-			<div class="active"><a href="">任务积分</a></div>
+			<div class="active"><a href="">全部积分</a></div>
 			<div><a href="">购物积分</a></div>
 			<div><a href="">积分交易</a></div>
 			<div ><a href="">积分消费</a></div>
 		</div>
 		<!--		tab栏下面显示的内容-->
 		<div class="fans_content">
-			<!--			每一项-->
-			<a class="content_item" myid="1哈哈">
-				<div class="left">
-					<div class="photo_warp">
-						邀请 二哈**
-					</div>
-					<span>2020-04-17 10:32</span>
-				</div>
-				<div class="right">
-					+5
-				</div>
-			</a>
-			<a class="content_item" myid="2哈哈">
-				<div class="left">
-					<div class="photo_warp">购物赠送积分</div>
-					<span>2020-04-17 10:32</span>
-				</div>
-				<div class="right">
-					+5
-				</div>
-			</a>
+			<div id="dataList">
+				<!--			每一项-->
+<!--				<a class="content_item" myid="1哈哈">-->
+<!--					<div class="left">-->
+<!--						<div class="photo_warp">-->
+<!--							邀请 二哈**-->
+<!--						</div>-->
+<!--						<span>2020-04-17 10:32</span>-->
+<!--					</div>-->
+<!--					<div class="right">-->
+<!--						+5-->
+<!--					</div>-->
+<!--				</a>-->
+			</div>
+			<div class="finish_tip" style="display: none;">没有更多了</div>
+
 		</div>
 	</div>
 	<!--	<div class="fui-content navbar">-->
@@ -268,33 +269,89 @@
 
 </div>
 <script>
-	// tab栏 点击高亮js
-	let tabIndex = 0;//这是tab栏的索引
-	var buttons=document.querySelectorAll(".topBar>div");
-	function active(buttons) {
-		var l=buttons.length;
-		for(var i=0;i<l;i++){
-			buttons[i].onclick=function(){
-				for(var j=0;j<l;j++){
-					if(this==buttons[j]){
-						this.className="active";
-						tabIndex = j
-						console.log(tabIndex)
-					}else{
-						buttons[j].className="";
-					}
+	$(function(){
+		let page = 0//当前页
+		let type = 0//0全部 1购物积分 2积分交易 3积分消费 同时也是tab栏索引
+		let finish = false//判断数据是否加载完，若为true则不发请求
 
+		getData();
+		$("#dataList").empty();
+		function getData(){
+			page++
+			$.ajax({
+				url: "{php echo mobileUrl('creditshop/creditlog/getIntegral')}",
+				type: 'post',
+				data: {
+					'page':page,
+					'type':type
+				},
+				dataType: 'json',
+				success: function (data) {
+					if(data.status == 1){
+						$.each(data.result.data, function(k,d){
+							html = "\t\t\t\t<a class=\"content_item\" myid=\"1哈哈\">\n" +
+									"\t\t\t\t\t<div class=\"left\">\n" +
+									"\t\t\t\t\t\t<div class=\"photo_warp\">\n" +
+									"\t\t\t\t\t\t\t"+d.remark+"\n" +
+									"\t\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t\t<span>"+d.create_date+"</span>\n" +
+									"\t\t\t\t\t</div>\n" +
+									"\t\t\t\t\t<div class=\"right\">\n" +
+									"\t\t\t\t\t\t"+d.money+"\n" +
+									"\t\t\t\t\t</div>\n" +
+									"\t\t\t\t</a>"
+							$("#dataList").append(html);
+						})
+					} else {
+						//数据加载完时进入这里
+						$(".finish_tip").css("display","block")
+						finish = true
+						// console.log(data.result.message);
+					}
 				}
-			}
+			})
 		}
-	}
-	active(buttons)
-	//点击每一项 弹出层
-	$('.fans_content').on("click",".content_item",function(){
-		//拿到点击项的id
-		let myid = $(this).attr('myid')
+		/**
+		 * 这是滚动触底事件
+		 */
+		$(".fans_content").scroll(function(){
+			var h1=$(this).height(),//滚动条局部区域可视高度；
+					h2=$(this).scrollTop(),//滚动条顶部距离可视区域顶部高度（滚动高度）；
+					h3=$("#dataList").height();//需要滚动模块实际高度；
+			//三者关系：h1+h2=h3；
+			if(Math.abs(h1+h2-h3)>=0&&Math.abs(h1+h2-h3)<=1){
+				if(finish){return}
+				//加载下一页
+				getData();
+			}
+		})
+		$(".topBar>div").click(function () {
+			$(this).siblings().removeClass("active");
+			$(this).addClass("active");
+			type = $(this).index()
+			console.log(type)
+			page = 0
+			finish = false
+			$(".finish_tip").css("display","none")
+			$("#dataList").html('');
+			getData();
+		})
+
 	})
+
 </script>
+<style>
+	.fans_content{
+		height: calc(100vh - 65vw);
+		overflow: hidden;
+		overflow-y: auto;
+	}
+	div.finish_tip{
+		text-align: center !important;
+		padding: 2vw 0!important;
+		color: #666!important;
+	}
+</style>
 <!----------------------------自己写的页面 结束----------------------------------->
 
 {template '_footer'}

@@ -46,14 +46,17 @@
     }
 
 </style>
+<?php
+$info = pdo_fetch("select * from ".tablename('ewei_shop_member_release').' where id='.$_GET['r_id']);
+?>
 <div class="pay_way ask_buy">
     <div class="title">支付积分</div>
     <div class="money">
         <img src="/addons/ewei_shopv2/static/021img/shuliang.png" alt="">
-        1000
+        {$info['num']}
     </div>
-    <div class="integral">支付成功将获得200元</div>
-    <div class="exchange_result_btn public_021btn btn">
+    <div class="integral">支付成功将获得{$info['price']}元</div>
+    <div class="exchange_result_btn public_021btn btn" onclick="handleClick()">
         确认支付
     </div>
     <div class="tip_warp">
@@ -64,3 +67,23 @@
         <div>线下交易买卖双方由此导致的损失，平台不予受理，请买卖双方自行处理。</div>
     </div>
 </div>
+
+<script>
+    function handleClick(){
+
+        $.ajax({
+            url: "{php echo mobileUrl('diypage/integral/buy')}",
+            type: 'post',
+            data: {
+                'id': {$_GET['r_id']},
+            },
+            dataType: 'json',
+            success: function (data) {
+                toast(data.result.message);
+                if (data.status==1){
+                    window.history.go(-1);
+                }
+            }
+        });
+    }
+</script>
