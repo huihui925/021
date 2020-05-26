@@ -177,6 +177,11 @@
     {template 'diypage/template/tpl_13'}
     {/if}
     <!--我的紫钻页面 结束-->
+    <!--兑换紫钻 开始-->
+    {if $page['id'] == '39'}
+    {template 'diypage/template/tpl_39'}
+    {/if}
+    <!--兑换紫钻 结束-->
     <!--昨日收益页面 开始-->
     {if $page['id'] == '18'}
     {template 'diypage/template/tpl_18'}
@@ -257,6 +262,11 @@
     {template 'diypage/template/tpl_34'}
     {/if}
     <!--发起求购 结束-->
+    <!--现有排名 开始-->
+    {if $page['id'] == '40'}
+    {template 'diypage/template/tpl_40'}
+    {/if}
+    <!--现有排名 结束-->
     {if $diy_topmenu}
     {template 'diypage/template/tpl_topmenu_data'}
     {/if}

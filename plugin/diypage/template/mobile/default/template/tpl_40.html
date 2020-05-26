@@ -1,0 +1,353 @@
+<style>
+    .list{
+        width:100%;
+        padding: 3vw 3vw;
+        padding-bottom: 17vw;
+    }
+    .list>.list-item{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 2vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #d9d9d9;
+        background: #fff;
+        border-radius: 2vw;
+        box-shadow: 0 0 4px #ccc;
+        margin-bottom: 3vw;
+    }
+    .list>.list-item .item-com{
+        box-sizing:border-box;
+        width:70%;
+        display:flex;
+        align-items:center;
+    }
+    .list>.list-item .item-icon{
+        flex:none;
+        width: 13vw;
+        height: 13vw;
+        border-radius:50%;
+        overflow:hidden;
+        margin-right:.6rem;
+    }
+    .list>.list-item .icon-img{
+        width:100%;
+        height:100%;}
+    .list>.list-item .item-info{
+        box-sizing:border-box;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+    }
+    .list>.list-item .item-title{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 0.77rem;
+        display: flex;
+        align-items: center;
+    }
+    .list>.list-item .item-title>img{
+        width: 3.3vw;
+        margin: 0 0.2vw 0 1.5vw;
+    }
+    .list>.list-item .item-title>span{
+        color: #ff4040;
+        font-weight: bold;
+    }
+    .list>.list-item .item-time{
+        color:#CDCCCB;
+    }
+    .list .account{
+        text-align:right;
+        font-size:.75rem;
+        color:#fff;
+        display: flex;
+        flex-direction: column;
+    }
+    .list .no-record,.loading{
+        width:100%;
+        padding-top:2rem;
+        text-align:center;
+        color:#FFA200;
+    }
+    .list .item-com .item-icon{}
+    .list .loading{
+        padding-top:1rem;
+    }
+    .list .btn{
+        outline:none;
+        border:none;
+        border-radius:1rem;
+        padding:4px 10px;
+        background-color:#F9F8F7;
+        border:1px solid #F9F8F7;
+        color:#292722;
+    }
+    .list .on-follow{
+        background-color:#FFA200;
+        border:1px solid #FFA200;
+        color:#fff
+    }
+    .list .btn-follow{
+        outline: none;
+        border-radius: 1rem;
+        padding: 0.3vw 3vw;
+        color: #fe7d01;
+        background: transparent;
+        font-size: .75rem;
+        border: 1px solid #fe7d01;
+    }
+    .list .account>div{
+        text-align: center;
+        color: #fe7d01;
+        margin-top: 1vw;
+    }
+    .ranking_container>.bidding{
+        position: fixed;
+        left: 0;
+        bottom:0;
+        width: 100%;
+        height: 17vw;
+        background: #fe7d01;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        font-size: 4.5vw;
+    }
+    .ranking_container>.bidding>div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:3vw;
+        border-bottom: 1.5vw solid #fff;
+        width: 35%;
+    }
+    input::-ms-input-placeholder{
+        text-align: center;
+    }
+    input::-webkit-input-placeholder {
+        text-align: center;
+    }
+    input{
+        display: block;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 3vw;
+        color: #323233;
+        line-height: inherit;
+        text-align: left;
+        background-color: transparent;
+        border: 0;
+        resize: none;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 4vw;
+        font-size: 4.5vw;
+    }
+    .shade{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,.3);
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .shade_content{
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4vw;
+        border-radius: 2vw;
+        max-width: 90vw;
+        overflow: hidden;
+    }
+    .shade_content .title{
+        font-weight: bold;
+        font-size: 4.2vw;
+    }
+    .full_integral{
+        padding: 2vw;
+    }
+    .shade_content .orange{
+        color: #fe7d01;
+    }
+    .shade_content input{
+        font-size: 4vw;
+        width: 80%;
+    }
+    .shade_content .ranking{
+        color: red;
+    }
+    .shade .close{
+        border: 2px solid #fff;
+        font-size: 15vw;
+        width: 12vw;
+        height: 12vw;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: 200;
+        margin-top: 3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .shade .btn{
+        width: 80%;
+        border-radius: 12vw;
+        font-size: 4vw;
+        height: 9vw;
+        margin: 4vw;
+    }
+</style>
+<div class="ranking_container">
+    <div class='attention_anchor list' id="dataList">
+<!--        <div class='list-item'>-->
+<!--            <div class='item-com'>-->
+<!--                <div class='item-icon'>-->
+<!--                    <a href="#">-->
+<!--                        <img class='icon-img'  src='/addons/ewei_shopv2/static/021img/touxiang.png' />-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class='item-info'>-->
+<!--                    <div class='item-title'>-->
+<!--                        <div>哎哟可爱鬼</div>-->
+<!--                        <img src="/addons/ewei_shopv2/static/021img/hot.png" alt="">-->
+<!--                        <span>NO.1</span>-->
+<!--                    </div>-->
+<!--                    <div class='item-time'>哈哈哈~我是小可爱</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class='account'>-->
+<!--                <button class='btn-follow'>20000.00</button>-->
+<!--                <div>竞价积分</div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+    <div class="shade" style="display: none;">
+        <div class="shade_content">
+            <div class="title">排名竞价</div>
+            <div class="full_integral">
+                <b>您当前共有：</b>
+                <span class="orange">69276.00积分</span>
+            </div>
+            <input type="number" placeholder="请输入您的竞价" inputmode="decimal" class="num">
+            <div style="
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width: 100%;
+">您使用了
+                <span class="orange use_integral">23000</span>
+                积分参与竞价</div>
+            <div>排名
+                <span class="ranking">NO.1</span>
+            </div>
+            <div class="btn public_021btn" onclick="handleClick()">立即竞价</div>
+        </div>
+        <div class="close" onclick="close123()">
+            ×
+        </div>
+    </div>
+    <div class="bidding" >
+        <div>我也要竞价</div>
+    </div>
+</div>
+<script>
+    $(".bidding").click(function () {
+        $(".shade").fadeIn()
+    })
+    function close123() {
+        $(".shade").fadeOut()
+        $(".use_integral").text("")
+        $(".num").val("")
+        calculate()
+    }
+    // 监听input框值变化进行计算
+    calculate()
+    function calculate(){
+        input_value = $('.num').val()||0;
+        $(".use_integral").text(input_value)
+    }
+    $('.num').bind('input propertychange', function() {
+        calculate()
+    })
+    function handleClick(){
+        var num_value = $('.num').val();
+        if(num_value==""){
+            toast('请输入正确格式')
+            return
+        } else {
+            $.ajax({
+                url: "{php echo mobileUrl('diypage/sns/myRun')}",
+                type: 'post',
+                data: {
+                    'id': 1,
+                    'num':num_value
+                },
+                dataType: 'json',
+                success: function (data) {
+                    toast(data.result.message);
+                    if (data.status==1){
+                        //成功了关闭弹窗并清空内容
+                        close123()
+                        //重新获取数据
+                        getData();
+                    }
+                }
+            });
+        }
+    }
+        getData();
+        $("#dataList").empty();
+        function getData(){
+            $.ajax({
+                url: "{php echo mobileUrl('diypage/sns')}",
+                type: 'post',
+                data: {
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if(data.status == 1){
+                        $.each(data.result.data, function(k,d){
+                             var k1 = k+1
+                            html = "<div class='list-item'>\n" +
+                                "            <div class='item-com'>\n" +
+                                "                <div class='item-icon'>\n" +
+                                "                    <a href=\"#\">\n" +
+                                "                        <img class='icon-img'  src='"+d.avatar+"' />\n" +
+                                "                    </a>\n" +
+                                "                </div>\n" +
+                                "                <div class='item-info'>\n" +
+                                "                    <div class='item-title'>\n" +
+                                "                        <div>"+d.title+"</div>\n" +
+                                "                        <img src=\"/addons/ewei_shopv2/static/021img/hot.png\" alt=\"\">\n" +
+                                "                        <span>NO."+k1+"</span>\n" +
+                                "                    </div>\n" +
+                                "                    <div class='item-time'>"+d.content+"</div>\n" +
+                                "                </div>\n" +
+                                "            </div>\n" +
+                                "            <div class='account'>\n" +
+                                "                <button class='btn-follow'>"+d.credit1+"</button>\n" +
+                                "                <div>竞价积分</div>\n" +
+                                "            </div>\n" +
+                                "        </div>"
+                            $("#dataList").append(html);
+                        })
+                    } else {
+                        // console.log(data.result.message);
+                    }
+                }
+            })
+        }
+        var input_value;
+
+
+</script>
